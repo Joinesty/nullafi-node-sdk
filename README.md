@@ -32,7 +32,7 @@ var sdk = new NullafiSDK();
 // Create a basic API client, which does not automatically refresh the access token
 var client = sdk.getBasicClient('API_KEY');
 
-// Get your own user object from the Box API
+// Get your own user object from the Nullafi API
 // All client methods return a promise that resolves to the results of the API call,
 // or rejects when an error occurs
 client.vault.emailAddress.get('original.email@domain.com')
