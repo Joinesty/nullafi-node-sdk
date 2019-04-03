@@ -40,7 +40,7 @@ client.vault.emailAddress.get('original.email@domain.com')
 	.catch(err => console.log('Got an error!', err));
 ```
 
-[settings-api-key]: https://app.box.com/developers/console
+[settings-api-key]: https://dashboard.nullafi.com/admin/settings/api
 
 
 Copyright and License
