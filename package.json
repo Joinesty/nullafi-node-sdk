@@ -25,5 +25,9 @@
   "bugs": {
     "url": "https://github.com/Joinesty/nullafi-node-sdk/issues"
   },
-  "homepage": "https://github.com/Joinesty/nullafi-node-sdk#readme"
+  "homepage": "https://github.com/Joinesty/nullafi-node-sdk#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.12.0"
+  }
 }
