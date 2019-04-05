@@ -10,6 +10,7 @@
   },
   "scripts": {
     "test": "mocha ./lib/**/*.spec.js",
+    "coverage": "nyc npm test",
     "lint": "eslint ./lib"
   },
   "husky": {
@@ -40,9 +41,12 @@
     "husky": "^1.3.1",
     "mocha": "^6.0.2",
     "nock": "^10.0.6",
+    "nyc": "^13.3.0",
     "sinon": "^7.3.1"
   },
   "dependencies": {
+    "got": "^9.6.0",
+    "query-string": "^6.4.2",
     "sjcl": "^1.0.8"
   }
 }
