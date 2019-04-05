@@ -46,7 +46,6 @@
   },
   "dependencies": {
     "got": "^9.6.0",
-    "query-string": "^6.4.2",
-    "sjcl": "^1.0.8"
+    "query-string": "^6.4.2"
   }
 }
