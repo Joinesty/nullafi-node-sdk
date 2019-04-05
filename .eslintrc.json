@@ -13,7 +13,7 @@
         "sourceType": "module"
     },
     "rules": {
-        "max-len": ["error", 100],
+        "max-len": ["error", 150],
         "linebreak-style": "off",
         "object-curly-spacing": "off",
         "indent": ["error", 4]
