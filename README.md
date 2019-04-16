@@ -38,10 +38,6 @@ const client = await sdk.createClient();
 
 const staticVault = await client.addStaticVault('my-static-vault', ['my-tag-1', 'my-tag-2']);
 const firstNameTokenObj = await staticVault.firstName.postFirstName('John Doe', ['my-fName-tag1', 'my-fName-tag2']);
- id: 'e490157b23534215b0369a2685aab47g',
-                firstnameToken: 'some-token',
-                tags: ['tag', 'test'],
-                createdAt: '2018-07-14 T01:00:00Z',
 console.log(firstNameTokenObj); 
 /*
 	output example:
