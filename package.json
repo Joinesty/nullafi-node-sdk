@@ -1,5 +1,5 @@
 {
-  "name": "@joinestymonkey/nullafi-node-sdk",
+  "name": "@joinesty/nullafi-node-sdk",
   "version": "1.0.0",
   "description": "Official Node.js SDK for Nullafi APIs",
   "main": "./lib/nullafi-node-sdk.js",
