@@ -1,5 +1,5 @@
 {
-  "name": "nullafi-node-sdk",
+  "name": "@joinesty/nullafi-node-sdk",
   "version": "1.0.0",
   "description": "Official Node.js SDK for Nullafi APIs",
   "main": "./lib/nullafi-node-sdk.js",
@@ -29,7 +29,7 @@
     "sdk"
   ],
   "author": "Joinesty Inc",
-  "license": "MIT",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Joinesty/nullafi-node-sdk/issues"
   },
@@ -39,9 +39,9 @@
     "eslint": "^5.16.0",
     "eslint-config-google": "^0.12.0",
     "husky": "^1.3.1",
-    "mocha": "^6.0.2",
+    "mocha": "^6.1.3",
     "nock": "^10.0.6",
-    "nyc": "^13.3.0",
+    "nyc": "^14.0.0",
     "sinon": "^7.3.1"
   },
   "dependencies": {

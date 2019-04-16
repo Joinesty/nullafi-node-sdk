@@ -24,20 +24,35 @@ of your app in the [Settings Page - API Key][settings-api-key].
 You can use this token to make calls for your own Nullafi account.
 
 ```js
-var NullafiSDK = require('nullafi-node-sdk');
+const NullafiSDK = require('nullafi-node-sdk');
 
 // Initialize the SDK with your API credentials
-var sdk = new NullafiSDK();
+const sdk = new NullafiSDK('API_KEY');
 
 // Create a basic API client, which does not automatically refresh the access token
-var client = sdk.getBasicClient('API_KEY');
+const client = await sdk.createClient();
 
 // Get your own user object from the Nullafi API
 // All client methods return a promise that resolves to the results of the API call,
 // or rejects when an error occurs
-client.vault.emailAddress.get('original.email@domain.com')
-	.then(token => console.log('My tokenized email:', token.email, '!'))
-	.catch(err => console.log('Got an error!', err));
+
+const staticVault = await client.addStaticVault('my-static-vault', ['my-tag-1', 'my-tag-2']);
+const firstNameTokenObj = await staticVault.firstName.postFirstName('John Doe', ['my-fName-tag1', 'my-fName-tag2']);
+ id: 'e490157b23534215b0369a2685aab47g',
+                firstnameToken: 'some-token',
+                tags: ['tag', 'test'],
+                createdAt: '2018-07-14 T01:00:00Z',
+console.log(firstNameTokenObj); 
+/*
+	output example:
+	{ 
+		id: 'e490157b23534215b0369a2685aab47g', 
+		firstname: 'John Doe', 
+		firstnameToken: 'blssVzRzdnP9uEi5WDrFGW7y0JELl7aLKMyKeOyChlk=', 
+		tags: ['my-fName-tag1', 'my-fName-tag2'], 
+		createdAt: '2018-07-13 T01:00:00Z' 
+	}
+*/
 ```
 
 [settings-api-key]: https://dashboard.nullafi.com/admin/settings/api
