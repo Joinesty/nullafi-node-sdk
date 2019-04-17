@@ -13,6 +13,15 @@ const start = async () => {
         ssnToken: null,
         firstNameToken: null,
         addressToken: null,
+        dateOfBirthToken: null,
+        driversLicenseToken: null,
+        genderToken: null,
+        lastNameToken: null,
+        passportToken: null,
+        placeOfBirthToken: null,
+        raceToken: null,
+        randomToken: null,
+        vehicleRegistrationToken: null,
     };
 
     app.engine('hbs', handlebars({
@@ -34,6 +43,15 @@ const start = async () => {
         exampleStore.ssnToken = null;
         exampleStore.firstNameToken = null;
         exampleStore.addressToken = null;
+        exampleStore.dateOfBirthToken = null;
+        exampleStore.driversLicenseToken = null;
+        exampleStore.genderToken = null;
+        exampleStore.lastNameToken = null;
+        exampleStore.passportToken = null;
+        exampleStore.placeOfBirthToken = null;
+        exampleStore.raceToken = null;
+        exampleStore.randomToken = null;
+        exampleStore.vehicleRegistrationToken = null;
         res.redirect('/');
     });
 
@@ -52,8 +70,56 @@ const start = async () => {
         res.redirect('/');
     });
 
-    app.post('/static/addressToken', async (req, res) => {
+    app.post('/static/address', async (req, res) => {
         exampleStore.addressToken = await exampleStore.vaultObj.address.postAddress(req.body.address, ['example-address-tag']);
+        res.redirect('/');
+    });
+
+    app.post('/static/dateOfBirth', async (req, res) => {
+        exampleStore.dateOfBirthToken = await exampleStore.vaultObj.dateOfBirth.postDateOfBirth(req.body.dateOfBirth, ['example-dateofbirth-tag']);
+        res.redirect('/');
+    });
+
+    app.post('/static/driversLicense', async (req, res) => {
+        exampleStore.driversLicenseToken = await exampleStore.vaultObj.driversLicense
+            .postDriversLicense(req.body.driversLicense, ['example-driverslicense-tag']);
+        res.redirect('/');
+    });
+
+    app.post('/static/gender', async (req, res) => {
+        exampleStore.genderToken = await exampleStore.vaultObj.gender.postGender(req.body.gender, ['example-gender-tag']);
+        res.redirect('/');
+    });
+
+    app.post('/static/lastName', async (req, res) => {
+        exampleStore.lastNameToken = await exampleStore.vaultObj.lastName.postLastName(req.body.lastName, ['example-lastName-tag']);
+        res.redirect('/');
+    });
+
+    app.post('/static/passport', async (req, res) => {
+        exampleStore.passportToken = await exampleStore.vaultObj.passport.postPassport(req.body.passport, ['example-passport-tag']);
+        res.redirect('/');
+    });
+
+    app.post('/static/placeOfBirth', async (req, res) => {
+        exampleStore.placeOfBirthToken = await exampleStore.vaultObj.placeOfBirth
+            .postPlaceOfBirth(req.body.placeOfBirth, ['example-placeofbirth-tag']);
+        res.redirect('/');
+    });
+
+    app.post('/static/race', async (req, res) => {
+        exampleStore.raceToken = await exampleStore.vaultObj.race.postRace(req.body.race, ['example-race-tag']);
+        res.redirect('/');
+    });
+
+    app.post('/static/random', async (req, res) => {
+        exampleStore.randomToken = await exampleStore.vaultObj.random.postRandom(req.body.random, ['example-random-tag']);
+        res.redirect('/');
+    });
+
+    app.post('/static/vehicleRegistration', async (req, res) => {
+        exampleStore.vehicleRegistrationToken = await exampleStore.vaultObj.vehicleRegistration
+            .postVehicleRegistration(req.body.vehicleRegistration, ['example-vehicleregistration-tag']);
         res.redirect('/');
     });
 
