@@ -9,6 +9,6 @@
   "author": "Joinesty Inc",
   "license": "ISC",
   "dependencies": {
-    "@joinesty/nullafi-node-sdk": "^1.0.2"
+    "@joinesty/nullafi-node-sdk": "^1.0.3"
   }
 }
