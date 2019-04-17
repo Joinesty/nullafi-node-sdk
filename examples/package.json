@@ -1,0 +1,18 @@
+{
+  "name": "nullafi-node-sdk-client-example",
+  "version": "1.0.0",
+  "description": "An example express app to show how to user nullafi-node-sdk",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joinesty Inc",
+  "license": "ISC",
+  "dependencies": {
+    "@joinesty/nullafi-node-sdk": "^1.0.5",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2"
+  }
+}
