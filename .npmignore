@@ -1,2 +1,5 @@
 *.spec.js
 docs/
+.vs/
+.vscode/
+.nyc_output/
