@@ -9,6 +9,9 @@
   "author": "Joinesty Inc",
   "license": "ISC",
   "dependencies": {
-    "@joinesty/nullafi-node-sdk": "^1.0.3"
+    "@joinesty/nullafi-node-sdk": "^1.0.4",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2"
   }
 }
