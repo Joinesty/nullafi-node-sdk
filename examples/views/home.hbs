@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Box Node.js SDK Sample App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <style>
+        body {
+            padding-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand">Nullafi Node SDK Sample App</a>
+            </div>
+            <div class="navbar-collapse">
+                <div class="navbar-right">
+                    {{#if vaultObj}}
+                    <a href="/reset" class="btn btn-sm btn-danger">Reset Data</a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        {{#if vaultObj}}
+        <div class="jumbotron">
+            <h1 class="text-center">Static vault: {{vaultObj.vaultName}} </h1>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                {{#if ssnToken}}
+                <p>SSN : {{ssnToken.ssn}}</p>
+                <p>SSN Token: {{ssnToken.ssnToken}}</p>
+                <p>Tags: {{ssnToken.tags}}</p>
+                {{else}}
+                <form action="/static/ssn" method="post">
+                    <div class="form-group">
+                        <label for="ssn">SSN</label>
+                        <input type="text" class="form-control" id="ssn" name="ssn" placeholder="SSN">
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-primary">Create SSN Token</button>
+                </form>
+                {{/if}}
+            </div>
+            <div class="col-md-4">
+                {{#if firstNameToken}}
+                <p>First Name : {{firstNameToken.firstname}}</p>
+                <p>First Name Token: {{firstNameToken.firstnameToken}}</p>
+                <p>Tags: {{firstNameToken.tags}}</p>
+                {{else}}
+                <form action="/static/firstName" method="post">
+                    <div class="form-group">
+                        <label for="firstName">Fisrt Name</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName"
+                            placeholder="First Name">
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-primary">Create First Name Token</button>
+                </form>
+                {{/if}}
+            </div>
+            <div class="col-md-4">
+                {{#if addressToken}}
+                <p>Address : {{addressToken.address}}</p>
+                <p>Address Token: {{addressToken.addressToken}}</p>
+                <p>Tags: {{addressToken.tags}}</p>
+                {{else}}
+                <form action="/static/addressToken" method="post">
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-primary">Create Address Token</button>
+                </form>
+                {{/if}}
+            </div>
+        </div>
+
+
+        {{else}}
+        <div class="jumbotron">
+            <h1 class="text-center">Create a new static vault:</h1>
+        </div>
+        <form action="/static/vault" method="post">
+            <div class="form-group">
+                <label for="email">Vault Name</label>
+                <input type="text" class="form-control" id="vaultName" name="vaultName" placeholder="Vault Name">
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary">Create Static Vault</button>
+        </form>
+        {{/if}}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"
+        integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
