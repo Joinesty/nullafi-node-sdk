@@ -222,15 +222,38 @@
                 <form action="/static/vehicleRegistration" method="post">
                     <div class="form-group">
                         <label for="vehicleRegistration">Vehicle Registration</label>
-                        <input type="text" class="form-control" id="vehicleRegistration" name="vehicleRegistration" placeholder="Vehicle Registration">
+                        <input type="text" class="form-control" id="vehicleRegistration" name="vehicleRegistration"
+                            placeholder="Vehicle Registration">
                     </div>
                     <button type="submit" class="btn btn-lg btn-primary">Create Passport</button>
                 </form>
                 {{/if}}
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-3">
+                {{#if genericToken}}
+                <p>Generic : {{genericToken.data}}</p>
+                <p>Generic Token: {{genericToken.token}}</p>
+                <p>Tags: {{genericToken.tags}}</p>
+                {{else}}
+                <form action="/static/generic" method="post">
+                    <div class="form-group">
+                        <label for="generic">Generic</label>
+                        <input type="text" class="form-control" id="generic" name="generic"
+                            placeholder="Generic">
+                    </div>
+                    <div class="form-group">
+                        <label for="template">Template</label>
+                        <input type="text" class="form-control" id="template" name="template"
+                            placeholder="Template">
+                    </div>
 
-
+                    <button type="submit" class="btn btn-lg btn-primary">Create Generic Token</button>
+                </form>
+                {{/if}}
+            </div>
+        </div>
 
         {{else}}
         <div class="jumbotron">
