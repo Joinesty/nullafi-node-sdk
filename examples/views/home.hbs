@@ -35,6 +35,7 @@
         {{#if vaultObj}}
         <div class="jumbotron">
             <h1 class="text-center">Static vault: {{vaultObj.vaultName}} </h1>
+            <h3 class="text-center">Master key: {{vaultObj.masterKey}} </h1>
         </div>
         <div class="row">
             <div class="col-md-3">
@@ -222,15 +223,38 @@
                 <form action="/static/vehicleRegistration" method="post">
                     <div class="form-group">
                         <label for="vehicleRegistration">Vehicle Registration</label>
-                        <input type="text" class="form-control" id="vehicleRegistration" name="vehicleRegistration" placeholder="Vehicle Registration">
+                        <input type="text" class="form-control" id="vehicleRegistration" name="vehicleRegistration"
+                            placeholder="Vehicle Registration">
                     </div>
                     <button type="submit" class="btn btn-lg btn-primary">Create Passport</button>
                 </form>
                 {{/if}}
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-3">
+                {{#if genericToken}}
+                <p>Generic : {{genericToken.data}}</p>
+                <p>Generic Token: {{genericToken.token}}</p>
+                <p>Tags: {{genericToken.tags}}</p>
+                {{else}}
+                <form action="/static/generic" method="post">
+                    <div class="form-group">
+                        <label for="generic">Generic</label>
+                        <input type="text" class="form-control" id="generic" name="generic"
+                            placeholder="Generic">
+                    </div>
+                    <div class="form-group">
+                        <label for="template">Template</label>
+                        <input type="text" class="form-control" id="template" name="template"
+                            placeholder="Template">
+                    </div>
 
-
+                    <button type="submit" class="btn btn-lg btn-primary">Create Generic Token</button>
+                </form>
+                {{/if}}
+            </div>
+        </div>
 
         {{else}}
         <div class="jumbotron">
@@ -245,13 +269,50 @@
         </form>
         {{/if}}
     </div>
-
-    <script src="https://code.jquery.com/jquery-2.2.3.min.js"
-        integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-        crossorigin="anonymous"></script>
-
-</body>
-
-</html>
+    <div class="container">
+        {{#if communicationVaultObj}}
+        <div class="jumbotron">
+            <h1 class="text-center">Communication vault: {{communicationVaultObj.vaultName}} </h1>
+            <h3 class="text-center">Master key: {{communicationVaultObj.masterKey}} </h1>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                {{#if emailToken}}
+                <p>Email : {{emailToken.email}}</p>
+                <p>Email Token: {{emailToken.emailToken}}</p>
+                <p>Tags: {{emailToken.tags}}</p>
+                {{else}}
+                <form action="/communication/email" method="post">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-primary">Create Email Token</button>
+                </form>
+                {{/if}}
+            </div>
+        </div>
+        {{else}}
+        <div class="jumbotron">
+            <h1 class="text-center">Create a new communication vault:</h1>
+        </div>
+        <form action="/communication/vault" method="post">
+            <div class="form-group">
+                <label for="email">Vault Name</label>
+                <input type="text" class="form-control" id="vaultName" name="vaultName" placeholder="Vault Name">
+            </div>
+            <button type="submit" class="btn btn-lg btn-primary">Create Communication Vault</button>
+        </form>
+        {{/if}}
+        </div>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js"
+            integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+        
+        </body>
+        
+        </html>

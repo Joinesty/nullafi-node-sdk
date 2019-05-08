@@ -16,6 +16,7 @@ const start = async () => {
         dateOfBirthToken: null,
         driversLicenseToken: null,
         genderToken: null,
+        genericToken: null,
         lastNameToken: null,
         passportToken: null,
         placeOfBirthToken: null,
@@ -40,6 +41,9 @@ const start = async () => {
 
     app.get('/reset', (req, res) => {
         exampleStore.vaultObj = null;
+        exampleStore.communicationVaultObj = null;
+        exampleStore.emailToken = null;
+        exampleStore.genericToken = null;
         exampleStore.ssnToken = null;
         exampleStore.firstNameToken = null;
         exampleStore.addressToken = null;
@@ -57,6 +61,21 @@ const start = async () => {
 
     app.post('/static/vault', async (req, res) => {
         exampleStore.vaultObj = await client.addStaticVault(req.body.vaultName, ['example-static-tag']);
+        res.redirect('/');
+    });
+
+    app.post('/communication/vault', async (req, res) => {
+        exampleStore.communicationVaultObj = await client.addCommunicationVault(req.body.vaultName, ['example-communication-tag']);
+        res.redirect('/');
+    });
+
+    app.post('/communication/email', async (req, res) => {
+        exampleStore.emailToken = await exampleStore.communicationVaultObj.email.postEmail(req.body.email, ['example-email-tag']);
+        res.redirect('/');
+    });
+
+    app.post('/static/generic', async (req, res) => {
+        exampleStore.genericToken = await exampleStore.vaultObj.generic.postGeneric(req.body.generic, req.body.template, ['example-generic-tag']);
         res.redirect('/');
     });
 
