@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Passport</title>
+    <title>JSDoc: Class: StaticVault</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Passport</h1>
+    <h1 class="page-title">Class: StaticVault</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Passport<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>StaticVault<span class="signature">()</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="Passport"><span class="type-signature"></span>new Passport<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="StaticVault"><span class="type-signature"></span>new StaticVault<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -89,7 +89,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_tokens_passport.js.html">managers/tokens/passport.js</a>, <a href="managers_tokens_passport.js.html#line1">line 1</a>
+        <a href="managers_static-vault.js.html">managers/static-vault.js</a>, <a href="managers_static-vault.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -130,7 +130,7 @@
         <h3 class="subsection-title">Classes</h3>
 
         <dl>
-            <dt><a href="Passport.Passport.html">Passport</a></dt>
+            <dt><a href="StaticVault.StaticVault.html">StaticVault</a></dt>
             <dd></dd>
         </dl>
     
@@ -152,7 +152,7 @@
     
 
     
-    <h4 class="name" id="deletePassport"><span class="type-signature"></span>deletePassport<span class="signature">(tokenId)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
+    <h4 class="name" id=".getStaticVault"><span class="type-signature">(async, static) </span>getStaticVault<span class="signature">(client, vaultId, masterKey)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="StaticVault.html">StaticVault</a>>}</span></h4>
     
 
     
@@ -160,7 +160,7 @@
 
 
 <div class="description">
-    Delete the Passport token from static vault
+    Get the static vault from id
 </div>
 
 
@@ -196,7 +196,53 @@
 
         <tr>
             
-                <td class="name"><code>tokenId</code></td>
+                <td class="name"><code>client</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Client.html">Client</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>vaultId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>masterKey</code></td>
             
 
             <td class="type">
@@ -253,7 +299,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_tokens_passport.js.html">managers/tokens/passport.js</a>, <a href="managers_tokens_passport.js.html#line53">line 53</a>
+        <a href="managers_static-vault.js.html">managers/static-vault.js</a>, <a href="managers_static-vault.js.html#line106">line 106</a>
     </li></ul></dd>
     
 
@@ -289,7 +335,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;any></span>
+<span class="param-type">Promise.&lt;<a href="StaticVault.html">StaticVault</a>></span>
 
 
     </dd>
@@ -307,7 +353,7 @@
     
 
     
-    <h4 class="name" id="getPassport"><span class="type-signature">(async) </span>getPassport<span class="signature">(tokenId)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
+    <h4 class="name" id=".postStaticVault"><span class="type-signature">(async, static) </span>postStaticVault<span class="signature">(client, name, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="StaticVault.html">StaticVault</a>>}</span></h4>
     
 
     
@@ -315,7 +361,7 @@
 
 
 <div class="description">
-    Retrieve the Passport string token from a static vault
+    Request the API to create a new static vault
 </div>
 
 
@@ -351,13 +397,13 @@
 
         <tr>
             
-                <td class="name"><code>tokenId</code></td>
+                <td class="name"><code>client</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type"><a href="Client.html">Client</a></span>
 
 
             
@@ -371,142 +417,10 @@
         </tr>
 
     
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_tokens_passport.js.html">managers/tokens/passport.js</a>, <a href="managers_tokens_passport.js.html#line41">line 41</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;any></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="postPassport"><span class="type-signature">(async) </span>postPassport<span class="signature">(passport, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Post a new Passport string to be tokenized for a specific static vault
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
 
         <tr>
             
-                <td class="name"><code>passport</code></td>
+                <td class="name"><code>name</code></td>
             
 
             <td class="type">
@@ -586,7 +500,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_tokens_passport.js.html">managers/tokens/passport.js</a>, <a href="managers_tokens_passport.js.html#line23">line 23</a>
+        <a href="managers_static-vault.js.html">managers/static-vault.js</a>, <a href="managers_static-vault.js.html#line86">line 86</a>
     </li></ul></dd>
     
 
@@ -622,7 +536,363 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;any></span>
+<span class="param-type">Promise.&lt;<a href="StaticVault.html">StaticVault</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="decrypt"><span class="type-signature"></span>decrypt<span class="signature">(iv, authTag, value)</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Encrypt static tokens (before sending info to the API)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>iv</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>authTag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="managers_static-vault.js.html">managers/static-vault.js</a>, <a href="managers_static-vault.js.html#line74">line 74</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="encrypt"><span class="type-signature"></span>encrypt<span class="signature">(value)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Encrypt static tokens (before sending info to the API)
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="managers_static-vault.js.html">managers/static-vault.js</a>, <a href="managers_static-vault.js.html#line62">line 62</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
 
 
     </dd>

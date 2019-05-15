@@ -9,6 +9,7 @@
     "test": "tests"
   },
   "scripts": {
+    "docs" : "jsdoc -r lib/. -d docs",
     "test": "mocha ./lib/**/*.spec.js",
     "coverage": "nyc npm test",
     "lint": "eslint ./lib"
