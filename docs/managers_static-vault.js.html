@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: managers/static-vault.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: managers/static-vault.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const Security = require('../services/security');
+
+const Address = require('./tokens/address');
+const FirstName = require('./tokens/first-name');
+const LastName = require('./tokens/last-name');
+const DateOfBirth = require('./tokens/date-of-birth');
+const DriversLicense = require('./tokens/drivers-license');
+const Gender = require('./tokens/gender');
+const Passport = require('./tokens/passport');
+const PlaceOfBirth = require('./tokens/place-of-birth');
+const Race = require('./tokens/race');
+const Random = require('./tokens/random');
+const SSN = require('./tokens/ssn');
+const Generic = require('./tokens/generic');
+const TaxPayerID = require('./tokens/tax-payer-id');
+const VehicleRegistration = require('./tokens/vehicle-registration');
+
+/**
+ *
+ *
+ * @export
+ * @class Vault
+ */
+class StaticVault {
+    /**
+     *Creates an instance of Vault.
+     * @param {Client} client
+     * @param {string} vaultId
+     * @param {string} vaultName
+     * @param {string} masterKey
+     * @memberof StaticVault
+     */
+    constructor(client, vaultId, vaultName, masterKey) {
+        this.security = new Security();
+        this.client = client;
+        this.id = vaultId;
+        this.vaultName = vaultName;
+        this.masterKey = masterKey;
+
+        this.generic = new Generic(this);
+        this.address = new Address(this);
+        this.firstName = new FirstName(this);
+        this.lastName = new LastName(this);
+        this.dateOfBirth = new DateOfBirth(this);
+        this.driversLicense = new DriversLicense(this);
+        this.gender = new Gender(this);
+        this.passport = new Passport(this);
+        this.placeOfBirth = new PlaceOfBirth(this);
+        this.race = new Race(this);
+        this.random = new Random(this);
+        this.ssn = new SSN(this);
+        this.taxPayerId = new TaxPayerID(this);
+        this.vehicleRegistration = new VehicleRegistration(this);
+    }
+
+    /**
+             * Encrypt static tokens (before sending info to the API)
+             *
+             * @param {string} value
+             * @return {Object}
+             */
+    encrypt(value) {
+        const iv = this.security.aesGenerateInitializationVector();
+        return this.security.aesEncrypt(this.masterKey, iv, value);
+    }
+    /**
+         * Encrypt static tokens (before sending info to the API)
+         *
+         * @param {string} iv
+         * @param {string} authTag
+         * @param {string} value
+         * @return {string}
+         */
+    decrypt(iv, authTag, value) {
+        return this.security.aesDecrypt(this.masterKey, iv, authTag, value);
+    }
+    /**
+         *  Request the API to create a new static vault
+         *
+         * @param {Client} client
+         * @param {string} name
+         * @param {string[]} tags
+         * @return {Promise&lt;StaticVault>}
+         * @memberof StaticVault
+         */
+    static async postStaticVault(client, name, tags) {
+        const response = await client.post('/vault/static', {
+            name,
+            tags,
+        });
+
+        const security = new Security();
+
+        return new StaticVault(client, response.id, response.name, security.aesGenerateMasterKey());
+    }
+
+    /**
+         * Get the static vault from id
+         *
+         * @param {Client} client
+         * @param {string} vaultId
+         * @param {string} masterKey
+         * @return {Promise&lt;StaticVault>}
+         * @memberof StaticVault
+         */
+    static async getStaticVault(client, vaultId, masterKey) {
+        const response = await client.get(`/vault/static/${vaultId}`);
+        return new StaticVault(client, response.id, response.name, masterKey);
+    }
+};
+
+module.exports = StaticVault;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="Client.html">Client</a></li><li><a href="CommunicationVault.CommunicationVault.html">CommunicationVault</a></li><li><a href="DateOfBirth.html">DateOfBirth</a></li><li><a href="DateOfBirth.DateOfBirth.html">DateOfBirth</a></li><li><a href="DriversLicense.html">DriversLicense</a></li><li><a href="DriversLicense.DriversLicense.html">DriversLicense</a></li><li><a href="Email.html">Email</a></li><li><a href="Email.Email.html">Email</a></li><li><a href="FirstName.html">FirstName</a></li><li><a href="FirstName.FirstName.html">FirstName</a></li><li><a href="Gender.html">Gender</a></li><li><a href="Gender.Gender.html">Gender</a></li><li><a href="Generic.html">Generic</a></li><li><a href="Generic.Generic.html">Generic</a></li><li><a href="LastName.html">LastName</a></li><li><a href="LastName.LastName.html">LastName</a></li><li><a href="module.exports.html">exports</a></li><li><a href="NullafiSDK.html">NullafiSDK</a></li><li><a href="Passport.html">Passport</a></li><li><a href="Passport.Passport.html">Passport</a></li><li><a href="PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="PlaceOfBirth.PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="Race.html">Race</a></li><li><a href="Race.Race.html">Race</a></li><li><a href="Random.html">Random</a></li><li><a href="Random.Random.html">Random</a></li><li><a href="Security.html">Security</a></li><li><a href="SSN.html">SSN</a></li><li><a href="SSN.SSN.html">SSN</a></li><li><a href="StaticVault.StaticVault.html">StaticVault</a></li><li><a href="TaxPayerID.html">TaxPayerID</a></li><li><a href="TaxPayerID.TaxPayerID.html">TaxPayerID</a></li><li><a href="Vault.html">Vault</a></li><li><a href="VehicleRegistration.html">VehicleRegistration</a></li><li><a href="VehicleRegistration.VehicleRegistration.html">VehicleRegistration</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Wed May 15 2019 14:16:56 GMT-0300 (Brasilia Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

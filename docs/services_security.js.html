@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: services/security.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: services/security.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>
+const { promisify } = require('util');
+const crypto = require('crypto');
+
+/**
+ *
+ *
+ * @export
+ * @class Security
+ */
+module.exports = class Security {
+    /**
+         * Generate a ephemeral key to allow encrypted communication between the SDK and API
+         *
+         * @param {string} passphrase
+         * @return {Promise&lt;Object>}
+         * @memberof Security
+         */
+    rsaGenerateEphemeralKeypairs(passphrase) {
+        return promisify(crypto.generateKeyPair)('rsa', {
+            modulusLength: 2048,
+            publicKeyEncoding: {
+                type: 'spki',
+                format: 'pem',
+            },
+            privateKeyEncoding: {
+                type: 'pkcs8',
+                format: 'pem',
+                cipher: 'aes-256-cbc',
+                passphrase: passphrase,
+            },
+        });
+    }
+    /**
+     *  Encrypt object to a base64 string using a public key
+     *
+     * @param {string} publicKey
+     * @param {Object} data
+     * @return {string}
+     * @memberof Security
+     */
+    rsaPublicEncrypt(publicKey, data) {
+        return crypto.publicEncrypt(publicKey, Buffer.from(JSON.stringify(data))).toString('base64');
+    }
+    /**
+         *  Decrypt object to a base64 string using a private key
+         *
+         * @param {string} privateKey
+         * @param {Object} base64EncryptedData
+         * @return {string}
+         * @memberof Security
+         */
+    rsaPrivateDecrypt(privateKey, base64EncryptedData) {
+        const decryptedBuffer = crypto.privateDecrypt(privateKey, Buffer.from(base64EncryptedData, 'base64'));
+        return JSON.parse(decryptedBuffer.toString());
+    }
+    /**
+     * Generate masterkey to be used on AES encrypt/decrypt
+     *
+     * @return {string}
+     */
+    aesGenerateMasterKey() {
+        return crypto.randomBytes(32).toString('base64');
+    }
+    /**
+     *  Generate initialization vector to be used on AES encrypt/decrypt
+     *
+     * @return {string}
+     */
+    aesGenerateInitializationVector() {
+        return crypto.randomBytes(16).toString('base64');
+    }
+    /**
+     * Encrypt the data using AES GCM 256bit
+     *
+     * @param {string} masterKey
+     * @param {string} initializationVector
+     * @param {string} data
+     * @return {string}
+     */
+    aesEncrypt(masterKey, initializationVector, data) {
+        const cipher = crypto.createCipheriv('aes-256-gcm', Buffer.from(masterKey, 'base64'), Buffer.from(initializationVector, 'base64'));
+        let enc = cipher.update(data, 'utf8', 'base64');
+        enc += cipher.final('base64');
+
+        return {
+            encryptedData: enc,
+            initializationVector,
+            authenticationTag: cipher.getAuthTag().toString('base64'),
+        };
+    }
+
+    /**
+     * Decrypt the data using AES GCM 256bit
+     *
+     * @param {string} masterKey
+     * @param {string} initializationVector
+     * @param {string} authTag
+     * @param {string} base64EncryptedData
+     * @return {string}
+     */
+    aesDecrypt(masterKey, initializationVector, authTag, base64EncryptedData) {
+        const decipher = crypto.createDecipheriv('aes-256-gcm', Buffer.from(masterKey, 'base64'), Buffer.from(initializationVector, 'base64'));
+        decipher.setAuthTag(Buffer.from(authTag, 'base64'));
+        let str = decipher.update(base64EncryptedData, 'base64', 'utf8');
+        str += decipher.final('utf8');
+        return str;
+    }
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="Client.html">Client</a></li><li><a href="CommunicationVault.CommunicationVault.html">CommunicationVault</a></li><li><a href="DateOfBirth.html">DateOfBirth</a></li><li><a href="DateOfBirth.DateOfBirth.html">DateOfBirth</a></li><li><a href="DriversLicense.html">DriversLicense</a></li><li><a href="DriversLicense.DriversLicense.html">DriversLicense</a></li><li><a href="Email.html">Email</a></li><li><a href="Email.Email.html">Email</a></li><li><a href="FirstName.html">FirstName</a></li><li><a href="FirstName.FirstName.html">FirstName</a></li><li><a href="Gender.html">Gender</a></li><li><a href="Gender.Gender.html">Gender</a></li><li><a href="Generic.html">Generic</a></li><li><a href="Generic.Generic.html">Generic</a></li><li><a href="LastName.html">LastName</a></li><li><a href="LastName.LastName.html">LastName</a></li><li><a href="module.exports.html">exports</a></li><li><a href="NullafiSDK.html">NullafiSDK</a></li><li><a href="Passport.html">Passport</a></li><li><a href="Passport.Passport.html">Passport</a></li><li><a href="PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="PlaceOfBirth.PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="Race.html">Race</a></li><li><a href="Race.Race.html">Race</a></li><li><a href="Random.html">Random</a></li><li><a href="Random.Random.html">Random</a></li><li><a href="Security.html">Security</a></li><li><a href="SSN.html">SSN</a></li><li><a href="SSN.SSN.html">SSN</a></li><li><a href="StaticVault.StaticVault.html">StaticVault</a></li><li><a href="TaxPayerID.html">TaxPayerID</a></li><li><a href="TaxPayerID.TaxPayerID.html">TaxPayerID</a></li><li><a href="Vault.html">Vault</a></li><li><a href="VehicleRegistration.html">VehicleRegistration</a></li><li><a href="VehicleRegistration.VehicleRegistration.html">VehicleRegistration</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Wed May 15 2019 14:16:56 GMT-0300 (Brasilia Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
