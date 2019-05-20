@@ -41,7 +41,7 @@
             <div class="col-md-3">
                 {{#if ssnToken}}
                 <p>SSN : {{ssnToken.ssn}}</p>
-                <p>SSN Token: {{ssnToken.ssnToken}}</p>
+                <p>SSN Alias: {{ssnToken.ssnToken}}</p>
                 <p>Tags: {{ssnToken.tags}}</p>
                 {{else}}
                 <form action="/static/ssn" method="post">
@@ -49,14 +49,14 @@
                         <label for="ssn">SSN</label>
                         <input type="text" class="form-control" id="ssn" name="ssn" placeholder="SSN">
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary">Create SSN Token</button>
+                    <button type="submit" class="btn btn-lg btn-primary">Create SSN Alias</button>
                 </form>
                 {{/if}}
             </div>
             <div class="col-md-3">
                 {{#if firstNameToken}}
                 <p>First Name : {{firstNameToken.firstname}}</p>
-                <p>First Name Token: {{firstNameToken.firstnameToken}}</p>
+                <p>First Name Alias: {{firstNameToken.firstnameToken}}</p>
                 <p>Tags: {{firstNameToken.tags}}</p>
                 {{else}}
                 <form action="/static/firstName" method="post">
@@ -65,14 +65,14 @@
                         <input type="text" class="form-control" id="firstName" name="firstName"
                             placeholder="First Name">
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary">Create First Name Token</button>
+                    <button type="submit" class="btn btn-lg btn-primary">Create First Name Alias</button>
                 </form>
                 {{/if}}
             </div>
             <div class="col-md-3">
                 {{#if addressToken}}
                 <p>Address : {{addressToken.address}}</p>
-                <p>Address Token: {{addressToken.addressToken}}</p>
+                <p>Address Alias: {{addressToken.addressToken}}</p>
                 <p>Tags: {{addressToken.tags}}</p>
                 {{else}}
                 <form action="/static/address" method="post">
@@ -80,14 +80,14 @@
                         <label for="address">Address</label>
                         <input type="text" class="form-control" id="address" name="address" placeholder="Address">
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary">Create Address Token</button>
+                    <button type="submit" class="btn btn-lg btn-primary">Create Address Alias</button>
                 </form>
                 {{/if}}
             </div>
             <div class="col-md-3">
                 {{#if dateOfBirthToken}}
                 <p>Date of Birth : {{dateOfBirthToken.dateofbirth}}</p>
-                <p>Date of Birth Token: {{dateOfBirthToken.dateofbirthToken}}</p>
+                <p>Date of Birth Alias: {{dateOfBirthToken.dateofbirthToken}}</p>
                 <p>Tags: {{dateOfBirthToken.tags}}</p>
                 {{else}}
                 <form action="/static/dateOfBirth" method="post">
@@ -107,7 +107,7 @@
             <div class="col-md-3">
                 {{#if driversLicenseToken}}
                 <p>Drivers License : {{driversLicenseToken.driverslicense}}</p>
-                <p>Drivers License Token: {{driversLicenseToken.driverslicenseToken}}</p>
+                <p>Drivers License Alias: {{driversLicenseToken.driverslicenseToken}}</p>
                 <p>Tags: {{driversLicenseToken.tags}}</p>
                 {{else}}
                 <form action="/static/driversLicense" method="post">
@@ -116,14 +116,14 @@
                         <input type="text" class="form-control" id="driversLicense" name="driversLicense"
                             placeholder="Drivers License">
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary">Create Drivers License Token</button>
+                    <button type="submit" class="btn btn-lg btn-primary">Create Drivers License Alias</button>
                 </form>
                 {{/if}}
             </div>
             <div class="col-md-3">
                 {{#if genderToken}}
                 <p>Gender : {{genderToken.gender}}</p>
-                <p>Gender Token: {{genderToken.genderToken}}</p>
+                <p>Gender Alias: {{genderToken.genderToken}}</p>
                 <p>Tags: {{genderToken.tags}}</p>
                 {{else}}
                 <form action="/static/gender" method="post">
@@ -131,14 +131,14 @@
                         <label for="gender">Gender</label>
                         <input type="text" class="form-control" id="gender" name="gender" placeholder="Gender">
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary">Create Gender Token</button>
+                    <button type="submit" class="btn btn-lg btn-primary">Create Gender Alias</button>
                 </form>
                 {{/if}}
             </div>
             <div class="col-md-3">
                 {{#if lastNameToken}}
                 <p>Last Name : {{lastNameToken.lastname}}</p>
-                <p>Last Name Token: {{lastNameToken.lastnameToken}}</p>
+                <p>Last Name Alias: {{lastNameToken.lastnameToken}}</p>
                 <p>Tags: {{lastNameToken.tags}}</p>
                 {{else}}
                 <form action="/static/lastName" method="post">
@@ -146,14 +146,14 @@
                         <label for="address">Last Name</label>
                         <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary">Create Last Name Token</button>
+                    <button type="submit" class="btn btn-lg btn-primary">Create Last Name Alias</button>
                 </form>
                 {{/if}}
             </div>
             <div class="col-md-3">
                 {{#if passportToken}}
                 <p>Passport : {{passportToken.passport}}</p>
-                <p>Passport Token: {{passportToken.passportToken}}</p>
+                <p>Passport Alias: {{passportToken.passportToken}}</p>
                 <p>Tags: {{passportToken.tags}}</p>
                 {{else}}
                 <form action="/static/passport" method="post">
@@ -171,7 +171,7 @@
             <div class="col-md-3">
                 {{#if placeOfBirthToken}}
                 <p>Place of Birth : {{placeOfBirthToken.placeofbirth}}</p>
-                <p>Place of Birth Token: {{placeOfBirthToken.placeofbirthToken}}</p>
+                <p>Place of Birth Alias: {{placeOfBirthToken.placeofbirthToken}}</p>
                 <p>Tags: {{placeOfBirthToken.tags}}</p>
                 {{else}}
                 <form action="/static/placeOfBirth" method="post">
@@ -180,14 +180,14 @@
                         <input type="text" class="form-control" id="placeOfBirth" name="placeOfBirth"
                             placeholder="Place of Birth">
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary">Create Place of Birth Token</button>
+                    <button type="submit" class="btn btn-lg btn-primary">Create Place of Birth Alias</button>
                 </form>
                 {{/if}}
             </div>
             <div class="col-md-3">
                 {{#if raceToken}}
                 <p>Race : {{raceToken.race}}</p>
-                <p>Race Token: {{raceToken.raceToken}}</p>
+                <p>Race Alias: {{raceToken.raceToken}}</p>
                 <p>Tags: {{raceToken.tags}}</p>
                 {{else}}
                 <form action="/static/race" method="post">
@@ -195,14 +195,14 @@
                         <label for="race">Race</label>
                         <input type="text" class="form-control" id="race" name="race" placeholder="Race">
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary">Create Race Token</button>
+                    <button type="submit" class="btn btn-lg btn-primary">Create Race Alias</button>
                 </form>
                 {{/if}}
             </div>
             <div class="col-md-3">
                 {{#if randomToken}}
                 <p>Random : {{randomToken.data}}</p>
-                <p>Random Token: {{randomToken.token}}</p>
+                <p>Random Alias: {{randomToken.alias}}</p>
                 <p>Tags: {{randomToken.tags}}</p>
                 {{else}}
                 <form action="/static/random" method="post">
@@ -210,14 +210,14 @@
                         <label for="random">Random</label>
                         <input type="text" class="form-control" id="random" name="random" placeholder="Random">
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary">Create Random Token</button>
+                    <button type="submit" class="btn btn-lg btn-primary">Create Random Alias</button>
                 </form>
                 {{/if}}
             </div>
             <div class="col-md-3">
                 {{#if vehicleRegistrationToken}}
                 <p>Vehicle Registration : {{vehicleRegistrationToken.vehicleregistration}}</p>
-                <p>Vehicle Registration Token: {{vehicleRegistrationToken.vehicleregistrationToken}}</p>
+                <p>Vehicle Registration Alias: {{vehicleRegistrationToken.vehicleregistrationToken}}</p>
                 <p>Tags: {{vehicleRegistrationToken.tags}}</p>
                 {{else}}
                 <form action="/static/vehicleRegistration" method="post">
@@ -235,7 +235,7 @@
             <div class="col-md-3">
                 {{#if genericToken}}
                 <p>Generic : {{genericToken.data}}</p>
-                <p>Generic Token: {{genericToken.token}}</p>
+                <p>Generic Alias: {{genericToken.alias}}</p>
                 <p>Tags: {{genericToken.tags}}</p>
                 {{else}}
                 <form action="/static/generic" method="post">
@@ -250,7 +250,7 @@
                             placeholder="Template">
                     </div>
 
-                    <button type="submit" class="btn btn-lg btn-primary">Create Generic Token</button>
+                    <button type="submit" class="btn btn-lg btn-primary">Create Generic Alias</button>
                 </form>
                 {{/if}}
             </div>
@@ -279,7 +279,7 @@
             <div class="col-md-3">
                 {{#if emailToken}}
                 <p>Email : {{emailToken.email}}</p>
-                <p>Email Token: {{emailToken.emailToken}}</p>
+                <p>Email Alias: {{emailToken.emailToken}}</p>
                 <p>Tags: {{emailToken.tags}}</p>
                 {{else}}
                 <form action="/communication/email" method="post">
@@ -287,7 +287,7 @@
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Email">
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary">Create Email Token</button>
+                    <button type="submit" class="btn btn-lg btn-primary">Create Email Alias</button>
                 </form>
                 {{/if}}
             </div>
