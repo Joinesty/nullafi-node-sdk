@@ -1043,7 +1043,144 @@
     
 
     
-    <h4 class="name" id="addCommunicationVault"><span class="type-signature"></span>addCommunicationVault<span class="signature">(name, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="CommunicationVault.html">CommunicationVault</a>>}</span></h4>
+    <h4 class="name" id="authenticate"><span class="type-signature">(async) </span>authenticate<span class="signature">(apiKey)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Authenticate the Client API
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>apiKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="client.js.html">client.js</a>, <a href="client.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="createCommunicationVault"><span class="type-signature"></span>createCommunicationVault<span class="signature">(name, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="CommunicationVault.html">CommunicationVault</a>>}</span></h4>
     
 
     
@@ -1221,7 +1358,7 @@
     
 
     
-    <h4 class="name" id="addStaticVault"><span class="type-signature"></span>addStaticVault<span class="signature">(name, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="StaticVault.html">StaticVault</a>>}</span></h4>
+    <h4 class="name" id="createStaticVault"><span class="type-signature"></span>createStaticVault<span class="signature">(name, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="StaticVault.html">StaticVault</a>>}</span></h4>
     
 
     
@@ -1399,321 +1536,6 @@
     
 
     
-    <h4 class="name" id="authenticate"><span class="type-signature">(async) </span>authenticate<span class="signature">(apiKey)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Authenticate the Client API
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>apiKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="client.js.html">client.js</a>, <a href="client.js.html#line24">line 24</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="createStaticVault"><span class="type-signature"></span>createStaticVault<span class="signature">(vaultId, masterKey)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="StaticVault.html">StaticVault</a>>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Get a existing static vault
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>vaultId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>masterKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="client.js.html">client.js</a>, <a href="client.js.html#line66">line 66</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;<a href="StaticVault.html">StaticVault</a>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
     <h4 class="name" id="retrieveCommunicationVault"><span class="type-signature"></span>retrieveCommunicationVault<span class="signature">(vaultId, masterKey)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="CommunicationVault.html">CommunicationVault</a>>}</span></h4>
     
 
@@ -1722,7 +1544,7 @@
 
 
 <div class="description">
-    Get a existing communication vault
+    Get an existing communication vault
 </div>
 
 
@@ -1887,6 +1709,184 @@
 
 
         
+            
+
+    
+
+    
+    <h4 class="name" id="retrieveStaticVault"><span class="type-signature"></span>retrieveStaticVault<span class="signature">(vaultId, masterKey)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="StaticVault.html">StaticVault</a>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Retrieve an existing static vault
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>vaultId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>masterKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="client.js.html">client.js</a>, <a href="client.js.html#line66">line 66</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;<a href="StaticVault.html">StaticVault</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
     
 
     
@@ -1908,7 +1908,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 21 2019 09:28:41 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 21 2019 09:34:45 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
