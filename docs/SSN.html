@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>SSN<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>SSN<span class="signature">(vault)</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -41,19 +41,72 @@
     
 
     
-    <h4 class="name" id="SSN"><span class="type-signature"></span>new SSN<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="SSN"><span class="type-signature"></span>new SSN<span class="signature">(vault)</span><span class="type-signature"></span></h4>
     
 
     
 
 
 
+<div class="description">
+    Creates an instance of SSN.
+</div>
 
 
 
 
 
 
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>vault</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="StaticVault.html">StaticVault</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -89,7 +142,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_tokens_ssn.js.html">managers/tokens/ssn.js</a>, <a href="managers_tokens_ssn.js.html#line2">line 2</a>
+        <a href="managers_tokens_ssn.js.html">managers/tokens/ssn.js</a>, <a href="managers_tokens_ssn.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -127,13 +180,6 @@
     
 
     
-        <h3 class="subsection-title">Classes</h3>
-
-        <dl>
-            <dt><a href="SSN.SSN.html">SSN</a></dt>
-            <dd></dd>
-        </dl>
-    
 
     
 
@@ -152,7 +198,7 @@
     
 
     
-    <h4 class="name" id="deleteSSN"><span class="type-signature"></span>deleteSSN<span class="signature">(tokenId)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
+    <h4 class="name" id="createSSN"><span class="type-signature">(async) </span>createSSN<span class="signature">(ssn, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
     
 
     
@@ -160,317 +206,7 @@
 
 
 <div class="description">
-    Delete the SSN token from static vault
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>tokenId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_tokens_ssn.js.html">managers/tokens/ssn.js</a>, <a href="managers_tokens_ssn.js.html#line54">line 54</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;any></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getSSN"><span class="type-signature">(async) </span>getSSN<span class="signature">(tokenId)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Retrieve the SSN string token from a static vault
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>tokenId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_tokens_ssn.js.html">managers/tokens/ssn.js</a>, <a href="managers_tokens_ssn.js.html#line42">line 42</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;any></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="postSSN"><span class="type-signature">(async) </span>postSSN<span class="signature">(ssn, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Post a new SSN string to be tokenized for a specific static vault
+    Create a new SSN string to be aliased for a specific static vault
 </div>
 
 
@@ -586,7 +322,317 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_tokens_ssn.js.html">managers/tokens/ssn.js</a>, <a href="managers_tokens_ssn.js.html#line24">line 24</a>
+        <a href="managers_tokens_ssn.js.html">managers/tokens/ssn.js</a>, <a href="managers_tokens_ssn.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;any></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="deleteSSN"><span class="type-signature"></span>deleteSSN<span class="signature">(aliasId)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Delete the SSN alias from static vault
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>aliasId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="managers_tokens_ssn.js.html">managers/tokens/ssn.js</a>, <a href="managers_tokens_ssn.js.html#line46">line 46</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;any></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="retrieveSSN"><span class="type-signature">(async) </span>retrieveSSN<span class="signature">(aliasId)</span><span class="type-signature"> &rarr; {Promise.&lt;any>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Retrieve the SSN string alias from a static vault
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>aliasId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="managers_tokens_ssn.js.html">managers/tokens/ssn.js</a>, <a href="managers_tokens_ssn.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -650,13 +696,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="Address.Address.html">Address</a></li><li><a href="Client.html">Client</a></li><li><a href="CommunicationVault.html">CommunicationVault</a></li><li><a href="CommunicationVault.CommunicationVault.html">CommunicationVault</a></li><li><a href="DateOfBirth.html">DateOfBirth</a></li><li><a href="DateOfBirth.DateOfBirth.html">DateOfBirth</a></li><li><a href="DriversLicense.html">DriversLicense</a></li><li><a href="DriversLicense.DriversLicense.html">DriversLicense</a></li><li><a href="Email.html">Email</a></li><li><a href="Email.Email.html">Email</a></li><li><a href="FirstName.html">FirstName</a></li><li><a href="FirstName.FirstName.html">FirstName</a></li><li><a href="Gender.html">Gender</a></li><li><a href="Gender.Gender.html">Gender</a></li><li><a href="Generic.html">Generic</a></li><li><a href="Generic.Generic.html">Generic</a></li><li><a href="LastName.html">LastName</a></li><li><a href="LastName.LastName.html">LastName</a></li><li><a href="NullafiSDK.html">NullafiSDK</a></li><li><a href="Passport.html">Passport</a></li><li><a href="Passport.Passport.html">Passport</a></li><li><a href="PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="PlaceOfBirth.PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="Race.html">Race</a></li><li><a href="Race.Race.html">Race</a></li><li><a href="Random.html">Random</a></li><li><a href="Random.Random.html">Random</a></li><li><a href="SSN.html">SSN</a></li><li><a href="SSN.SSN.html">SSN</a></li><li><a href="StaticVault.html">StaticVault</a></li><li><a href="StaticVault.StaticVault.html">StaticVault</a></li><li><a href="TaxPayerID.html">TaxPayerID</a></li><li><a href="TaxPayerID.TaxPayerID.html">TaxPayerID</a></li><li><a href="VehicleRegistration.html">VehicleRegistration</a></li><li><a href="VehicleRegistration.VehicleRegistration.html">VehicleRegistration</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="Client.html">Client</a></li><li><a href="CommunicationVault.html">CommunicationVault</a></li><li><a href="DateOfBirth.html">DateOfBirth</a></li><li><a href="DriversLicense.html">DriversLicense</a></li><li><a href="Email.html">Email</a></li><li><a href="FirstName.html">FirstName</a></li><li><a href="Gender.html">Gender</a></li><li><a href="Generic.html">Generic</a></li><li><a href="LastName.html">LastName</a></li><li><a href="NullafiSDK.html">NullafiSDK</a></li><li><a href="Passport.html">Passport</a></li><li><a href="PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="Race.html">Race</a></li><li><a href="Random.html">Random</a></li><li><a href="SSN.html">SSN</a></li><li><a href="StaticVault.html">StaticVault</a></li><li><a href="TaxPayerID.html">TaxPayerID</a></li><li><a href="VehicleRegistration.html">VehicleRegistration</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Wed May 15 2019 14:25:44 GMT-0300 (Brasilia Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Mon May 20 2019 15:26:19 GMT-0500 (CDT)
 </footer>
 
 <script> prettyPrint(); </script>

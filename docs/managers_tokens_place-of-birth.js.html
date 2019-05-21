@@ -26,30 +26,27 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>
-/**
+            <pre class="prettyprint source linenums"><code>/**
  *
+ * @exports PlaceOfBirth
  *
- * @export
- * @class PlaceOfBirth
  */
 class PlaceOfBirth {
     /**
      *Creates an instance of PlaceOfBirth.
      * @param {StaticVault} vault
-     * @memberof PlaceOfBirth
      */
     constructor(vault) {
         this.vault = vault;
     }
     /**
-      * Post a new PlaceOfBirth string to be tokenized for a specific static vault
+      * Create a new PlaceOfBirth string to be aliased for a specific static vault
       *
       * @param {string} placeofbirth
       * @param {string[]} tags
       * @return {Promise&lt;any>}
       */
-    async postPlaceOfBirth(placeofbirth, tags) {
+    async createPlaceOfBirth(placeofbirth, tags) {
         const result = this.vault.encrypt(placeofbirth);
         const response = await this.vault.client.post(`/vault/static/${this.vault.id}/placeofbirth`, {
             placeofbirth: result.encryptedData,
@@ -62,25 +59,25 @@ class PlaceOfBirth {
     }
 
     /**
-         * Retrieve the PlaceOfBirth string token from a static vault
+         * Retrieve the PlaceOfBirth string alias from a static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    async getPlaceOfBirth(tokenId) {
-        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/placeofbirth/${tokenId}`);
+    async retrievePlaceOfBirth(aliasId) {
+        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/placeofbirth/${aliasId}`);
         response.placeofbirth = this.vault.decrypt(response.iv, response.authTag, response.placeofbirth);
         return response;
     }
 
     /**
-         * Delete the PlaceOfBirth token from static vault
+         * Delete the PlaceOfBirth alias from static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    deletePlaceOfBirth(tokenId) {
-        return this.vault.client.delete(`/vault/static/${this.vault.id}/placeofbirth/${tokenId}`);
+    deletePlaceOfBirth(aliasId) {
+        return this.vault.client.delete(`/vault/static/${this.vault.id}/placeofbirth/${aliasId}`);
     }
 };
 
@@ -96,13 +93,13 @@ module.exports = PlaceOfBirth;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="Address.Address.html">Address</a></li><li><a href="Client.html">Client</a></li><li><a href="CommunicationVault.html">CommunicationVault</a></li><li><a href="CommunicationVault.CommunicationVault.html">CommunicationVault</a></li><li><a href="DateOfBirth.html">DateOfBirth</a></li><li><a href="DateOfBirth.DateOfBirth.html">DateOfBirth</a></li><li><a href="DriversLicense.html">DriversLicense</a></li><li><a href="DriversLicense.DriversLicense.html">DriversLicense</a></li><li><a href="Email.html">Email</a></li><li><a href="Email.Email.html">Email</a></li><li><a href="FirstName.html">FirstName</a></li><li><a href="FirstName.FirstName.html">FirstName</a></li><li><a href="Gender.html">Gender</a></li><li><a href="Gender.Gender.html">Gender</a></li><li><a href="Generic.html">Generic</a></li><li><a href="Generic.Generic.html">Generic</a></li><li><a href="LastName.html">LastName</a></li><li><a href="LastName.LastName.html">LastName</a></li><li><a href="NullafiSDK.html">NullafiSDK</a></li><li><a href="Passport.html">Passport</a></li><li><a href="Passport.Passport.html">Passport</a></li><li><a href="PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="PlaceOfBirth.PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="Race.html">Race</a></li><li><a href="Race.Race.html">Race</a></li><li><a href="Random.html">Random</a></li><li><a href="Random.Random.html">Random</a></li><li><a href="SSN.html">SSN</a></li><li><a href="SSN.SSN.html">SSN</a></li><li><a href="StaticVault.html">StaticVault</a></li><li><a href="StaticVault.StaticVault.html">StaticVault</a></li><li><a href="TaxPayerID.html">TaxPayerID</a></li><li><a href="TaxPayerID.TaxPayerID.html">TaxPayerID</a></li><li><a href="VehicleRegistration.html">VehicleRegistration</a></li><li><a href="VehicleRegistration.VehicleRegistration.html">VehicleRegistration</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Client.html">Client</a></li><li><a href="module-Address.html">Address</a></li><li><a href="module-CommunicationVault.html">CommunicationVault</a></li><li><a href="module-DateOfBirth.html">DateOfBirth</a></li><li><a href="module-DriversLicense.html">DriversLicense</a></li><li><a href="module-Email.html">Email</a></li><li><a href="module-FirstName.html">FirstName</a></li><li><a href="module-Gender.html">Gender</a></li><li><a href="module-Generic.html">Generic</a></li><li><a href="module-LastName.html">LastName</a></li><li><a href="module-NullafiSDK.html">NullafiSDK</a></li><li><a href="module-Passport.html">Passport</a></li><li><a href="module-PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="module-Race.html">Race</a></li><li><a href="module-Random.html">Random</a></li><li><a href="module-SSN.html">SSN</a></li><li><a href="module-StaticVault.html">StaticVault</a></li><li><a href="module-TaxPayerID.html">TaxPayerID</a></li><li><a href="module-VehicleRegistration.html">VehicleRegistration</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Wed May 15 2019 14:25:44 GMT-0300 (Brasilia Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Mon May 20 2019 15:44:04 GMT-0500 (CDT)
 </footer>
 
 <script> prettyPrint(); </script>
