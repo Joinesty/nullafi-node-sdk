@@ -61,11 +61,11 @@ class SSN {
     /**
          * Retrieve the SSN string alias from a static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    async retrieveSSN(tokenId) {
-        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/ssn/${tokenId}`);
+    async retrieveSSN(aliasId) {
+        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/ssn/${aliasId}`);
         response.ssn = this.vault.decrypt(response.iv, response.authTag, response.ssn);
         return response;
     }
@@ -73,11 +73,11 @@ class SSN {
     /**
          * Delete the SSN alias from static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    deleteSSN(tokenId) {
-        return this.vault.client.delete(`/vault/static/${this.vault.id}/ssn/${tokenId}`);
+    deleteSSN(aliasId) {
+        return this.vault.client.delete(`/vault/static/${this.vault.id}/ssn/${aliasId}`);
     }
 };
 

@@ -61,11 +61,11 @@ class Race {
     /**
          * Retrieve the Race string alias from a static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    async retrieveRace(tokenId) {
-        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/race/${tokenId}`);
+    async retrieveRace(aliasId) {
+        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/race/${aliasId}`);
         response.race = this.vault.decrypt(response.iv, response.authTag, response.race);
         return response;
     }
@@ -73,11 +73,11 @@ class Race {
     /**
          * Delete the Race alias from static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    deleteRace(tokenId) {
-        return this.vault.client.delete(`/vault/static/${this.vault.id}/race/${tokenId}`);
+    deleteRace(aliasId) {
+        return this.vault.client.delete(`/vault/static/${this.vault.id}/race/${aliasId}`);
     }
 };
 

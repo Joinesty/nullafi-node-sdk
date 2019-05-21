@@ -61,11 +61,11 @@ class Passport {
     /**
          * Retrieve the Passport string alias from a static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    async retrievePassport(tokenId) {
-        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/passport/${tokenId}`);
+    async retrievePassport(aliasId) {
+        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/passport/${aliasId}`);
         response.passport = this.vault.decrypt(response.iv, response.authTag, response.passport);
         return response;
     }
@@ -73,11 +73,11 @@ class Passport {
     /**
          * Delete the Passport alias from static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    deletePassport(tokenId) {
-        return this.vault.client.delete(`/vault/static/${this.vault.id}/passport/${tokenId}`);
+    deletePassport(aliasId) {
+        return this.vault.client.delete(`/vault/static/${this.vault.id}/passport/${aliasId}`);
     }
 };
 

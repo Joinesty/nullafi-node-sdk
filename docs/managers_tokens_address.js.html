@@ -61,11 +61,11 @@ class Address {
     /**
          * Retrieve the Address string alias from a static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    async retrieveAddress(tokenId) {
-        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/address/${tokenId}`);
+    async retrieveAddress(aliasId) {
+        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/address/${aliasId}`);
         response.address = this.vault.decrypt(response.iv, response.authTag, response.address);
         return response;
     }
@@ -73,11 +73,11 @@ class Address {
     /**
          * Delete the Address alias from static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    deleteAddress(tokenId) {
-        return this.vault.client.delete(`/vault/static/${this.vault.id}/address/${tokenId}`);
+    deleteAddress(aliasId) {
+        return this.vault.client.delete(`/vault/static/${this.vault.id}/address/${aliasId}`);
     }
 };
 

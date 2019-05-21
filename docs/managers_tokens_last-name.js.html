@@ -61,11 +61,11 @@ class LastName {
     /**
          * Retrieve the LastName string alias from a static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    async retrieveLastName(tokenId) {
-        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/lastname/${tokenId}`);
+    async retrieveLastName(aliasId) {
+        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/lastname/${aliasId}`);
         response.lastname = this.vault.decrypt(response.iv, response.authTag, response.lastname);
         return response;
     }
@@ -73,11 +73,11 @@ class LastName {
     /**
          * Delete the LastName alias from static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    deleteLastName(tokenId) {
-        return this.vault.client.delete(`/vault/static/${this.vault.id}/lastname/${tokenId}`);
+    deleteLastName(aliasId) {
+        return this.vault.client.delete(`/vault/static/${this.vault.id}/lastname/${aliasId}`);
     }
 };
 

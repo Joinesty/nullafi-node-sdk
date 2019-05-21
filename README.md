@@ -21,7 +21,7 @@ Getting Started
 
 To get started with the SDK, get a API Key from the Configuration page
 of your app in the [Settings Page - API Key][settings-api-key].
-You can use this alias to make calls for your own Nullafi account.
+You can use this token to make calls for your own Nullafi account.
 
 ```js
 const NullafiSDK = require('nullafi-node-sdk');
@@ -29,7 +29,7 @@ const NullafiSDK = require('nullafi-node-sdk');
 // Initialize the SDK with your API credentials
 const sdk = new NullafiSDK('API_KEY');
 
-// Create a basic API client, which does not automatically refresh the access alias
+// Create a basic API client, which does not automatically refresh the access token
 const client = await sdk.createClient();
 
 // Get your own user object from the Nullafi API

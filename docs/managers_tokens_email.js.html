@@ -63,11 +63,11 @@ class Email {
     /**
          * Retrieve the Email alias from a communication vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    async retrieveEmail(tokenId) {
-        const response = await this.vault.client.get(`/vault/communication/${this.vault.id}/email/${tokenId}`);
+    async retrieveEmail(aliasId) {
+        const response = await this.vault.client.get(`/vault/communication/${this.vault.id}/email/${aliasId}`);
         response.email = this.vault.decrypt(response.iv, response.authTag, response.email);
         return response;
     }
@@ -75,11 +75,11 @@ class Email {
     /**
          * Delete the Email alias from communication vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    deleteEmail(tokenId) {
-        return this.vault.client.delete(`/vault/communication/${this.vault.id}/email/${tokenId}`);
+    deleteEmail(aliasId) {
+        return this.vault.client.delete(`/vault/communication/${this.vault.id}/email/${aliasId}`);
     }
 };
 

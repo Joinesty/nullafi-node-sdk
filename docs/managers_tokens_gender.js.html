@@ -61,11 +61,11 @@ class Gender {
     /**
          * Retrieve the Gender string alias from a static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    async retrieveGender(tokenId) {
-        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/gender/${tokenId}`);
+    async retrieveGender(aliasId) {
+        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/gender/${aliasId}`);
         response.gender = this.vault.decrypt(response.iv, response.authTag, response.gender);
         return response;
     }
@@ -73,11 +73,11 @@ class Gender {
     /**
          * Delete the Gender alias from static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    deleteGender(tokenId) {
-        return this.vault.client.delete(`/vault/static/${this.vault.id}/gender/${tokenId}`);
+    deleteGender(aliasId) {
+        return this.vault.client.delete(`/vault/static/${this.vault.id}/gender/${aliasId}`);
     }
 };
 

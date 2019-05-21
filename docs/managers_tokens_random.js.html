@@ -61,11 +61,11 @@ class Random {
     /**
          * Retrieve the Random string alias from a static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    async retrieveRandom(tokenId) {
-        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/random/${tokenId}`);
+    async retrieveRandom(aliasId) {
+        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/random/${aliasId}`);
         response.data = this.vault.decrypt(response.iv, response.authTag, response.data);
         return response;
     }
@@ -73,11 +73,11 @@ class Random {
     /**
          * Delete the Random alias from static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    deleteRandom(tokenId) {
-        return this.vault.client.delete(`/vault/static/${this.vault.id}/random/${tokenId}`);
+    deleteRandom(aliasId) {
+        return this.vault.client.delete(`/vault/static/${this.vault.id}/random/${aliasId}`);
     }
 };
 

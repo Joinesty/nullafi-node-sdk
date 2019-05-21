@@ -61,11 +61,11 @@ class VehicleRegistration {
     /**
          * Retrieve the Vehicle Registration string alias from a static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    async retrieveVehicleRegistration(tokenId) {
-        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/vehicleregistration/${tokenId}`);
+    async retrieveVehicleRegistration(aliasId) {
+        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/vehicleregistration/${aliasId}`);
         response.vehicleregistration = this.vault.decrypt(response.iv, response.authTag, response.vehicleregistration);
         return response;
     }
@@ -73,11 +73,11 @@ class VehicleRegistration {
     /**
          * Delete the Vehicle Registration alias from static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    deleteVehicleRegistration(tokenId) {
-        return this.vault.client.delete(`/vault/static/${this.vault.id}/vehicleregistration/${tokenId}`);
+    deleteVehicleRegistration(aliasId) {
+        return this.vault.client.delete(`/vault/static/${this.vault.id}/vehicleregistration/${aliasId}`);
     }
 };
 

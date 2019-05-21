@@ -61,11 +61,11 @@ class PlaceOfBirth {
     /**
          * Retrieve the PlaceOfBirth string alias from a static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    async retrievePlaceOfBirth(tokenId) {
-        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/placeofbirth/${tokenId}`);
+    async retrievePlaceOfBirth(aliasId) {
+        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/placeofbirth/${aliasId}`);
         response.placeofbirth = this.vault.decrypt(response.iv, response.authTag, response.placeofbirth);
         return response;
     }
@@ -73,11 +73,11 @@ class PlaceOfBirth {
     /**
          * Delete the PlaceOfBirth alias from static vault
          *
-         * @param {string} tokenId
+         * @param {string} aliasId
          * @return {Promise&lt;any>}
          */
-    deletePlaceOfBirth(tokenId) {
-        return this.vault.client.delete(`/vault/static/${this.vault.id}/placeofbirth/${tokenId}`);
+    deletePlaceOfBirth(aliasId) {
+        return this.vault.client.delete(`/vault/static/${this.vault.id}/placeofbirth/${aliasId}`);
     }
 };
 
