@@ -211,7 +211,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_communication-vault.js.html">managers/communication-vault.js</a>, <a href="managers_communication-vault.js.html#line18">line 18</a>
+        <a href="managers_communication-vault_communication-vault.js.html">managers/communication-vault/communication-vault.js</a>, <a href="managers_communication-vault_communication-vault.js.html#line17">line 17</a>
     </li></ul></dd>
     
 
@@ -267,6 +267,408 @@
 
     
         <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".createCommunicationVault"><span class="type-signature">(async, static) </span>createCommunicationVault<span class="signature">(client, name, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateCommunicationVaultResponse">CreateCommunicationVaultResponse</a>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Create the API to create a new communication vault
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>client</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Client.html">Client</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tags</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="managers_communication-vault_communication-vault.js.html">managers/communication-vault/communication-vault.js</a>, <a href="managers_communication-vault_communication-vault.js.html#line57">line 57</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#CreateCommunicationVaultResponse">CreateCommunicationVaultResponse</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".retrieveCommunicationVault"><span class="type-signature">(async, static) </span>retrieveCommunicationVault<span class="signature">(client, vaultId, masterKey)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#RetrieveCommunicationVaultResponse">RetrieveCommunicationVaultResponse</a>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Retrieve the communication vault from id
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>client</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Client.html">Client</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>vaultId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>masterKey</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="managers_communication-vault_communication-vault.js.html">managers/communication-vault/communication-vault.js</a>, <a href="managers_communication-vault_communication-vault.js.html#line82">line 82</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#RetrieveCommunicationVaultResponse">RetrieveCommunicationVaultResponse</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
 
         
             
@@ -421,7 +823,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_communication-vault.js.html">managers/communication-vault.js</a>, <a href="managers_communication-vault.js.html#line46">line 46</a>
+        <a href="managers_communication-vault_communication-vault.js.html">managers/communication-vault/communication-vault.js</a>, <a href="managers_communication-vault_communication-vault.js.html#line45">line 45</a>
     </li></ul></dd>
     
 
@@ -576,7 +978,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_communication-vault.js.html">managers/communication-vault.js</a>, <a href="managers_communication-vault.js.html#line34">line 34</a>
+        <a href="managers_communication-vault_communication-vault.js.html">managers/communication-vault/communication-vault.js</a>, <a href="managers_communication-vault_communication-vault.js.html#line33">line 33</a>
     </li></ul></dd>
     
 
@@ -640,13 +1042,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Client.html">Client</a></li><li><a href="module-Address.html">Address</a></li><li><a href="module-CommunicationVault.html">CommunicationVault</a></li><li><a href="module-DateOfBirth.html">DateOfBirth</a></li><li><a href="module-DriversLicense.html">DriversLicense</a></li><li><a href="module-Email.html">Email</a></li><li><a href="module-FirstName.html">FirstName</a></li><li><a href="module-Gender.html">Gender</a></li><li><a href="module-Generic.html">Generic</a></li><li><a href="module-LastName.html">LastName</a></li><li><a href="module-NullafiSDK.html">NullafiSDK</a></li><li><a href="module-Passport.html">Passport</a></li><li><a href="module-PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="module-Race.html">Race</a></li><li><a href="module-Random.html">Random</a></li><li><a href="module-SSN.html">SSN</a></li><li><a href="module-StaticVault.html">StaticVault</a></li><li><a href="module-TaxPayerID.html">TaxPayerID</a></li><li><a href="module-VehicleRegistration.html">VehicleRegistration</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="Client.html">Client</a></li><li><a href="module-CommunicationVault.html">CommunicationVault</a></li><li><a href="module-DateOfBirth.html">DateOfBirth</a></li><li><a href="module-DriversLicense.html">DriversLicense</a></li><li><a href="module-Email.html">Email</a></li><li><a href="module-FirstName.html">FirstName</a></li><li><a href="module-Gender.html">Gender</a></li><li><a href="module-Generic.html">Generic</a></li><li><a href="module-LastName.html">LastName</a></li><li><a href="module-NullafiSDK.html">NullafiSDK</a></li><li><a href="module-Passport.html">Passport</a></li><li><a href="module-PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="module-Race.html">Race</a></li><li><a href="module-Random.html">Random</a></li><li><a href="module-SSN.html">SSN</a></li><li><a href="module-StaticVault.html">StaticVault</a></li><li><a href="module-TaxPayerID.html">TaxPayerID</a></li><li><a href="module-VehicleRegistration.html">VehicleRegistration</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 21 2019 11:12:24 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Fri May 24 2019 09:20:01 GMT-0500 (CDT)
 </footer>
 
 <script> prettyPrint(); </script>
