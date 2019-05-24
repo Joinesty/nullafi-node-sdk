@@ -19,7 +19,7 @@ npm install --save nullafi-node-sdk
 Getting Started
 ---------------
 
-To get started with the SDK, get a API Key from the Configuration page
+To get started with the SDK, get an API Key from the Configuration page
 of your app in the [Settings Page - API Key][settings-api-key].
 You can use this token to make calls for your own Nullafi account.
 
