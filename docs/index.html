@@ -42,193 +42,113 @@
 
 
 
+    <section>
+        <article><!-- Nullafi Node.js SDK
+=============== -->
+<!-- A Node.js interface to the [Nullafi API](http://enterprise-api.nullafi.com/docs).
+
+- [Installation](#installation)
+- [Getting Started](#getting-started)
+- [Copyright and License](#copyright-and-license) -->
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<h2>Installation</h2>
+<pre class="prettyprint source"><code>npm install --save nullafi-node-sdk
+</code></pre>
+<h2>Getting Started</h2>
+<p>To get started with the SDK, one must be a 'Super Owner' on a nullafi account. Go to the settings page, and select the 'API Key' tab. Create a new key and store the key value somewhere secure, as Nullafi will not store this key for security reasons. You can use this key to make calls through the Nullafi SDK.</p>
+<pre class="prettyprint source lang-js"><code>const NullafiSDK = require('nullafi-node-sdk');
+
+// Initialize the SDK with your API credentials
+const sdk = new NullafiSDK('API_KEY');
+
+// Create a basic API client, which does not automatically refresh the access token
+const client = await sdk.createClient();
+
+// Get your own user object from the Nullafi API
+// All client methods return a promise that resolves to the results of the API call,
+// or rejects when an error occurs
+
+const staticVault = await client.createStaticVault('my-static-vault', ['my-tag-1', 'my-tag-2']);
+const firstNameAliasObj = await staticVault.firstName.createFirstName('John Doe', ['my-fName-tag1', 'my-fName-tag2']);
+console.log(firstNameAliasObj); 
+/*
+	output example:
+	{ 
+		id: 'e490157b23534215b0369a2685aab47g', 
+		firstname: 'John Doe', 
+		firstnameToken: 'blssVzRzdnP9uEi5WDrFGW7y0JELl7aLKMyKeOyChlk=', 
+		tags: ['my-fName-tag1', 'my-fName-tag2'], 
+		createdAt: '2018-07-13 T01:00:00Z' 
+	}
+*/
+</code></pre>
+<h2>Client</h2>
+<p>The client will authentication will have an authentication period of 60 minutes. A new client must be created to refresh the authentication.</p>
+<pre class="prettyprint source lang-text"><code>maybe an example of a client refresh logic
+</code></pre>
+<h2>Static Vaults</h2>
+<p>Static vaults are used to hold all created aliases for non transactional data. Static Vaults can be managed through the Static Vault class. The types listed below are data points considered to be static:</p>
+<ul>
+<li>address</li>
+<li>date of birth</li>
+<li>driver's license</li>
+<li>first name</li>
+<li>gender</li>
+<li>generic</li>
+<li>last name</li>
+<li>passport number</li>
+<li>place of birth</li>
+<li>race</li>
+<li>random</li>
+<li>social security number</li>
+<li>tax payer ID</li>
+<li>vehicle registration</li>
+</ul>
+<p>There is no limit on how many types of data may be stored in one static vault. It is up to users to determine how to split their data into vaults. Note that the master key must be stored to retrieve the vault at later times.<br>
+A Static Vault can be created like this:</p>
+<pre class="prettyprint source lang-js"><code>const client = await sdk.createClient();
+const staticVault = await client.createStaticVault('my-static-vault', ['my-tag-1', 'my-tag-2']);
+console.log(staticVault)
+/*
+	output example:
+	{ 
+		id: 'e490157b23534215b0369a2685aab47g', 
+		name: 'my-static-vault',
+		masterKey: 'MASTER_KEY',
+		tags: ['my-tag-1', 'my-tag-2'], 
+		createdAt: '2018-07-13 T01:00:00Z' 
+	}
+*/
+</code></pre>
+<p>Retrieving a vault looks like this:</p>
+<pre class="prettyprint source lang-js"><code>const client = await sdk.createClient();
+const staticVault = await client.retrieveStaticVault(client, 'e490157b23534215b0369a2685aab47g', 'MASTER_KEY');
+</code></pre>
+<h2>Communication Vaults</h2>
+<p>Communicataion vaults will store aliases for data types that will need to maintain their transactional integrity. The only data type currently supported for this is emails. When an email is aliased, the alias created will be a functional email that may receive messages. From the nullafi dashboard, users may control which domains can send messages to their aliased emails.</p>
+<pre class="prettyprint source lang-js"><code>const client = await sdk.createClient();
+const communicationVault = await client.createCommunicationVault('my-communication-vault', ['my-tag-1', 'my-tag-2']);
+console.log(staticVault)
+/*
+	output example:
+	{ 
+		id: 'e490157b23534215b0369a2685aab47g', 
+		name: 'my-communication-vault,
+		masterKey: 'MASTER_KEY',
+		tags: ['my-tag-1', 'my-tag-2'], 
+		createdAt: '2018-07-13 T01:00:00Z' 
+	}
+*/
+</code></pre>
+<p>Retrieving a communication vault looks like this:</p>
+<pre class="prettyprint source lang-js"><code>const client = await sdk.createClient();
+const staticVault = await client.retrieveStaticVault(client, 'e490157b23534215b0369a2685aab47g', 'MASTER_KEY');
+</code></pre>
+<h2>Copyright and License</h2>
+<p>Copyright 2019 Joinesty, Inc. All rights reserved.</p></article>
+    </section>
 
 
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        <h2>client.js</h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Nullafi API Client.</div>
-        
-
-        
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="client.js.html">client.js</a>, <a href="client.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
-
-
-
-
-
-
-
-<section>
-
-<header>
-    
-        <h2>services/api.js</h2>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class="description">Nullafi API.</div>
-        
-
-        
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="services_api.js.html">services/api.js</a>, <a href="services_api.js.html#line1">line 1</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-        
-    
-    </div>
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
 
 
 
@@ -236,13 +156,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Client.html">Client</a></li><li><a href="module-Address.html">Address</a></li><li><a href="module-CommunicationVault.html">CommunicationVault</a></li><li><a href="module-DateOfBirth.html">DateOfBirth</a></li><li><a href="module-DriversLicense.html">DriversLicense</a></li><li><a href="module-Email.html">Email</a></li><li><a href="module-FirstName.html">FirstName</a></li><li><a href="module-Gender.html">Gender</a></li><li><a href="module-Generic.html">Generic</a></li><li><a href="module-LastName.html">LastName</a></li><li><a href="module-NullafiSDK.html">NullafiSDK</a></li><li><a href="module-Passport.html">Passport</a></li><li><a href="module-PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="module-Race.html">Race</a></li><li><a href="module-Random.html">Random</a></li><li><a href="module-SSN.html">SSN</a></li><li><a href="module-StaticVault.html">StaticVault</a></li><li><a href="module-TaxPayerID.html">TaxPayerID</a></li><li><a href="module-VehicleRegistration.html">VehicleRegistration</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="Client.html">Client</a></li><li><a href="module-CommunicationVault.html">CommunicationVault</a></li><li><a href="module-DateOfBirth.html">DateOfBirth</a></li><li><a href="module-DriversLicense.html">DriversLicense</a></li><li><a href="module-Email.html">Email</a></li><li><a href="module-FirstName.html">FirstName</a></li><li><a href="module-Gender.html">Gender</a></li><li><a href="module-Generic.html">Generic</a></li><li><a href="module-LastName.html">LastName</a></li><li><a href="module-NullafiSDK.html">NullafiSDK</a></li><li><a href="module-Passport.html">Passport</a></li><li><a href="module-PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="module-Race.html">Race</a></li><li><a href="module-Random.html">Random</a></li><li><a href="module-SSN.html">SSN</a></li><li><a href="module-StaticVault.html">StaticVault</a></li><li><a href="module-TaxPayerID.html">TaxPayerID</a></li><li><a href="module-VehicleRegistration.html">VehicleRegistration</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 21 2019 11:12:24 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Fri May 24 2019 09:20:01 GMT-0500 (CDT)
 </footer>
 
 <script> prettyPrint(); </script>
