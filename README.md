@@ -47,31 +47,19 @@ console.log(firstNameAliasObj);
 */
 ```
 
-Client
+Authentication
 ------------
-The client will authentication will have an authentication period of 60 minutes. A new client must be created to refresh the authentication.
+The client authentication period will last 60 minutes. The client will authenticate on instatiation. 
 ```text
-maybe an example of a client refresh logic
+const client = await sdk.createClient();
+//after 60 minutes
+client.authenticate('API_KEY');
 ```
 
 
 Static Vaults
 ------------
-Static vaults are used to hold all created aliases for non transactional data. Static Vaults can be managed through the Static Vault class. The types listed below are data points considered to be static:
-* address
-* date of birth
-* driver's license
-* first name
-* gender
-* generic
-* last name
-* passport number
-* place of birth
-* race
-* random
-* social security number
-* tax payer ID
-* vehicle registration
+Static vaults are used to hold all created aliases for non transactional data. Static Vaults can be managed through the Static Vault class.
 
 There is no limit on how many types of data may be stored in one static vault. It is up to users to determine how to split their data into vaults. Note that the master key must be stored to retrieve the vault at later times.  
 A Static Vault can be created like this:
@@ -98,9 +86,26 @@ const client = await sdk.createClient();
 const staticVault = await client.retrieveStaticVault(client, 'e490157b23534215b0369a2685aab47g', 'MASTER_KEY');
 ```
 
+Static Data Types
+------------
+* address
+* date of birth
+* driver's license
+* first name
+* gender
+* generic
+* last name
+* passport number
+* place of birth
+* race
+* random
+* social security number
+* tax payer ID
+* vehicle registration
+
 Communication Vaults
 ------------
-Communicataion vaults will store aliases for data types that will need to maintain their transactional integrity. The only data type currently supported for this is emails. When an email is aliased, the alias created will be a functional email that may receive messages. From the nullafi dashboard, users may control which domains can send messages to their aliased emails.
+Communicataion vaults will store aliases for data types that will need to maintain their transactional integrity. Control for these data types may be customized in the Nullafi dashboard under the 'System' tab. 
 
 ```js
 const client = await sdk.createClient();
@@ -123,6 +128,10 @@ Retrieving a communication vault looks like this:
 const client = await sdk.createClient();
 const staticVault = await client.retrieveStaticVault(client, 'e490157b23534215b0369a2685aab47g', 'MASTER_KEY');
 ```
+
+Communication Data Types
+------------
+* email
 
 Copyright and License
 ---------------------
