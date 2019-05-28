@@ -1,6 +1,6 @@
 {
   "name": "@joinesty/nullafi-node-sdk",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Official Node.js SDK for Nullafi APIs",
   "main": "./lib/nullafi-node-sdk.js",
   "directories": {
