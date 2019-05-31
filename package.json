@@ -11,7 +11,7 @@
   "scripts": {
     "docs": "jsdoc -r lib/. -d docs ./README.md",
     "test": "mocha './lib/**/*.spec.js'",
-    "coverage": "nyc npm test",
+    "coverage": "nyc --exclude '**/*.spec.js' npm test ",
     "lint": "eslint ./lib"
   },
   "husky": {
