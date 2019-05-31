@@ -1,6 +1,6 @@
 {
   "name": "@joinesty/nullafi-node-sdk",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Official Node.js SDK for Nullafi APIs",
   "main": "./lib/nullafi-node-sdk.js",
   "directories": {
@@ -11,7 +11,7 @@
   "scripts": {
     "docs": "jsdoc -r lib/. -d docs ./README.md",
     "test": "mocha './lib/**/*.spec.js'",
-    "coverage": "nyc npm test",
+    "coverage": "nyc --exclude '**/*.spec.js' npm test ",
     "lint": "eslint ./lib"
   },
   "husky": {
