@@ -198,7 +198,7 @@
     
 
     
-    <h4 class="name" id="createFirstName"><span class="type-signature">(async) </span>createFirstName<span class="signature">(firstname, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateFirstNameResponse">CreateFirstNameResponse</a>>}</span></h4>
+    <h4 class="name" id="createFirstName"><span class="type-signature">(async) </span>createFirstName<span class="signature">(firstname, gender<span class="signature-attributes">opt</span>, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateFirstNameResponse">CreateFirstNameResponse</a>>}</span></h4>
     
 
     
@@ -230,6 +230,8 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
         
 
@@ -255,10 +257,51 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">First Name to alias</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>gender</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Gender name should be based on</td>
         </tr>
 
     
@@ -278,10 +321,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings to categorize alias</td>
         </tr>
 
     
@@ -322,7 +375,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_first-name_first-name.js.html">managers/aliases/first-name/first-name.js</a>, <a href="managers_aliases_first-name_first-name.js.html#line22">line 22</a>
+        <a href="managers_aliases_first-name_first-name.js.html">managers/aliases/first-name/first-name.js</a>, <a href="managers_aliases_first-name_first-name.js.html#line23">line 23</a>
     </li></ul></dd>
     
 
@@ -436,7 +489,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -477,7 +530,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_first-name_first-name.js.html">managers/aliases/first-name/first-name.js</a>, <a href="managers_aliases_first-name_first-name.js.html#line73">line 73</a>
+        <a href="managers_aliases_first-name_first-name.js.html">managers/aliases/first-name/first-name.js</a>, <a href="managers_aliases_first-name_first-name.js.html#line74">line 74</a>
     </li></ul></dd>
     
 
@@ -539,7 +592,7 @@
 
 
 <div class="description">
-    Retrieve the FirstName string alias from a static vault
+    Retrieve the First Name alias from a static vault
 </div>
 
 
@@ -591,7 +644,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve Id of alias to retrieve</td>
         </tr>
 
     
@@ -632,7 +685,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_first-name_first-name.js.html">managers/aliases/first-name/first-name.js</a>, <a href="managers_aliases_first-name_first-name.js.html#line41">line 41</a>
+        <a href="managers_aliases_first-name_first-name.js.html">managers/aliases/first-name/first-name.js</a>, <a href="managers_aliases_first-name_first-name.js.html#line42">line 42</a>
     </li></ul></dd>
     
 
@@ -686,7 +739,7 @@
     
 
     
-    <h4 class="name" id="retrieveFirstNameFromRealData"><span class="type-signature">(async) </span>retrieveFirstNameFromRealData<span class="signature">(firstname, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveFirstNameResponse">RetrieveFirstNameResponse</a>>>}</span></h4>
+    <h4 class="name" id="retrieveFirstNameFromRealData"><span class="type-signature">(async) </span>retrieveFirstNameFromRealData<span class="signature">(firstname, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveFirstNameResponse">RetrieveFirstNameResponse</a>>>}</span></h4>
     
 
     
@@ -694,7 +747,7 @@
 
 
 <div class="description">
-    Retrieve the FirstName string alias from real firstname
+    Retrieve the First Name alias from real firstname
 </div>
 
 
@@ -717,6 +770,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -743,10 +798,18 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Real first name</td>
         </tr>
 
     
@@ -766,10 +829,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings associated with alias</td>
         </tr>
 
     
@@ -810,7 +883,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_first-name_first-name.js.html">managers/aliases/first-name/first-name.js</a>, <a href="managers_aliases_first-name_first-name.js.html#line54">line 54</a>
+        <a href="managers_aliases_first-name_first-name.js.html">managers/aliases/first-name/first-name.js</a>, <a href="managers_aliases_first-name_first-name.js.html#line55">line 55</a>
     </li></ul></dd>
     
 
@@ -880,7 +953,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 28 2019 15:23:20 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Wed Jun 05 2019 12:12:53 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
