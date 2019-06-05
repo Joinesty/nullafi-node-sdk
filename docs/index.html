@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><!-- Nullafi Node.js SDK
+=============== -->
+<!-- A Node.js interface to the [Nullafi API](http://enterprise-api.nullafi.com/docs).
+
+- [Installation](#installation)
+- [Getting Started](#getting-started)
+- [Copyright and License](#copyright-and-license) -->
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<h2>Installation</h2>
+<pre class="prettyprint source"><code>npm install --save nullafi-node-sdk
+</code></pre>
+<h2>Getting Started</h2>
+<p>To get started with the SDK, one must be a 'Super Owner' on a nullafi account. Go to the settings page, and select the 'API Key' tab. Create a new key and store the key value somewhere secure, as Nullafi will not store this key for security reasons. You can use this key to make calls through the Nullafi SDK.</p>
+<pre class="prettyprint source lang-js"><code>const NullafiSDK = require('nullafi-node-sdk');
+
+// Initialize the SDK with your API credentials
+const sdk = new NullafiSDK('API_KEY');
+
+// Create a basic API client, which does not automatically refresh the access token
+const client = await sdk.createClient();
+
+// Get your own user object from the Nullafi API
+// All client methods return a promise that resolves to the results of the API call,
+// or rejects when an error occurs
+
+const staticVault = await client.createStaticVault('my-static-vault', ['my-tag-1', 'my-tag-2']);
+const firstNameAliasObj = await staticVault.firstName.createFirstName('John Doe', ['my-fName-tag1', 'my-fName-tag2']);
+console.log(firstNameAliasObj); 
+/*
+	output example:
+	{ 
+		id: 'e490157b23534215b0369a2685aab47g', 
+		firstname: 'John Doe', 
+		firstnameToken: 'blssVzRzdnP9uEi5WDrFGW7y0JELl7aLKMyKeOyChlk=', 
+		tags: ['my-fName-tag1', 'my-fName-tag2'], 
+		createdAt: '2018-07-13 T01:00:00Z' 
+	}
+*/
+</code></pre>
+<h2>Authentication</h2>
+<p>The client authentication period will last 60 minutes. The client will authenticate on instatiation.</p>
+<pre class="prettyprint source lang-text"><code>const client = await sdk.createClient();
+//after 60 minutes
+client.authenticate('API_KEY');
+</code></pre>
+<h2>Static Vaults</h2>
+<p>Static vaults are used to hold all created aliases for non transactional data. Static Vaults can be managed through the Static Vault class.</p>
+<p>There is no limit on how many types of data may be stored in one static vault. It is up to users to determine how to split their data into vaults. Note that the master key must be stored to retrieve the vault at later times.<br>
+A Static Vault can be created like this:</p>
+<pre class="prettyprint source lang-js"><code>const client = await sdk.createClient();
+const staticVault = await client.createStaticVault('my-static-vault', ['my-tag-1', 'my-tag-2']);
+console.log(staticVault)
+/*
+	output example:
+	{ 
+		id: 'e490157b23534215b0369a2685aab47g', 
+		name: 'my-static-vault',
+		masterKey: 'MASTER_KEY',
+		tags: ['my-tag-1', 'my-tag-2'], 
+		createdAt: '2018-07-13 T01:00:00Z' 
+	}
+*/
+</code></pre>
+<p>Retrieving a vault looks like this:</p>
+<pre class="prettyprint source lang-js"><code>const client = await sdk.createClient();
+const staticVault = await client.retrieveStaticVault(client, 'e490157b23534215b0369a2685aab47g', 'MASTER_KEY');
+</code></pre>
+<h2>Static Data Types</h2>
+<ul>
+<li>address</li>
+<li>date of birth</li>
+<li>driver's license</li>
+<li>first name</li>
+<li>gender</li>
+<li>generic</li>
+<li>last name</li>
+<li>passport number</li>
+<li>place of birth</li>
+<li>race</li>
+<li>random</li>
+<li>social security number</li>
+<li>tax payer ID</li>
+<li>vehicle registration</li>
+</ul>
+<h2>Communication Vaults</h2>
+<p>Communicataion vaults will store aliases for data types that will need to maintain their transactional integrity. Control for these data types may be customized in the Nullafi dashboard under the 'System' tab.</p>
+<pre class="prettyprint source lang-js"><code>const client = await sdk.createClient();
+const communicationVault = await client.createCommunicationVault('my-communication-vault', ['my-tag-1', 'my-tag-2']);
+console.log(staticVault)
+/*
+	output example:
+	{ 
+		id: 'e490157b23534215b0369a2685aab47g', 
+		name: 'my-communication-vault,
+		masterKey: 'MASTER_KEY',
+		tags: ['my-tag-1', 'my-tag-2'], 
+		createdAt: '2018-07-13 T01:00:00Z' 
+	}
+*/
+</code></pre>
+<p>Retrieving a communication vault looks like this:</p>
+<pre class="prettyprint source lang-js"><code>const client = await sdk.createClient();
+const staticVault = await client.retrieveStaticVault(client, 'e490157b23534215b0369a2685aab47g', 'MASTER_KEY');
+</code></pre>
+<h2>Communication Data Types</h2>
+<ul>
+<li>email</li>
+</ul>
+<h2>Copyright and License</h2>
+<p>Copyright 2019 Joinesty, Inc. All rights reserved.</p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="Client.html">Client</a></li><li><a href="CommunicationVault.html">CommunicationVault</a></li><li><a href="DateOfBirth.html">DateOfBirth</a></li><li><a href="DriversLicense.html">DriversLicense</a></li><li><a href="Email.html">Email</a></li><li><a href="FirstName.html">FirstName</a></li><li><a href="Gender.html">Gender</a></li><li><a href="Generic.html">Generic</a></li><li><a href="LastName.html">LastName</a></li><li><a href="NullafiSDK.html">NullafiSDK</a></li><li><a href="Passport.html">Passport</a></li><li><a href="PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="Race.html">Race</a></li><li><a href="Random.html">Random</a></li><li><a href="SSN.html">SSN</a></li><li><a href="StaticVault.html">StaticVault</a></li><li><a href="TaxPayerID.html">TaxPayerID</a></li><li><a href="VehicleRegistration.html">VehicleRegistration</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Wed Jun 05 2019 14:50:30 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

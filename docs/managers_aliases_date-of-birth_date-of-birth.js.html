@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: managers/aliases/date-of-birth/date-of-birth.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: managers/aliases/date-of-birth/date-of-birth.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ *
+ * @exports DateOfBirth
+ * @class
+ *
+ */
+class DateOfBirth {
+    /**
+     *Creates an instance of DateOfBirth.
+     * @param {StaticVault} vault Vault to store aliases
+     */
+    constructor(vault) {
+        this.vault = vault;
+    }
+    /**
+      * Create a new Date of birth string to be aliased for a specific static vault
+      *
+      * @param {string} dateofbirth Real date of birth
+      * @param {Number} [year] 4 digit number
+      * @param {Number} [month] 2 digit number
+      * @param {string[]} [tags] Strings to categorize alias
+      * @return {Promise&lt;CreateDateOfBirthResponse>}
+      */
+    async createDateOfBirth(dateofbirth, year, month, tags) {
+        if (arguments.length >= 2) {
+            if (Object.prototype.toString.call(year) === '[object Array]') {
+                tags = year;
+                year = null;
+            }
+            if (Object.prototype.toString.call(month) === '[object Array]') {
+                tags = month;
+                month = null;
+            }
+            if (year &amp;&amp; year.toString().length === 2) {
+                month = year;
+                year = null;
+            }
+        }
+        const result = this.vault.encrypt(dateofbirth);
+        const response = await this.vault.client
+            .post(`/vault/static/${this.vault.id}/dateofbirth?${year ? `year=${year}&amp;` : ''}${month ? `month=${month}` : ''}`, {
+                dateofbirth: result.encryptedData,
+                dateofbirthHash: this.vault.hash(dateofbirth),
+                iv: result.initializationVector,
+                authTag: result.authenticationTag,
+                tags,
+            });
+        response.dateofbirth = this.vault.decrypt(response.iv, response.authTag, response.dateofbirth);
+        return response;
+    }
+    /**
+         * Retrieve the DateOfBirth string alias from a static vault
+         *
+         * @param {string} aliasId ID of the alias to retrieve
+         * @return {Promise&lt;RetrieveDateOfBirthResponse>}
+         */
+    async retrieveDateOfBirth(aliasId) {
+        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/dateofbirth/${aliasId}`);
+        response.dateofbirth = this.vault.decrypt(response.iv, response.authTag, response.dateofbirth);
+        return response;
+    }
+
+    /**
+        * Retrieve the Address string alias from real address
+        *
+        * @param {string} dateofbirth Real date of birth
+        * @param {string[]} [tags] Strings associated with alias
+        * @return {Promise&lt;RetrieveAddressResponse[]>}
+        */
+    async retrieveDateOfBirthFromRealData(dateofbirth, tags) {
+        const query = {
+            hash: this.vault.hash(dateofbirth),
+            tags,
+        };
+
+        const responseList = await this.vault.client.get('/vault/static/dateofbirth', query);
+        responseList.forEach((response) => {
+            response.dateofbirth = this.vault.decrypt(response.iv, response.authTag, response.dateofbirth);
+        });
+        return responseList;
+    }
+
+    /**
+         * Delete the DateOfBirth alias from static vault
+         *
+         * @param {string} aliasId ID of the alias to delete
+         * @return {Promise&lt;DeleteDateOfBirthResponse>}
+         */
+    deleteDateOfBirth(aliasId) {
+        return this.vault.client.delete(`/vault/static/${this.vault.id}/dateofbirth/${aliasId}`);
+    }
+};
+
+module.exports = DateOfBirth;
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="Client.html">Client</a></li><li><a href="CommunicationVault.html">CommunicationVault</a></li><li><a href="DateOfBirth.html">DateOfBirth</a></li><li><a href="DriversLicense.html">DriversLicense</a></li><li><a href="Email.html">Email</a></li><li><a href="FirstName.html">FirstName</a></li><li><a href="Gender.html">Gender</a></li><li><a href="Generic.html">Generic</a></li><li><a href="LastName.html">LastName</a></li><li><a href="NullafiSDK.html">NullafiSDK</a></li><li><a href="Passport.html">Passport</a></li><li><a href="PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="Race.html">Race</a></li><li><a href="Random.html">Random</a></li><li><a href="SSN.html">SSN</a></li><li><a href="StaticVault.html">StaticVault</a></li><li><a href="TaxPayerID.html">TaxPayerID</a></li><li><a href="VehicleRegistration.html">VehicleRegistration</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Wed Jun 05 2019 14:50:30 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
