@@ -40,10 +40,10 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                {{#if ssnToken}}
-                <p>SSN : {{ssnToken.ssn}}</p>
-                <p>SSN Alias: {{ssnToken.ssnToken}}</p>
-                <p>Tags: {{ssnToken.tags}}</p>
+                {{#if ssnAlias}}
+                <p>SSN : {{ssnAlias.ssn}}</p>
+                <p>SSN Alias: {{ssnAlias.ssnAlias}}</p>
+                <p>Tags: {{ssnAlias.tags}}</p>
                 {{else}}
                 <form action="/static/ssn" method="post">
                     <div class="form-group">
@@ -55,10 +55,10 @@
                 {{/if}}
             </div>
             <div class="col-md-3">
-                {{#if firstNameToken}}
-                <p>First Name : {{firstNameToken.firstname}}</p>
-                <p>First Name Alias: {{firstNameToken.firstnameToken}}</p>
-                <p>Tags: {{firstNameToken.tags}}</p>
+                {{#if firstNameAlias}}
+                <p>First Name : {{firstNameAlias.firstname}}</p>
+                <p>First Name Alias: {{firstNameAlias.firstnameAlias}}</p>
+                <p>Tags: {{firstNameAlias.tags}}</p>
                 {{else}}
                 <form action="/static/firstName" method="post">
                     <div class="form-group">
@@ -71,10 +71,10 @@
                 {{/if}}
             </div>
             <div class="col-md-3">
-                {{#if addressToken}}
-                <p>Address : {{addressToken.address}}</p>
-                <p>Address Alias: {{addressToken.addressToken}}</p>
-                <p>Tags: {{addressToken.tags}}</p>
+                {{#if addressAlias}}
+                <p>Address : {{addressAlias.address}}</p>
+                <p>Address Alias: {{addressAlias.addressAlias}}</p>
+                <p>Tags: {{addressAlias.tags}}</p>
                 {{else}}
                 <form action="/static/address" method="post">
                     <div class="form-group">
@@ -86,10 +86,10 @@
                 {{/if}}
             </div>
             <div class="col-md-3">
-                {{#if dateOfBirthToken}}
-                <p>Date of Birth : {{dateOfBirthToken.dateofbirth}}</p>
-                <p>Date of Birth Alias: {{dateOfBirthToken.dateofbirthToken}}</p>
-                <p>Tags: {{dateOfBirthToken.tags}}</p>
+                {{#if dateOfBirthAlias}}
+                <p>Date of Birth : {{dateOfBirthAlias.dateofbirth}}</p>
+                <p>Date of Birth Alias: {{dateOfBirthAlias.dateofbirthAlias}}</p>
+                <p>Tags: {{dateOfBirthAlias.tags}}</p>
                 {{else}}
                 <form action="/static/dateOfBirth" method="post">
                     <div class="form-group">
@@ -106,10 +106,10 @@
 
         <div class="row">
             <div class="col-md-3">
-                {{#if driversLicenseToken}}
-                <p>Drivers License : {{driversLicenseToken.driverslicense}}</p>
-                <p>Drivers License Alias: {{driversLicenseToken.driverslicenseToken}}</p>
-                <p>Tags: {{driversLicenseToken.tags}}</p>
+                {{#if driversLicenseAlias}}
+                <p>Drivers License : {{driversLicenseAlias.driverslicense}}</p>
+                <p>Drivers License Alias: {{driversLicenseAlias.driverslicenseAlias}}</p>
+                <p>Tags: {{driversLicenseAlias.tags}}</p>
                 {{else}}
                 <form action="/static/driversLicense" method="post">
                     <div class="form-group">
@@ -122,10 +122,10 @@
                 {{/if}}
             </div>
             <div class="col-md-3">
-                {{#if genderToken}}
-                <p>Gender : {{genderToken.gender}}</p>
-                <p>Gender Alias: {{genderToken.genderToken}}</p>
-                <p>Tags: {{genderToken.tags}}</p>
+                {{#if genderAlias}}
+                <p>Gender : {{genderAlias.gender}}</p>
+                <p>Gender Alias: {{genderAlias.genderAlias}}</p>
+                <p>Tags: {{genderAlias.tags}}</p>
                 {{else}}
                 <form action="/static/gender" method="post">
                     <div class="form-group">
@@ -137,10 +137,10 @@
                 {{/if}}
             </div>
             <div class="col-md-3">
-                {{#if lastNameToken}}
-                <p>Last Name : {{lastNameToken.lastname}}</p>
-                <p>Last Name Alias: {{lastNameToken.lastnameToken}}</p>
-                <p>Tags: {{lastNameToken.tags}}</p>
+                {{#if lastNameAlias}}
+                <p>Last Name : {{lastNameAlias.lastname}}</p>
+                <p>Last Name Alias: {{lastNameAlias.lastnameAlias}}</p>
+                <p>Tags: {{lastNameAlias.tags}}</p>
                 {{else}}
                 <form action="/static/lastName" method="post">
                     <div class="form-group">
@@ -152,10 +152,10 @@
                 {{/if}}
             </div>
             <div class="col-md-3">
-                {{#if passportToken}}
-                <p>Passport : {{passportToken.passport}}</p>
-                <p>Passport Alias: {{passportToken.passportToken}}</p>
-                <p>Tags: {{passportToken.tags}}</p>
+                {{#if passportAlias}}
+                <p>Passport : {{passportAlias.passport}}</p>
+                <p>Passport Alias: {{passportAlias.passportAlias}}</p>
+                <p>Tags: {{passportAlias.tags}}</p>
                 {{else}}
                 <form action="/static/passport" method="post">
                     <div class="form-group">
@@ -170,10 +170,10 @@
 
         <div class="row">
             <div class="col-md-3">
-                {{#if placeOfBirthToken}}
-                <p>Place of Birth : {{placeOfBirthToken.placeofbirth}}</p>
-                <p>Place of Birth Alias: {{placeOfBirthToken.placeofbirthToken}}</p>
-                <p>Tags: {{placeOfBirthToken.tags}}</p>
+                {{#if placeOfBirthAlias}}
+                <p>Place of Birth : {{placeOfBirthAlias.placeofbirth}}</p>
+                <p>Place of Birth Alias: {{placeOfBirthAlias.placeofbirthAlias}}</p>
+                <p>Tags: {{placeOfBirthAlias.tags}}</p>
                 {{else}}
                 <form action="/static/placeOfBirth" method="post">
                     <div class="form-group">
@@ -186,10 +186,10 @@
                 {{/if}}
             </div>
             <div class="col-md-3">
-                {{#if raceToken}}
-                <p>Race : {{raceToken.race}}</p>
-                <p>Race Alias: {{raceToken.raceToken}}</p>
-                <p>Tags: {{raceToken.tags}}</p>
+                {{#if raceAlias}}
+                <p>Race : {{raceAlias.race}}</p>
+                <p>Race Alias: {{raceAlias.raceAlias}}</p>
+                <p>Tags: {{raceAlias.tags}}</p>
                 {{else}}
                 <form action="/static/race" method="post">
                     <div class="form-group">
@@ -201,10 +201,10 @@
                 {{/if}}
             </div>
             <div class="col-md-3">
-                {{#if randomToken}}
-                <p>Random : {{randomToken.data}}</p>
-                <p>Random Alias: {{randomToken.alias}}</p>
-                <p>Tags: {{randomToken.tags}}</p>
+                {{#if randomAlias}}
+                <p>Random : {{randomAlias.data}}</p>
+                <p>Random Alias: {{randomAlias.alias}}</p>
+                <p>Tags: {{randomAlias.tags}}</p>
                 {{else}}
                 <form action="/static/random" method="post">
                     <div class="form-group">
@@ -216,10 +216,10 @@
                 {{/if}}
             </div>
             <div class="col-md-3">
-                {{#if vehicleRegistrationToken}}
-                <p>Vehicle Registration : {{vehicleRegistrationToken.vehicleregistration}}</p>
-                <p>Vehicle Registration Alias: {{vehicleRegistrationToken.vehicleregistrationToken}}</p>
-                <p>Tags: {{vehicleRegistrationToken.tags}}</p>
+                {{#if vehicleRegistrationAlias}}
+                <p>Vehicle Registration : {{vehicleRegistrationAlias.vehicleregistration}}</p>
+                <p>Vehicle Registration Alias: {{vehicleRegistrationAlias.vehicleregistrationAlias}}</p>
+                <p>Tags: {{vehicleRegistrationAlias.tags}}</p>
                 {{else}}
                 <form action="/static/vehicleRegistration" method="post">
                     <div class="form-group">
@@ -234,10 +234,10 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                {{#if genericToken}}
-                <p>Generic : {{genericToken.data}}</p>
-                <p>Generic Alias: {{genericToken.alias}}</p>
-                <p>Tags: {{genericToken.tags}}</p>
+                {{#if genericAlias}}
+                <p>Generic : {{genericAlias.data}}</p>
+                <p>Generic Alias: {{genericAlias.alias}}</p>
+                <p>Tags: {{genericAlias.tags}}</p>
                 {{else}}
                 <form action="/static/generic" method="post">
                     <div class="form-group">
@@ -279,10 +279,10 @@
         </div>
         <div class="row">
             <div class="col-md-3">
-                {{#if emailToken}}
-                <p>Email : {{emailToken.email}}</p>
-                <p>Email Alias: {{emailToken.emailToken}}</p>
-                <p>Tags: {{emailToken.tags}}</p>
+                {{#if emailAlias}}
+                <p>Email : {{emailAlias.email}}</p>
+                <p>Email Alias: {{emailAlias.emailAlias}}</p>
+                <p>Tags: {{emailAlias.tags}}</p>
                 {{else}}
                 <form action="/communication/email" method="post">
                     <div class="form-group">

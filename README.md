@@ -40,7 +40,7 @@ console.log(firstNameAliasObj);
 	{ 
 		id: 'e490157b23534215b0369a2685aab47g', 
 		firstname: 'John Doe', 
-		firstnameToken: 'blssVzRzdnP9uEi5WDrFGW7y0JELl7aLKMyKeOyChlk=', 
+		firstnameAlias: 'blssVzRzdnP9uEi5WDrFGW7y0JELl7aLKMyKeOyChlk=', 
 		tags: ['my-fName-tag1', 'my-fName-tag2'], 
 		createdAt: '2018-07-13 T01:00:00Z' 
 	}
