@@ -15,6 +15,8 @@ Installation
 ```
 npm install --save nullafi-node-sdk
 ```
+Nullafi SDK is supported on node versions above v10.14.0.
+
 Getting Started
 ---------------
 To get started with the SDK as a new developer, one must create a developer account. Go to the [Nullafi Signup Page](https://dashboard.nullafi.com/signup), and create a new developer account. As an account owner, you can retrieve the API key by going to the settings page, and selecting the 'API Key' tab. You may manage API key generation for the SDK from here. Create a new key and store the key value somewhere secure, as Nullafi will not store this key.
