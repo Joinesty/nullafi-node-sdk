@@ -198,7 +198,7 @@
     
 
     
-    <h4 class="name" id="createRandom"><span class="type-signature">(async) </span>createRandom<span class="signature">(data, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateRandomResponse">CreateRandomResponse</a>>}</span></h4>
+    <h4 class="name" id="createRandom"><span class="type-signature">(async) </span>createRandom<span class="signature">(data, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateRandomResponse">CreateRandomResponse</a>>}</span></h4>
     
 
     
@@ -207,6 +207,11 @@
 
 <div class="description">
     Create a new Random string to be aliased for a specific static vault
+<pre><code>
+//example call:
+const randomAliasObj = await staticVault.race.createRandom
+('random value', ['my-race-tag1', 'my-race-tag2']);
+</pre></code>
 </div>
 
 
@@ -229,6 +234,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -255,10 +262,18 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Data to alias</td>
         </tr>
 
     
@@ -278,10 +293,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings to categorize alias</td>
         </tr>
 
     
@@ -322,7 +347,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_random_random.js.html">managers/aliases/random/random.js</a>, <a href="managers_aliases_random_random.js.html#line22">line 22</a>
+        <a href="managers_aliases_random_random.js.html">managers/aliases/random/random.js</a>, <a href="managers_aliases_random_random.js.html#line27">line 27</a>
     </li></ul></dd>
     
 
@@ -436,7 +461,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -477,7 +502,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_random_random.js.html">managers/aliases/random/random.js</a>, <a href="managers_aliases_random_random.js.html#line73">line 73</a>
+        <a href="managers_aliases_random_random.js.html">managers/aliases/random/random.js</a>, <a href="managers_aliases_random_random.js.html#line80">line 80</a>
     </li></ul></dd>
     
 
@@ -539,7 +564,7 @@
 
 
 <div class="description">
-    Retrieve the Random string alias from a static vault
+    Retrieve the Random string alias from a static vault. Returns an array of matching values. Array will be sorted by date created.
 </div>
 
 
@@ -591,7 +616,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -632,7 +657,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_random_random.js.html">managers/aliases/random/random.js</a>, <a href="managers_aliases_random_random.js.html#line41">line 41</a>
+        <a href="managers_aliases_random_random.js.html">managers/aliases/random/random.js</a>, <a href="managers_aliases_random_random.js.html#line46">line 46</a>
     </li></ul></dd>
     
 
@@ -686,7 +711,7 @@
     
 
     
-    <h4 class="name" id="retrieveRandomFromRealData"><span class="type-signature">(async) </span>retrieveRandomFromRealData<span class="signature">(random, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveRandomResponse">RetrieveRandomResponse</a>>>}</span></h4>
+    <h4 class="name" id="retrieveRandomFromRealData"><span class="type-signature">(async) </span>retrieveRandomFromRealData<span class="signature">(random, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveRandomResponse">RetrieveRandomResponse</a>>>}</span></h4>
     
 
     
@@ -694,7 +719,9 @@
 
 
 <div class="description">
-    Retrieve the Random string alias from real random
+    Retrieve the Random string alias from real random.
+Real value must be an exact match and will also be case sensitive.
+Returns an array of matching values. Array will be sorted by date created.
 </div>
 
 
@@ -717,6 +744,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -743,10 +772,18 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Real value</td>
         </tr>
 
     
@@ -766,10 +803,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings used to filter return results</td>
         </tr>
 
     
@@ -810,7 +857,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_random_random.js.html">managers/aliases/random/random.js</a>, <a href="managers_aliases_random_random.js.html#line54">line 54</a>
+        <a href="managers_aliases_random_random.js.html">managers/aliases/random/random.js</a>, <a href="managers_aliases_random_random.js.html#line61">line 61</a>
     </li></ul></dd>
     
 
@@ -880,7 +927,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 28 2019 15:23:20 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Mon Jun 10 2019 13:59:17 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

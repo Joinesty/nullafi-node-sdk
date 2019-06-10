@@ -15,31 +15,39 @@ Installation
 ```
 npm install --save nullafi-node-sdk
 ```
+Nullafi SDK is supported on node versions above v10.14.0.
+
 Getting Started
 ---------------
-To get started with the SDK, one must be a 'Super Owner' on a nullafi account. Go to the settings page, and select the 'API Key' tab. Create a new key and store the key value somewhere secure, as Nullafi will not store this key for security reasons. You can use this key to make calls through the Nullafi SDK.
+To get started with the SDK as a new developer, one must create a developer account. Go to the [Nullafi Signup Page](https://dashboard.nullafi.com/signup), and create a new developer account. As an account owner, you can retrieve the API key by going to the settings page, and selecting the 'API Key' tab. You may manage API key generation for the SDK from here. Create a new key and store the key value somewhere secure, as Nullafi will not store this key.
+
+**Note:** Make sure to implement the nullafi-sdk in back end products only. Implementing the nullafi key on a front end product will expose the key to the public, and risk exposing private data. 
 
 ```js
 const NullafiSDK = require('nullafi-node-sdk');
 
-// Initialize the SDK with your API credentials
-const sdk = new NullafiSDK('API_KEY');
+//We recommend storing your key in a secure non-public facing env file
+const NULLAFI_API_KEY = ENV.fetch('NULLAFI_API_KEY')
 
-// Create a basic API client, which does not automatically refresh the access token
+// Initialize the SDK with your API credentials
+const sdk = new NullafiSDK(NULLAFI_API_KEY);
+
+// Create a basic API client, which will also authenticate your client. 
+// Client authentication will expire after 60 minutes
 const client = await sdk.createClient();
 
 // Get your own user object from the Nullafi API
 // All client methods return a promise that resolves to the results of the API call,
 // or rejects when an error occurs
-
+// Adding tags is an important way to retrieve data
 const staticVault = await client.createStaticVault('my-static-vault', ['my-tag-1', 'my-tag-2']);
-const firstNameAliasObj = await staticVault.firstName.createFirstName('John Doe', ['my-fName-tag1', 'my-fName-tag2']);
+const firstNameAliasObj = await staticVault.firstName.createFirstName('John', ['my-fName-tag1', 'my-fName-tag2']);
 console.log(firstNameAliasObj); 
 /*
 	output example:
 	{ 
 		id: 'e490157b23534215b0369a2685aab47g', 
-		firstname: 'John Doe', 
+		firstname: 'John',
 		firstnameAlias: 'blssVzRzdnP9uEi5WDrFGW7y0JELl7aLKMyKeOyChlk=', 
 		tags: ['my-fName-tag1', 'my-fName-tag2'], 
 		createdAt: '2018-07-13 T01:00:00Z' 
@@ -49,11 +57,9 @@ console.log(firstNameAliasObj);
 
 Authentication
 ------------
-The client authentication period will last 60 minutes. The client will authenticate on instatiation. 
-```text
-const client = await sdk.createClient();
-//after 60 minutes
-client.authenticate('API_KEY');
+When a client is created, the client instance will be authenticated for a 60 minute period. After this time, you may either create a new client or refresh the existing client. 
+```js
+client.authenticate(NULLAFI_API_KEY);
 ```
 
 
@@ -78,39 +84,208 @@ console.log(staticVault)
 	}
 */
 ```
-
+The **ID** as well as the **Master Key** from the output will be used to retrieve the vault. These values must be stored in your database to retrieve the vault.
 Retrieving a vault looks like this: 
 
 ```js
+//Authenticated client
 const client = await sdk.createClient();
-const staticVault = await client.retrieveStaticVault(client, 'e490157b23534215b0369a2685aab47g', 'MASTER_KEY');
+// ID and Master key should be stored and retrieved from database
+const staticVaultID = 'e490157b23534215b0369a2685aab47g';
+const staticVaultMasterKey = 'MASTER_KEY';
+const staticVault = await client.retrieveStaticVault(client, staticVaultID, staticVaultMasterKey);
 ```
 
 Static Data Types
 ------------
-* address
-* date of birth
-* driver's license
-* first name
-* gender
-* generic
-* last name
-* passport number
-* place of birth
-* race
-* random
-* social security number
-* tax payer ID
-* vehicle registration
+### Address
+Generates a fake address that will not trace to a real location. An optional parameter of state may be provided to choose the state associated with the fake address.
+
+Address example:
+```js
+street, city, state abbreviation zipcode, USA
+43520 Hills Flat, East Aricchester, AK 99761, USA
+
+//example call
+const addressAliasObj = await staticVault.address.createAddress('138 Congress St, Portland, ME 04101', 'ME' ['my-address-tag1', 'my-address-tag2']);
+```
+
+Providing an incorrect state abbreviation will return a random state. The list of acceptable inputs is below.
+```text
+'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY',
+'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH',
+'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY'
+```
+### Date of birth
+Will generate a new date between the year span of 1949 and 2001. Year(YYYY) and month(MM) are both optional parameters that will set the date to the corresponding year and/or month. 
+
+Date of birth example:
+```js
+YYYY-MM-DD
+1980-12-20
+
+//providing the optional year and month arguments 
+const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth('1999-07-02', '1999', '07' ['my-dob-tag1', 'my-dob-tag2']);
+```
+### Driver's license
+Generates a randomly generated combination of numbers and letters based on the format of each state's format. A state may be provided as an optional parameter to return a license for that state. A list of formats may be viewed [**here**](https://ntsi.com/drivers-license-format/).
+
+Providing an incorrect state abbreviation will return a random state. The list of acceptable inputs is below.
+```text
+'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY',
+'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH',
+'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY'
+```
+
+Example call: 
+```js
+//example call with optional state
+const driverslicenseAliasObj = await staticVault.driversLicense.createDriversLicense('123456789', 'NY' ['my-driversLicense-tag1', 'my-driversLicense-tag2']);
+```
+### First name
+Generates a random name with the optional input of gender. 
+
+Genders available are:
+```text
+"male", 
+"female"
+```
+Example call:
+```js
+const firstNameAliasObj = await staticVault.firstName.createFirstName('John', ['my-fName-tag1', 'my-fName-tag2']);
+```
+### Gender
+Generates a random gender from a list.
+Output options are: 
+```text
+"Male",
+"Female",
+"Other",
+"Don't want to say"
+```
+
+Example call:
+```js
+const genderAliasObj = await staticVault.gender.createGender('male', ['my-gender-tag1', 'my-gender-tag2']);
+```
+### Generic
+Generic takes a regular expression as input and will generate a value matching that expression. Use this to create formats not currently supported. Some example usages are for prescriptions, nations, and non-supported passport numbers. The template used to generate values will not be saved.
+
+Example Generic Values:
+```js
+//input
+\d{4}
+//output
+1234
+//input
+[a-zA-Z]{5}
+//output
+AbCde
+
+//example call
+const genericAliasObj = await staticVault.generic.createGeneric('Abcde', '[a-zA-Z]{5}', ['my-generic-tag1', 'my-generic-tag2']);
+```
+
+### Last name
+Generates a random last name with optional input of gender. 
+
+Example call:
+```js
+//example call
+const lastNameAliasObj = await staticVault.lastName.createLastName('smith', ['my-lName-tag1', 'my-lName-tag2']);
+```
+### Passport number
+Generates a random nine digit number. Currently only generates formats matching US passports.
+
+Example call:
+```js
+//example call
+const passportAliasObj = await staticVault.passport.createPassport('123456789', ['my-passport-tag1', 'my-passport-tag2']);
+```
+### Place of birth
+Generates a random place of birth. An optional parameter of state may be provided to choose the state associated with the place of birth.
+
+Place of birth example:
+```js
+city, state
+Odachester, Washington
+
+//example call with optional state param
+const pobAliasObj = await staticVault.placeOfBirth.createPlaceOfBirth('Atlanta, Georgia', 'GA', ['my-pob-tag1', 'my-pob-tag2']);
+```
+
+Providing an incorrect state abbreviation will return a random state. The list of acceptable inputs is below.
+```text
+'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY',
+'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH',
+'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY'
+```
+### Race
+Generates a random race from a list. 
+
+Race example:
+```js
+const raceAliasObj = await staticVault.race.createRace('Native Hawaiian or Other Pacific Islander', ['my-race-tag1', 'my-race-tag2']);
+```
+
+Output options are: 
+```text
+"American Indian or Alaska Native",
+"Asian",
+"Black or African American",
+"Native Hawaiian or Other Pacific Islander",
+"White",
+"Other",
+"Hispanic or Latino"
+``` 
+### Random
+Generates a random string value consisting of upper and lower case letters that will be 20, 35, 50, or 80 characters long. Similar to the generic generator, but does not need a template.
+
+Random example:
+```js
+const randomAliasObj = await staticVault.race.createRandom('random value', ['my-race-tag1', 'my-race-tag2']);
+```
+### Social security number
+Generates a random social security number. An optional parameter of state may be provided to choose the state used to generate the ssn.
+
+Output format:
+```js
+###-##-####
+
+//example call
+const ssnAliasObj = await staticVault.ssn.createSSN('123-45-6789', ['my-ssn-tag1', 'my-ssn-tag2']);
+```
+### Tax payer ID
+Generates a random tay payer ID. Currently only produces ITIN(Individual Taxpayer Identification Number) values.
+
+Output format: 
+```js
+9#-##-####
+
+//example call
+const taxPayerIDAliasObj = await staticVault.taxPayerID.createTaxPayerID('92-45-6789', ['my-taxPayerID-tag1', 'my-taxPayerID-tag2']);
+```
+### Vehicle registration
+Generates a random vehicle registration. Vehicle registration is 3 Capitalized letters followed by 4 digits.
+
+Example Output: 
+```js
+ABC·1234
+
+//example call
+const vehicleRegistrationAliasObj = await staticVault.vehicleRegistration.createVehicleRegistration('92-45-6789', ['my-vehicleRegistration-tag1', 'my-vehicleRegistration-tag2']);
+```
 
 Communication Vaults
 ------------
-Communicataion vaults will store aliases for data types that will need to maintain their transactional integrity. Control for these data types may be customized in the Nullafi dashboard under the 'System' tab. 
+Communicataion vaults will store aliases for data types that will need to maintain their transactional integrity. Creating a communication vault is a similar process to a static vault, but the data aliased inside will be different. 
+
+The alias generated for communication emails will be a functioning email. Nullafi will handle receiving messages to this address and relaying them to the real email address. White list senders and domains are added to control who may contact these users. Control for these emails may be found in the [Nullafi Dashboard](https://dashboard.nullafi.com/login) under the **'System'** tab.
 
 ```js
 const client = await sdk.createClient();
 const communicationVault = await client.createCommunicationVault('my-communication-vault', ['my-tag-1', 'my-tag-2']);
-console.log(staticVault)
+console.log(communicationVault)
 /*
 	output example:
 	{ 
@@ -122,16 +297,34 @@ console.log(staticVault)
 	}
 */
 ```
+The **ID** as well as the **Master Key** from the output will be used to retrieve the vault. These values must be stored in your database to retrieve the vault.
+Retrieving a vault looks like this: 
 
-Retrieving a communication vault looks like this: 
 ```js
+//Authenticated client
 const client = await sdk.createClient();
-const staticVault = await client.retrieveStaticVault(client, 'e490157b23534215b0369a2685aab47g', 'MASTER_KEY');
+// ID and Master key should be stored and retrieved from database
+const communicationVaultID = 'e490157b23534215b0369a2685aab47g';
+const communicationVaultMasterKey = 'MASTER_KEY';
+// ID and Master key should be stored and retrieved from database
+const communicationVault = await client.retrieveCommunicationVault(client, communicationVaultID, communicationVaultMasterKey);
 ```
 
 Communication Data Types
 ------------
-* email
+### Email
+Generating email aliases will provide a new functional email to use in place of the real email. These alias addresses will work as relays to the real address, while also provided the ability to white list approved sender domains and addresses. 
+
+Email example:
+```js
+//input
+realEmail@gmail.com
+//output
+cizljfhxrazvcy@fipale.com
+
+//example call
+const emailAlias = await communicationVault.email.createEmail('realEmail@gmail.com', ['my-tag-1', 'my-tag-2']);
+```
 
 Copyright and License
 ---------------------

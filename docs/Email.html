@@ -198,7 +198,7 @@
     
 
     
-    <h4 class="name" id="createEmail"><span class="type-signature">(async) </span>createEmail<span class="signature">(email, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateEmailResponse">CreateEmailResponse</a>>}</span></h4>
+    <h4 class="name" id="createEmail"><span class="type-signature">(async) </span>createEmail<span class="signature">(email, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateEmailResponse">CreateEmailResponse</a>>}</span></h4>
     
 
     
@@ -207,6 +207,14 @@
 
 <div class="description">
     Create a new Email to be aliased for a specific communication vault
+<pre><code>
+//input
+realEmail@gmail.com
+//output
+cizljfhxrazvcy@fipale.com
+const emailAlias = await communicationVault.email.createEmail
+('realEmail@gmail.com', ['my-tag-1', 'my-tag-2']);
+</pre></code>
 </div>
 
 
@@ -229,6 +237,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -255,10 +265,18 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Real email to alias</td>
         </tr>
 
     
@@ -278,10 +296,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings to categorize alias</td>
         </tr>
 
     
@@ -322,7 +350,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_email_email.js.html">managers/aliases/email/email.js</a>, <a href="managers_aliases_email_email.js.html#line23">line 23</a>
+        <a href="managers_aliases_email_email.js.html">managers/aliases/email/email.js</a>, <a href="managers_aliases_email_email.js.html#line31">line 31</a>
     </li></ul></dd>
     
 
@@ -436,7 +464,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to delete</td>
         </tr>
 
     
@@ -477,7 +505,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_email_email.js.html">managers/aliases/email/email.js</a>, <a href="managers_aliases_email_email.js.html#line77">line 77</a>
+        <a href="managers_aliases_email_email.js.html">managers/aliases/email/email.js</a>, <a href="managers_aliases_email_email.js.html#line87">line 87</a>
     </li></ul></dd>
     
 
@@ -539,7 +567,7 @@
 
 
 <div class="description">
-    Retrieve the Email alias from a communication vault
+    Retrieve the Email alias from a communication vault. Returns an array of matching values. Array will be sorted by date created.
 </div>
 
 
@@ -591,7 +619,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -632,7 +660,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_email_email.js.html">managers/aliases/email/email.js</a>, <a href="managers_aliases_email_email.js.html#line43">line 43</a>
+        <a href="managers_aliases_email_email.js.html">managers/aliases/email/email.js</a>, <a href="managers_aliases_email_email.js.html#line51">line 51</a>
     </li></ul></dd>
     
 
@@ -686,7 +714,7 @@
     
 
     
-    <h4 class="name" id="retrieveEmailFromRealData"><span class="type-signature">(async) </span>retrieveEmailFromRealData<span class="signature">(email, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveEmailResponse">RetrieveEmailResponse</a>>>}</span></h4>
+    <h4 class="name" id="retrieveEmailFromRealData"><span class="type-signature">(async) </span>retrieveEmailFromRealData<span class="signature">(email, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveEmailResponse">RetrieveEmailResponse</a>>>}</span></h4>
     
 
     
@@ -694,7 +722,9 @@
 
 
 <div class="description">
-    Retrieve the Email string alias from real email
+    Retrieve the Email alias from real email.
+Real value must be an exact match and will also be case sensitive.
+Returns an array of matching values. Array will be sorted by date created.
 </div>
 
 
@@ -717,6 +747,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -743,10 +775,18 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Real email</td>
         </tr>
 
     
@@ -766,10 +806,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings used to filter return results</td>
         </tr>
 
     
@@ -810,7 +860,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_email_email.js.html">managers/aliases/email/email.js</a>, <a href="managers_aliases_email_email.js.html#line56">line 56</a>
+        <a href="managers_aliases_email_email.js.html">managers/aliases/email/email.js</a>, <a href="managers_aliases_email_email.js.html#line66">line 66</a>
     </li></ul></dd>
     
 
@@ -880,7 +930,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 28 2019 15:23:20 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Mon Jun 10 2019 13:59:17 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -198,7 +198,7 @@
     
 
     
-    <h4 class="name" id="createPlaceOfBirth"><span class="type-signature">(async) </span>createPlaceOfBirth<span class="signature">(placeofbirth, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreatePlaceOfBirthResponse">CreatePlaceOfBirthResponse</a>>}</span></h4>
+    <h4 class="name" id="createPlaceOfBirth"><span class="type-signature">(async) </span>createPlaceOfBirth<span class="signature">(placeofbirth, state<span class="signature-attributes">opt</span>, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreatePlaceOfBirthResponse">CreatePlaceOfBirthResponse</a>>}</span></h4>
     
 
     
@@ -207,6 +207,18 @@
 
 <div class="description">
     Create a new PlaceOfBirth string to be aliased for a specific static vault
+<pre><code>
+Place of birth example:
+city, state
+Odachester, Washington
+//example call with optional state param
+const pobAliasObj = await staticVault.placeOfBirth.createPlaceOfBirth
+('Atlanta, Georgia', 'GA', ['my-pob-tag1', 'my-pob-tag2']);
+Providing an incorrect state abbreviation will return a random state. The list of acceptable inputs is below.
+'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY',
+'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH',
+'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY'
+</pre></code>
 </div>
 
 
@@ -229,6 +241,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -255,10 +269,51 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Place of birth to alias</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>state</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">State to generate</td>
         </tr>
 
     
@@ -278,10 +333,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings to categorize alias</td>
         </tr>
 
     
@@ -322,7 +387,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_place-of-birth_place-of-birth.js.html">managers/aliases/place-of-birth/place-of-birth.js</a>, <a href="managers_aliases_place-of-birth_place-of-birth.js.html#line22">line 22</a>
+        <a href="managers_aliases_place-of-birth_place-of-birth.js.html">managers/aliases/place-of-birth/place-of-birth.js</a>, <a href="managers_aliases_place-of-birth_place-of-birth.js.html#line35">line 35</a>
     </li></ul></dd>
     
 
@@ -436,7 +501,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -477,7 +542,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_place-of-birth_place-of-birth.js.html">managers/aliases/place-of-birth/place-of-birth.js</a>, <a href="managers_aliases_place-of-birth_place-of-birth.js.html#line73">line 73</a>
+        <a href="managers_aliases_place-of-birth_place-of-birth.js.html">managers/aliases/place-of-birth/place-of-birth.js</a>, <a href="managers_aliases_place-of-birth_place-of-birth.js.html#line94">line 94</a>
     </li></ul></dd>
     
 
@@ -539,7 +604,7 @@
 
 
 <div class="description">
-    Retrieve the PlaceOfBirth string alias from a static vault
+    Retrieve the PlaceOfBirth string alias from a static vault. Returns an array of matching values. Array will be sorted by date created.
 </div>
 
 
@@ -591,7 +656,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -632,7 +697,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_place-of-birth_place-of-birth.js.html">managers/aliases/place-of-birth/place-of-birth.js</a>, <a href="managers_aliases_place-of-birth_place-of-birth.js.html#line41">line 41</a>
+        <a href="managers_aliases_place-of-birth_place-of-birth.js.html">managers/aliases/place-of-birth/place-of-birth.js</a>, <a href="managers_aliases_place-of-birth_place-of-birth.js.html#line60">line 60</a>
     </li></ul></dd>
     
 
@@ -686,7 +751,7 @@
     
 
     
-    <h4 class="name" id="retrievePlaceOfBirthFromRealData"><span class="type-signature">(async) </span>retrievePlaceOfBirthFromRealData<span class="signature">(placeofbirth, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrievePlaceOfBirthResponse">RetrievePlaceOfBirthResponse</a>>>}</span></h4>
+    <h4 class="name" id="retrievePlaceOfBirthFromRealData"><span class="type-signature">(async) </span>retrievePlaceOfBirthFromRealData<span class="signature">(placeofbirth, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrievePlaceOfBirthResponse">RetrievePlaceOfBirthResponse</a>>>}</span></h4>
     
 
     
@@ -694,7 +759,9 @@
 
 
 <div class="description">
-    Retrieve the PlaceOfBirth string alias from real placeofbirth
+    Retrieve the PlaceOfBirth string alias from real placeofbirth.
+Real value must be an exact match and will also be case sensitive.
+Returns an array of matching values. Array will be sorted by date created.
 </div>
 
 
@@ -717,6 +784,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -743,10 +812,18 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Real placeofbirth</td>
         </tr>
 
     
@@ -766,10 +843,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings used to filter return results</td>
         </tr>
 
     
@@ -810,7 +897,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_place-of-birth_place-of-birth.js.html">managers/aliases/place-of-birth/place-of-birth.js</a>, <a href="managers_aliases_place-of-birth_place-of-birth.js.html#line54">line 54</a>
+        <a href="managers_aliases_place-of-birth_place-of-birth.js.html">managers/aliases/place-of-birth/place-of-birth.js</a>, <a href="managers_aliases_place-of-birth_place-of-birth.js.html#line75">line 75</a>
     </li></ul></dd>
     
 
@@ -880,7 +967,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 28 2019 15:23:20 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Mon Jun 10 2019 13:59:17 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

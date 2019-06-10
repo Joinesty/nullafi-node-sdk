@@ -198,7 +198,7 @@
     
 
     
-    <h4 class="name" id="createRace"><span class="type-signature">(async) </span>createRace<span class="signature">(race, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateRaceResponse">CreateRaceResponse</a>>}</span></h4>
+    <h4 class="name" id="createRace"><span class="type-signature">(async) </span>createRace<span class="signature">(race, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateRaceResponse">CreateRaceResponse</a>>}</span></h4>
     
 
     
@@ -207,6 +207,19 @@
 
 <div class="description">
     Create a new Race string to be aliased for a specific static vault
+<pre><code>
+//example call:
+const raceAliasObj = await staticVault.race.createRace
+('Native Hawaiian or Other Pacific Islander', ['my-race-tag1', 'my-race-tag2']);
+Output options are:
+"American Indian or Alaska Native",
+"Asian",
+"Black or African American",
+"Native Hawaiian or Other Pacific Islander",
+"White",
+"Other",
+"Hispanic or Latino"
+</pre></code>
 </div>
 
 
@@ -229,6 +242,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -255,10 +270,18 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">race to alias</td>
         </tr>
 
     
@@ -278,10 +301,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings to categorize alias</td>
         </tr>
 
     
@@ -322,7 +355,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_race_race.js.html">managers/aliases/race/race.js</a>, <a href="managers_aliases_race_race.js.html#line22">line 22</a>
+        <a href="managers_aliases_race_race.js.html">managers/aliases/race/race.js</a>, <a href="managers_aliases_race_race.js.html#line35">line 35</a>
     </li></ul></dd>
     
 
@@ -436,7 +469,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -477,7 +510,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_race_race.js.html">managers/aliases/race/race.js</a>, <a href="managers_aliases_race_race.js.html#line73">line 73</a>
+        <a href="managers_aliases_race_race.js.html">managers/aliases/race/race.js</a>, <a href="managers_aliases_race_race.js.html#line88">line 88</a>
     </li></ul></dd>
     
 
@@ -539,7 +572,7 @@
 
 
 <div class="description">
-    Retrieve the Race string alias from a static vault
+    Retrieve the Race string alias from a static vault. Returns an array of matching values. Array will be sorted by date created.
 </div>
 
 
@@ -591,185 +624,7 @@
 
             
 
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_race_race.js.html">managers/aliases/race/race.js</a>, <a href="managers_aliases_race_race.js.html#line41">line 41</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;<a href="global.html#RetrieveRaceResponse">RetrieveRaceResponse</a>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="retrieveRaceFromRealData"><span class="type-signature">(async) </span>retrieveRaceFromRealData<span class="signature">(race, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveRaceResponse">RetrieveRaceResponse</a>>>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Retrieve the Race string alias from real race
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>race</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>tags</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;string></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -846,6 +701,206 @@
     </dt>
     <dd>
         
+<span class="param-type">Promise.&lt;<a href="global.html#RetrieveRaceResponse">RetrieveRaceResponse</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="retrieveRaceFromRealData"><span class="type-signature">(async) </span>retrieveRaceFromRealData<span class="signature">(race, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveRaceResponse">RetrieveRaceResponse</a>>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Retrieve the Race string alias from real race.
+Real value must be an exact match and will also be case sensitive.
+Returns an array of matching values. Array will be sorted by date created.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>race</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Real race</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tags</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Strings used to filter return results</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="managers_aliases_race_race.js.html">managers/aliases/race/race.js</a>, <a href="managers_aliases_race_race.js.html#line69">line 69</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Promise.&lt;Array.&lt;<a href="global.html#RetrieveRaceResponse">RetrieveRaceResponse</a>>></span>
 
 
@@ -880,7 +935,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 28 2019 15:23:20 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Mon Jun 10 2019 13:59:17 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

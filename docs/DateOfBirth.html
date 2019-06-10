@@ -101,7 +101,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Vault to store aliases</td>
         </tr>
 
     
@@ -198,7 +198,7 @@
     
 
     
-    <h4 class="name" id="createDateOfBirth"><span class="type-signature">(async) </span>createDateOfBirth<span class="signature">(dateofbirth, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateDateOfBirthResponse">CreateDateOfBirthResponse</a>>}</span></h4>
+    <h4 class="name" id="createDateOfBirth"><span class="type-signature">(async) </span>createDateOfBirth<span class="signature">(dateofbirth, year<span class="signature-attributes">opt</span>, month<span class="signature-attributes">opt</span>, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateDateOfBirthResponse">CreateDateOfBirthResponse</a>>}</span></h4>
     
 
     
@@ -206,7 +206,14 @@
 
 
 <div class="description">
-    Create a new DateOfBirth string to be aliased for a specific static vault
+    Create a new Date of birth string to be aliased for a specific static vault
+<pre><code>
+YYYY-MM-DD
+1980-12-20
+//providing the optional year and month arguments
+const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth
+('1999-07-02', '1999', '07' ['my-dob-tag1', 'my-dob-tag2']);
+</pre></code>
 </div>
 
 
@@ -229,6 +236,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -255,10 +264,84 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Real date of birth</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>year</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">4 digit number</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>month</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">2 digit number</td>
         </tr>
 
     
@@ -278,10 +361,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings to categorize alias</td>
         </tr>
 
     
@@ -322,7 +415,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_date-of-birth_date-of-birth.js.html">managers/aliases/date-of-birth/date-of-birth.js</a>, <a href="managers_aliases_date-of-birth_date-of-birth.js.html#line22">line 22</a>
+        <a href="managers_aliases_date-of-birth_date-of-birth.js.html">managers/aliases/date-of-birth/date-of-birth.js</a>, <a href="managers_aliases_date-of-birth_date-of-birth.js.html#line31">line 31</a>
     </li></ul></dd>
     
 
@@ -436,7 +529,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to delete</td>
         </tr>
 
     
@@ -477,7 +570,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_date-of-birth_date-of-birth.js.html">managers/aliases/date-of-birth/date-of-birth.js</a>, <a href="managers_aliases_date-of-birth_date-of-birth.js.html#line72">line 72</a>
+        <a href="managers_aliases_date-of-birth_date-of-birth.js.html">managers/aliases/date-of-birth/date-of-birth.js</a>, <a href="managers_aliases_date-of-birth_date-of-birth.js.html#line98">line 98</a>
     </li></ul></dd>
     
 
@@ -539,7 +632,7 @@
 
 
 <div class="description">
-    Retrieve the DateOfBirth string alias from a static vault
+    Retrieve the DateOfBirth string alias from a static vault. Returns an array of matching values. Array will be sorted by date created.
 </div>
 
 
@@ -591,7 +684,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -632,7 +725,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_date-of-birth_date-of-birth.js.html">managers/aliases/date-of-birth/date-of-birth.js</a>, <a href="managers_aliases_date-of-birth_date-of-birth.js.html#line40">line 40</a>
+        <a href="managers_aliases_date-of-birth_date-of-birth.js.html">managers/aliases/date-of-birth/date-of-birth.js</a>, <a href="managers_aliases_date-of-birth_date-of-birth.js.html#line64">line 64</a>
     </li></ul></dd>
     
 
@@ -686,7 +779,7 @@
     
 
     
-    <h4 class="name" id="retrieveDateOfBirthFromRealData"><span class="type-signature">(async) </span>retrieveDateOfBirthFromRealData<span class="signature">(dateofbirth, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveAddressResponse">RetrieveAddressResponse</a>>>}</span></h4>
+    <h4 class="name" id="retrieveDateOfBirthFromRealData"><span class="type-signature">(async) </span>retrieveDateOfBirthFromRealData<span class="signature">(dateofbirth, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveAddressResponse">RetrieveAddressResponse</a>>>}</span></h4>
     
 
     
@@ -694,7 +787,9 @@
 
 
 <div class="description">
-    Retrieve the Address string alias from real address
+    Retrieve the Address string alias from real address.
+Real value must be an exact match and will also be case sensitive.
+Returns an array of matching values. Array will be sorted by date created.
 </div>
 
 
@@ -717,6 +812,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -743,10 +840,18 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Real date of birth</td>
         </tr>
 
     
@@ -766,10 +871,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings used to filter return results</td>
         </tr>
 
     
@@ -810,7 +925,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_date-of-birth_date-of-birth.js.html">managers/aliases/date-of-birth/date-of-birth.js</a>, <a href="managers_aliases_date-of-birth_date-of-birth.js.html#line53">line 53</a>
+        <a href="managers_aliases_date-of-birth_date-of-birth.js.html">managers/aliases/date-of-birth/date-of-birth.js</a>, <a href="managers_aliases_date-of-birth_date-of-birth.js.html#line79">line 79</a>
     </li></ul></dd>
     
 
@@ -880,7 +995,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 28 2019 15:23:20 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Mon Jun 10 2019 13:59:17 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

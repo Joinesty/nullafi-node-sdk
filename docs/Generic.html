@@ -198,7 +198,7 @@
     
 
     
-    <h4 class="name" id="createGeneric"><span class="type-signature">(async) </span>createGeneric<span class="signature">(data, regexTemplate, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateGenericResponse">CreateGenericResponse</a>>}</span></h4>
+    <h4 class="name" id="createGeneric"><span class="type-signature">(async) </span>createGeneric<span class="signature">(data, regexTemplate, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateGenericResponse">CreateGenericResponse</a>>}</span></h4>
     
 
     
@@ -207,6 +207,19 @@
 
 <div class="description">
     Create a new Generic string to be aliased for a specific static vault
+<pre><code>
+Example Generic Values:
+//input
+\d{4}
+//output
+1234
+//input
+[a-zA-Z]{5}
+//output
+AbCde
+//example call
+const genericAliasObj = await staticVault.generic.createGeneric('Abcde', '[a-zA-Z]{5}', ['my-generic-tag1', 'my-generic-tag2']);
+</pre></code>
 </div>
 
 
@@ -229,6 +242,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -255,10 +270,18 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Data to alias</td>
         </tr>
 
     
@@ -277,6 +300,14 @@
             
             </td>
 
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
             
 
             
@@ -301,10 +332,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings to categorize alias</td>
         </tr>
 
     
@@ -345,7 +386,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_generic_generic.js.html">managers/aliases/generic/generic.js</a>, <a href="managers_aliases_generic_generic.js.html#line23">line 23</a>
+        <a href="managers_aliases_generic_generic.js.html">managers/aliases/generic/generic.js</a>, <a href="managers_aliases_generic_generic.js.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -459,7 +500,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -500,7 +541,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_generic_generic.js.html">managers/aliases/generic/generic.js</a>, <a href="managers_aliases_generic_generic.js.html#line76">line 76</a>
+        <a href="managers_aliases_generic_generic.js.html">managers/aliases/generic/generic.js</a>, <a href="managers_aliases_generic_generic.js.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -562,7 +603,7 @@
 
 
 <div class="description">
-    Retrieve the Generic string alias from a static vault
+    Retrieve the Generic string alias from a static vault. Returns an array of matching values. Array will be sorted by date created.
 </div>
 
 
@@ -614,185 +655,7 @@
 
             
 
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_generic_generic.js.html">managers/aliases/generic/generic.js</a>, <a href="managers_aliases_generic_generic.js.html#line43">line 43</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;<a href="global.html#RetrieveGenericResponse">RetrieveGenericResponse</a>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="retrieveGenericFromRealData"><span class="type-signature">(async) </span>retrieveGenericFromRealData<span class="signature">(generic, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveGenericResponse">RetrieveGenericResponse</a>>>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Retrieve the Generic string alias from real generic
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>generic</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>tags</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Array.&lt;string></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -869,6 +732,206 @@
     </dt>
     <dd>
         
+<span class="param-type">Promise.&lt;<a href="global.html#RetrieveGenericResponse">RetrieveGenericResponse</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="retrieveGenericFromRealData"><span class="type-signature">(async) </span>retrieveGenericFromRealData<span class="signature">(generic, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveGenericResponse">RetrieveGenericResponse</a>>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Retrieve the Generic string alias from real generic.
+Real value must be an exact match and will also be case sensitive.
+Returns an array of matching values. Array will be sorted by date created.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>generic</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Real value</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tags</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Strings used to filter return results</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="managers_aliases_generic_generic.js.html">managers/aliases/generic/generic.js</a>, <a href="managers_aliases_generic_generic.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">Promise.&lt;Array.&lt;<a href="global.html#RetrieveGenericResponse">RetrieveGenericResponse</a>>></span>
 
 
@@ -903,7 +966,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 28 2019 15:23:20 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Mon Jun 10 2019 13:59:17 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

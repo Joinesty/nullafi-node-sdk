@@ -198,7 +198,7 @@
     
 
     
-    <h4 class="name" id="createDriversLicense"><span class="type-signature">(async) </span>createDriversLicense<span class="signature">(driverslicense, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateDriversLicenseResponse">CreateDriversLicenseResponse</a>>}</span></h4>
+    <h4 class="name" id="createDriversLicense"><span class="type-signature">(async) </span>createDriversLicense<span class="signature">(driverslicense, state<span class="signature-attributes">opt</span>, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateDriversLicenseResponse">CreateDriversLicenseResponse</a>>}</span></h4>
     
 
     
@@ -207,6 +207,15 @@
 
 <div class="description">
     Create a new DriversLicense string to be aliased for a specific static vault
+<pre><code>
+Providing an incorrect state abbreviation will return a random state. The list of acceptable inputs is below.
+
+'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY',
+'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH',
+'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY'
+Example call:
+const driverslicenseAliasObj = await staticVault.driversLicense.createDriversLicense
+('123456789', 'NY' ['my-driversLicense-tag1', 'my-driversLicense-tag2']);
 </div>
 
 
@@ -229,6 +238,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -255,10 +266,51 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Real driver's license to alias</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>state</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">US state abbreviations</td>
         </tr>
 
     
@@ -278,10 +330,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings to categorize alias</td>
         </tr>
 
     
@@ -322,7 +384,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_drivers-license_drivers-license.js.html">managers/aliases/drivers-license/drivers-license.js</a>, <a href="managers_aliases_drivers-license_drivers-license.js.html#line22">line 22</a>
+        <a href="managers_aliases_drivers-license_drivers-license.js.html">managers/aliases/drivers-license/drivers-license.js</a>, <a href="managers_aliases_drivers-license_drivers-license.js.html#line32">line 32</a>
     </li></ul></dd>
     
 
@@ -436,7 +498,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to delete</td>
         </tr>
 
     
@@ -477,7 +539,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_drivers-license_drivers-license.js.html">managers/aliases/drivers-license/drivers-license.js</a>, <a href="managers_aliases_drivers-license_drivers-license.js.html#line74">line 74</a>
+        <a href="managers_aliases_drivers-license_drivers-license.js.html">managers/aliases/drivers-license/drivers-license.js</a>, <a href="managers_aliases_drivers-license_drivers-license.js.html#line92">line 92</a>
     </li></ul></dd>
     
 
@@ -539,7 +601,7 @@
 
 
 <div class="description">
-    Retrieve the DriversLicense string alias from a static vault
+    Retrieve the DriversLicense string alias from a static vault. Returns an array of matching values. Array will be sorted by date created.
 </div>
 
 
@@ -591,7 +653,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -632,7 +694,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_drivers-license_drivers-license.js.html">managers/aliases/drivers-license/drivers-license.js</a>, <a href="managers_aliases_drivers-license_drivers-license.js.html#line41">line 41</a>
+        <a href="managers_aliases_drivers-license_drivers-license.js.html">managers/aliases/drivers-license/drivers-license.js</a>, <a href="managers_aliases_drivers-license_drivers-license.js.html#line57">line 57</a>
     </li></ul></dd>
     
 
@@ -686,7 +748,7 @@
     
 
     
-    <h4 class="name" id="retrieveDriversLicenseFromRealData"><span class="type-signature">(async) </span>retrieveDriversLicenseFromRealData<span class="signature">(driverslicense, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveDriversLicenseResponse">RetrieveDriversLicenseResponse</a>>>}</span></h4>
+    <h4 class="name" id="retrieveDriversLicenseFromRealData"><span class="type-signature">(async) </span>retrieveDriversLicenseFromRealData<span class="signature">(driverslicense, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveDriversLicenseResponse">RetrieveDriversLicenseResponse</a>>>}</span></h4>
     
 
     
@@ -694,7 +756,9 @@
 
 
 <div class="description">
-    Retrieve the DriversLicense string alias from real driverslicense
+    Retrieve the DriversLicense string alias from real driverslicense.
+Real value must be an exact match and will also be case sensitive.
+Returns an array of matching values. Array will be sorted by date created.
 </div>
 
 
@@ -717,6 +781,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -743,10 +809,18 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Real driver's license</td>
         </tr>
 
     
@@ -766,10 +840,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings used to filter return results</td>
         </tr>
 
     
@@ -810,7 +894,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_drivers-license_drivers-license.js.html">managers/aliases/drivers-license/drivers-license.js</a>, <a href="managers_aliases_drivers-license_drivers-license.js.html#line54">line 54</a>
+        <a href="managers_aliases_drivers-license_drivers-license.js.html">managers/aliases/drivers-license/drivers-license.js</a>, <a href="managers_aliases_drivers-license_drivers-license.js.html#line72">line 72</a>
     </li></ul></dd>
     
 
@@ -880,7 +964,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 28 2019 15:23:20 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Mon Jun 10 2019 13:59:17 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -198,7 +198,7 @@
     
 
     
-    <h4 class="name" id="createPassport"><span class="type-signature">(async) </span>createPassport<span class="signature">(passport, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreatePassportResponse">CreatePassportResponse</a>>}</span></h4>
+    <h4 class="name" id="createPassport"><span class="type-signature">(async) </span>createPassport<span class="signature">(passport, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreatePassportResponse">CreatePassportResponse</a>>}</span></h4>
     
 
     
@@ -207,6 +207,10 @@
 
 <div class="description">
     Create a new Passport string to be aliased for a specific static vault
+<pre><code>
+//example call:
+const passportAliasObj = await staticVault.passport.createPassport('123456789', ['my-passport-tag1', 'my-passport-tag2']);
+</pre></code>
 </div>
 
 
@@ -229,6 +233,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -255,10 +261,18 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Passport to alias</td>
         </tr>
 
     
@@ -278,10 +292,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings to categorize alias</td>
         </tr>
 
     
@@ -322,7 +346,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_passport_passport.js.html">managers/aliases/passport/passport.js</a>, <a href="managers_aliases_passport_passport.js.html#line22">line 22</a>
+        <a href="managers_aliases_passport_passport.js.html">managers/aliases/passport/passport.js</a>, <a href="managers_aliases_passport_passport.js.html#line26">line 26</a>
     </li></ul></dd>
     
 
@@ -436,7 +460,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -477,7 +501,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_passport_passport.js.html">managers/aliases/passport/passport.js</a>, <a href="managers_aliases_passport_passport.js.html#line73">line 73</a>
+        <a href="managers_aliases_passport_passport.js.html">managers/aliases/passport/passport.js</a>, <a href="managers_aliases_passport_passport.js.html#line79">line 79</a>
     </li></ul></dd>
     
 
@@ -539,7 +563,7 @@
 
 
 <div class="description">
-    Retrieve the Passport string alias from a static vault
+    Retrieve the Passport string alias from a static vault. Returns an array of matching values. Array will be sorted by date created.
 </div>
 
 
@@ -591,7 +615,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -632,7 +656,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_passport_passport.js.html">managers/aliases/passport/passport.js</a>, <a href="managers_aliases_passport_passport.js.html#line41">line 41</a>
+        <a href="managers_aliases_passport_passport.js.html">managers/aliases/passport/passport.js</a>, <a href="managers_aliases_passport_passport.js.html#line45">line 45</a>
     </li></ul></dd>
     
 
@@ -686,7 +710,7 @@
     
 
     
-    <h4 class="name" id="retrievePassportFromRealData"><span class="type-signature">(async) </span>retrievePassportFromRealData<span class="signature">(passport, tags)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrievePassportResponse">RetrievePassportResponse</a>>>}</span></h4>
+    <h4 class="name" id="retrievePassportFromRealData"><span class="type-signature">(async) </span>retrievePassportFromRealData<span class="signature">(passport, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrievePassportResponse">RetrievePassportResponse</a>>>}</span></h4>
     
 
     
@@ -694,7 +718,9 @@
 
 
 <div class="description">
-    Retrieve the Passport string alias from real passport
+    Retrieve the Passport string alias from real passport.
+Real value must be an exact match and will also be case sensitive.
+Returns an array of matching values. Array will be sorted by date created.
 </div>
 
 
@@ -717,6 +743,8 @@
 
         <th>Type</th>
 
+        
+        <th>Attributes</th>
         
 
         
@@ -743,10 +771,18 @@
             </td>
 
             
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Real passport</td>
         </tr>
 
     
@@ -766,10 +802,20 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings used to filter return results</td>
         </tr>
 
     
@@ -810,7 +856,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_passport_passport.js.html">managers/aliases/passport/passport.js</a>, <a href="managers_aliases_passport_passport.js.html#line54">line 54</a>
+        <a href="managers_aliases_passport_passport.js.html">managers/aliases/passport/passport.js</a>, <a href="managers_aliases_passport_passport.js.html#line60">line 60</a>
     </li></ul></dd>
     
 
@@ -880,7 +926,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue May 28 2019 15:23:20 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Mon Jun 10 2019 13:59:17 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
