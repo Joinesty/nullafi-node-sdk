@@ -19,7 +19,8 @@ Nullafi SDK is supported on node versions above v10.14.0.
 
 Getting Started
 ---------------
-To get started with the SDK as a new developer, one must create a developer account. Go to the [Nullafi Signup Page](https://dashboard.nullafi.com/signup), and create a new developer account. As an account owner, you can retrieve the API key by going to the settings page, and selecting the 'API Key' tab. You may manage API key generation for the SDK from here. Create a new key and store the key value somewhere secure, as Nullafi will not store this key.
+To get started with the SDK as a new developer, one must create a developer account. Go to the 
+<a href="https://dashboard.nullafi.com/signup" target="_blank">Nullafi Signup Page</a>, and create a new developer account. As an account owner, you can retrieve the API key by going to the settings page, and selecting the 'API Key' tab. You may manage API key generation for the SDK from here. Create a new key and store the key value somewhere secure, as Nullafi will not store this key.
 
 **Note:** Make sure to implement the nullafi-sdk in back end products only. Implementing the nullafi key on a front end product will expose the key to the public, and risk exposing private data. 
 
@@ -280,7 +281,7 @@ Communication Vaults
 ------------
 Communicataion vaults will store aliases for data types that will need to maintain their transactional integrity. Creating a communication vault is a similar process to a static vault, but the data aliased inside will be different. 
 
-The alias generated for communication emails will be a functioning email. Nullafi will handle receiving messages to this address and relaying them to the real email address. White list senders and domains are added to control who may contact these users. Control for these emails may be found in the [Nullafi Dashboard](https://dashboard.nullafi.com/login) under the **'System'** tab.
+The alias generated for communication emails will be a functioning email. Nullafi will handle receiving messages to this address and relaying them to the real email address. White list senders and domains are added to control who may contact these users. Control for these emails may be found in the <a href="https://dashboard.nullafi.com/login" target="_blank">Nullafi Dashboard</a> under the **'System'** tab.
 
 ```js
 const client = await sdk.createClient();
