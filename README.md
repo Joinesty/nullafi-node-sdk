@@ -16,10 +16,6 @@ Installation
 
 Nullafi SDK is supported on node versions above v10.14.0.
 
-Full Documentation
-------------
-To view extensive class documentation, go to nullafi-node-sdk/docs/index.html in the nullafi-node-sdk github repository and open the file in browser. 
-
 Getting Started
 ---------------
 To get started with the SDK as a new developer, one must create a developer account. Go to the 
