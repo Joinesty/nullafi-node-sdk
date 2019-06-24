@@ -24,7 +24,7 @@ To get started with the SDK as a new developer, one must create a developer acco
 **Note:** Make sure to implement the nullafi-sdk in back end products only. Implementing the nullafi key on a front end product will expose the key to the public, and risk exposing private data. 
 
 ```js
-const NullafiSDK = require('nullafi-node-sdk');
+const NullafiSDK = require('@joinesty/nullafi-node-sdk');
 
 //We recommend storing your key in a secure non-public facing env file
 const NULLAFI_API_KEY = ENV.fetch('NULLAFI_API_KEY')
@@ -93,7 +93,7 @@ const client = await sdk.createClient();
 // ID and Master key should be stored and retrieved from database
 const staticVaultID = 'e490157b23534215b0369a2685aab47g';
 const staticVaultMasterKey = 'MASTER_KEY';
-const staticVault = await client.retrieveStaticVault(client, staticVaultID, staticVaultMasterKey);
+const staticVault = await client.retrieveStaticVault(staticVaultID, staticVaultMasterKey);
 ```
 
 Static Data Types
@@ -307,7 +307,7 @@ const client = await sdk.createClient();
 const communicationVaultID = 'e490157b23534215b0369a2685aab47g';
 const communicationVaultMasterKey = 'MASTER_KEY';
 // ID and Master key should be stored and retrieved from database
-const communicationVault = await client.retrieveCommunicationVault(client, communicationVaultID, communicationVaultMasterKey);
+const communicationVault = await client.retrieveCommunicationVault(communicationVaultID, communicationVaultMasterKey);
 ```
 
 Communication Data Types
