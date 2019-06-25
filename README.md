@@ -12,9 +12,8 @@
 Installation
 ------------
 
-```
-npm install --save nullafi-node-sdk
-```
+[![NPM](https://nodei.co/npm/@joinesty/nullafi-node-sdk.png)](https://nodei.co/npm/@joinesty/nullafi-node-sdk/)
+
 Nullafi SDK is supported on node versions above v10.14.0.
 
 Getting Started
@@ -314,7 +313,7 @@ const communicationVault = await client.retrieveCommunicationVault(client, commu
 Communication Data Types
 ------------
 ### Email
-Generating email aliases will provide a new functional email to use in place of the real email. These alias addresses will work as relays to the real address, while also provided the ability to white list approved sender domains and addresses. 
+Generating email aliases will provide a new functional email to use in place of the real email. These alias addresses will work as relays to the real address, while also providing the ability to white list approved sender domains and addresses. 
 
 Email example:
 ```js
