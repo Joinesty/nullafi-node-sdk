@@ -124,8 +124,9 @@ Generates a fake address that will not trace to a real location. An optional par
 
 Address example:
 ```js
-street, city, state abbreviation zipcode, USA
-43520 Hills Flat, East Aricchester, AK 99761, USA
+// example format/output
+// street, city, state abbreviation zipcode, USA
+// 43520 Hills Flat, East Aricchester, AK 99761, USA
 
 //example call
 const addressAliasObj = await staticVault.address.createAddress('138 Congress St, Portland, ME 04101', 'ME', ['my-address-tag1', 'my-address-tag2']);
@@ -142,8 +143,9 @@ Will generate a new date between the year span of 1949 and 2001. Year(YYYY) and 
 
 Date of birth example:
 ```js
-YYYY-MM-DD
-1980-12-20
+// example format/output
+// YYYY-MM-DD
+// 1980-12-20
 
 //providing the optional year and month arguments 
 const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth('1999-07-02', '1999', '07', ['my-dob-tag1', 'my-dob-tag2']);
@@ -194,14 +196,14 @@ Generic takes a regular expression as input and will generate a value matching t
 
 Example Generic Values:
 ```js
-//input
-\d{4}
-//output
-1234
-//input
-[a-zA-Z]{5}
-//output
-AbCde
+// input
+// \d{4}
+// output
+// 1234
+// input
+// [a-zA-Z]{5}
+// output
+// AbCde
 
 //example call
 const genericAliasObj = await staticVault.generic.createGeneric('Abcde', '[a-zA-Z]{5}', ['my-generic-tag1', 'my-generic-tag2']);
@@ -228,8 +230,9 @@ Generates a random place of birth. An optional parameter of state may be provide
 
 Place of birth example:
 ```js
-city, state
-Odachester, Washington
+// example format/output
+// city, state 
+// Odachester, Washington
 
 //example call with optional state param
 const pobAliasObj = await staticVault.placeOfBirth.createPlaceOfBirth('Atlanta, Georgia', 'GA', ['my-pob-tag1', 'my-pob-tag2']);
@@ -271,7 +274,8 @@ Generates a random social security number. An optional parameter of state may be
 
 Output format:
 ```js
-###-##-####
+// format
+// ###-##-####
 
 //example call
 const ssnAliasObj = await staticVault.ssn.createSSN('123-45-6789', ['my-ssn-tag1', 'my-ssn-tag2']);
@@ -281,7 +285,8 @@ Generates a random tay payer ID. Currently only produces ITIN(Individual Taxpaye
 
 Output format: 
 ```js
-9#-##-####
+// format
+// 9#-##-####
 
 //example call
 const taxPayerIDAliasObj = await staticVault.taxPayerID.createTaxPayerID('92-45-6789', ['my-taxPayerID-tag1', 'my-taxPayerID-tag2']);
@@ -291,7 +296,8 @@ Generates a random vehicle registration. Vehicle registration is 3 Capitalized l
 
 Example Output: 
 ```js
-ABC·1234
+// format
+// ABC·1234
 
 //example call
 const vehicleRegistrationAliasObj = await staticVault.vehicleRegistration.createVehicleRegistration('92-45-6789', ['my-vehicleRegistration-tag1', 'my-vehicleRegistration-tag2']);
@@ -356,10 +362,10 @@ Generating email aliases will provide a new functional email to use in place of 
 
 Email example:
 ```js
-//input
-realEmail@gmail.com
-//output
-cizljfhxrazvcy@fipale.com
+// input
+// realEmail@gmail.com
+// output
+// cizljfhxrazvcy@fipale.com
 
 //example call
 const emailAlias = await communicationVault.email.createEmail('realEmail@gmail.com', ['my-tag-1', 'my-tag-2']);
