@@ -54,41 +54,43 @@
 <h2>Installation</h2>
 <p><a href="https://nodei.co/npm/@joinesty/nullafi-node-sdk/"><img src="https://nodei.co/npm/@joinesty/nullafi-node-sdk.png" alt="NPM"></a></p>
 <p>Nullafi SDK is supported on node versions above v10.14.0.</p>
-<h2>Full Documentation</h2>
-<p>To view extensive class documentation, go to nullafi-node-sdk/docs/index.html in the nullafi-node-sdk github repository and open the file in browser.</p>
 <h2>Getting Started</h2>
 <p>To get started with the SDK as a new developer, one must create a developer account. Go to the
 <a href="https://dashboard.nullafi.com/signup" target="_blank">Nullafi Signup Page</a>, and create a new developer account. As an account owner, you can retrieve the API key by going to the settings page, and selecting the 'API Key' tab. You may manage API key generation for the SDK from here. Create a new key and store the key value somewhere secure, as Nullafi will not store this key.</p>
 <p><strong>Note:</strong> Make sure to implement the nullafi-sdk in back end products only. Implementing the nullafi key on a front end product will expose the key to the public, and risk exposing private data.</p>
-<pre class="prettyprint source lang-js"><code>const NullafiSDK = require('nullafi-node-sdk');
+<pre class="prettyprint source lang-js"><code>const NullafiSDK = require('@joinesty/nullafi-node-sdk');
 
-//We recommend storing your key in a secure non-public facing env file
+// We recommend storing your key in a secure non-public facing env file
 const NULLAFI_API_KEY = ENV.fetch('NULLAFI_API_KEY')
 
-// Initialize the SDK with your API credentials
-const sdk = new NullafiSDK(NULLAFI_API_KEY);
+// Since the Nullafi SDK makes use of the await feature in these examples, they must be run within an async function
+const start = async () => {
+	// Initialize the SDK with your API credentials
+	const sdk = new NullafiSDK(NULLAFI_API_KEY);
 
-// Create a basic API client, which will also authenticate your client. 
-// Client authentication will expire after 60 minutes
-const client = await sdk.createClient();
+	// Create a basic API client, which will also authenticate your client. 
+	// Client authentication will expire after 60 minutes
+	const client = await sdk.createClient();
 
-// Get your own user object from the Nullafi API
-// All client methods return a promise that resolves to the results of the API call,
-// or rejects when an error occurs
-// Adding tags is an important way to retrieve data
-const staticVault = await client.createStaticVault('my-static-vault', ['my-tag-1', 'my-tag-2']);
-const firstNameAliasObj = await staticVault.firstName.createFirstName('John', ['my-fName-tag1', 'my-fName-tag2']);
-console.log(firstNameAliasObj); 
-/*
-	output example:
-	{ 
-		id: 'e490157b23534215b0369a2685aab47g', 
-		firstname: 'John',
-		firstnameAlias: 'Oliver', 
-		tags: ['my-fName-tag1', 'my-fName-tag2'], 
-		createdAt: '2018-07-13 T01:00:00Z' 
-	}
-*/
+	// Get your own user object from the Nullafi API
+	// All client methods return a promise that resolves to the results of the API call,
+	// or rejects when an error occurs
+	// Adding tags is an important way to retrieve data
+	const staticVault = await client.createStaticVault('my-static-vault', ['my-tag-1', 'my-tag-2']);
+	const firstNameAliasObj = await staticVault.firstName.createFirstName('John', ['my-fName-tag1', 'my-fName-tag2']);
+	console.log(firstNameAliasObj); 
+	/*
+		output example:
+		{ 
+			id: 'e490157b23534215b0369a2685aab47g', 
+			firstname: 'John',
+			firstnameAlias: 'Oliver', 
+			tags: ['my-fName-tag1', 'my-fName-tag2'], 
+			createdAt: '2018-07-13 T01:00:00Z' 
+		}
+	*/
+}
+start();
 </code></pre>
 <h2>Authentication</h2>
 <p>When a client is created, the client instance will be authenticated for a 60 minute period. After this time, you may either create a new client or refresh the existing client.</p>
@@ -119,7 +121,7 @@ const client = await sdk.createClient();
 // ID and Master key should be stored and retrieved from database
 const staticVaultID = 'e490157b23534215b0369a2685aab47g';
 const staticVaultMasterKey = 'MASTER_KEY';
-const staticVault = await client.retrieveStaticVault(client, staticVaultID, staticVaultMasterKey);
+const staticVault = await client.retrieveStaticVault(staticVaultID, staticVaultMasterKey);
 </code></pre>
 <h2>Static Data Types</h2>
 <h3>Address</h3>
@@ -285,7 +287,7 @@ const client = await sdk.createClient();
 const communicationVaultID = 'e490157b23534215b0369a2685aab47g';
 const communicationVaultMasterKey = 'MASTER_KEY';
 // ID and Master key should be stored and retrieved from database
-const communicationVault = await client.retrieveCommunicationVault(client, communicationVaultID, communicationVaultMasterKey);
+const communicationVault = await client.retrieveCommunicationVault(communicationVaultID, communicationVaultMasterKey);
 </code></pre>
 <h2>Communication Data Types</h2>
 <h3>Email</h3>
@@ -317,7 +319,7 @@ const emailAlias = await communicationVault.email.createEmail('realEmail@gmail.c
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Fri Jun 14 2019 11:00:49 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue Jun 25 2019 11:32:17 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

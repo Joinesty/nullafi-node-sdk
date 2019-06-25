@@ -26,33 +26,37 @@ To get started with the SDK as a new developer, one must create a developer acco
 ```js
 const NullafiSDK = require('@joinesty/nullafi-node-sdk');
 
-//We recommend storing your key in a secure non-public facing env file
+// We recommend storing your key in a secure non-public facing env file
 const NULLAFI_API_KEY = ENV.fetch('NULLAFI_API_KEY')
 
-// Initialize the SDK with your API credentials
-const sdk = new NullafiSDK(NULLAFI_API_KEY);
+// Since the Nullafi SDK makes use of the await feature in these examples, they must be run within an async function
+const start = async () => {
+	// Initialize the SDK with your API credentials
+	const sdk = new NullafiSDK(NULLAFI_API_KEY);
 
-// Create a basic API client, which will also authenticate your client. 
-// Client authentication will expire after 60 minutes
-const client = await sdk.createClient();
+	// Create a basic API client, which will also authenticate your client. 
+	// Client authentication will expire after 60 minutes
+	const client = await sdk.createClient();
 
-// Get your own user object from the Nullafi API
-// All client methods return a promise that resolves to the results of the API call,
-// or rejects when an error occurs
-// Adding tags is an important way to retrieve data
-const staticVault = await client.createStaticVault('my-static-vault', ['my-tag-1', 'my-tag-2']);
-const firstNameAliasObj = await staticVault.firstName.createFirstName('John', ['my-fName-tag1', 'my-fName-tag2']);
-console.log(firstNameAliasObj); 
-/*
-	output example:
-	{ 
-		id: 'e490157b23534215b0369a2685aab47g', 
-		firstname: 'John',
-		firstnameAlias: 'Oliver', 
-		tags: ['my-fName-tag1', 'my-fName-tag2'], 
-		createdAt: '2018-07-13 T01:00:00Z' 
-	}
-*/
+	// Get your own user object from the Nullafi API
+	// All client methods return a promise that resolves to the results of the API call,
+	// or rejects when an error occurs
+	// Adding tags is an important way to retrieve data
+	const staticVault = await client.createStaticVault('my-static-vault', ['my-tag-1', 'my-tag-2']);
+	const firstNameAliasObj = await staticVault.firstName.createFirstName('John', ['my-fName-tag1', 'my-fName-tag2']);
+	console.log(firstNameAliasObj); 
+	/*
+		output example:
+		{ 
+			id: 'e490157b23534215b0369a2685aab47g', 
+			firstname: 'John',
+			firstnameAlias: 'Oliver', 
+			tags: ['my-fName-tag1', 'my-fName-tag2'], 
+			createdAt: '2018-07-13 T01:00:00Z' 
+		}
+	*/
+}
+start();
 ```
 
 Authentication
