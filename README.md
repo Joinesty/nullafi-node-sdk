@@ -24,35 +24,39 @@ To get started with the SDK as a new developer, one must create a developer acco
 **Note:** Make sure to implement the nullafi-sdk in back end products only. Implementing the nullafi key on a front end product will expose the key to the public, and risk exposing private data. 
 
 ```js
-const NullafiSDK = require('nullafi-node-sdk');
+const NullafiSDK = require('@joinesty/nullafi-node-sdk');
 
-//We recommend storing your key in a secure non-public facing env file
+// We recommend storing your key in a secure non-public facing env file
 const NULLAFI_API_KEY = ENV.fetch('NULLAFI_API_KEY')
 
-// Initialize the SDK with your API credentials
-const sdk = new NullafiSDK(NULLAFI_API_KEY);
+// Since the Nullafi SDK makes use of the await feature in these examples, they must be run within an async function
+const start = async () => {
+	// Initialize the SDK with your API credentials
+	const sdk = new NullafiSDK(NULLAFI_API_KEY);
 
-// Create a basic API client, which will also authenticate your client. 
-// Client authentication will expire after 60 minutes
-const client = await sdk.createClient();
+	// Create a basic API client, which will also authenticate your client. 
+	// Client authentication will expire after 60 minutes
+	const client = await sdk.createClient();
 
-// Get your own user object from the Nullafi API
-// All client methods return a promise that resolves to the results of the API call,
-// or rejects when an error occurs
-// Adding tags is an important way to retrieve data
-const staticVault = await client.createStaticVault('my-static-vault', ['my-tag-1', 'my-tag-2']);
-const firstNameAliasObj = await staticVault.firstName.createFirstName('John', ['my-fName-tag1', 'my-fName-tag2']);
-console.log(firstNameAliasObj); 
-/*
-	output example:
-	{ 
-		id: 'e490157b23534215b0369a2685aab47g', 
-		firstname: 'John',
-		firstnameAlias: 'blssVzRzdnP9uEi5WDrFGW7y0JELl7aLKMyKeOyChlk=', 
-		tags: ['my-fName-tag1', 'my-fName-tag2'], 
-		createdAt: '2018-07-13 T01:00:00Z' 
-	}
-*/
+	// Get your own user object from the Nullafi API
+	// All client methods return a promise that resolves to the results of the API call,
+	// or rejects when an error occurs
+	// Adding tags is an important way to retrieve data
+	const staticVault = await client.createStaticVault('my-static-vault', ['my-tag-1', 'my-tag-2']);
+	const firstNameAliasObj = await staticVault.firstName.createFirstName('John', ['my-fName-tag1', 'my-fName-tag2']);
+	console.log(firstNameAliasObj); 
+	/*
+		output example:
+		{ 
+			id: 'e490157b23534215b0369a2685aab47g', 
+			firstname: 'John',
+			firstnameAlias: 'Oliver', 
+			tags: ['my-fName-tag1', 'my-fName-tag2'], 
+			createdAt: '2018-07-13 T01:00:00Z' 
+		}
+	*/
+}
+start();
 ```
 
 Authentication
@@ -93,7 +97,7 @@ const client = await sdk.createClient();
 // ID and Master key should be stored and retrieved from database
 const staticVaultID = 'e490157b23534215b0369a2685aab47g';
 const staticVaultMasterKey = 'MASTER_KEY';
-const staticVault = await client.retrieveStaticVault(client, staticVaultID, staticVaultMasterKey);
+const staticVault = await client.retrieveStaticVault(staticVaultID, staticVaultMasterKey);
 ```
 
 Static Data Types
@@ -307,7 +311,7 @@ const client = await sdk.createClient();
 const communicationVaultID = 'e490157b23534215b0369a2685aab47g';
 const communicationVaultMasterKey = 'MASTER_KEY';
 // ID and Master key should be stored and retrieved from database
-const communicationVault = await client.retrieveCommunicationVault(client, communicationVaultID, communicationVaultMasterKey);
+const communicationVault = await client.retrieveCommunicationVault(communicationVaultID, communicationVaultMasterKey);
 ```
 
 Communication Data Types
