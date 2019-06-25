@@ -103,7 +103,7 @@ class DriversLicense {
             tags,
         };
 
-        const responseList = await this.vault.client.get('/vault/static/driverslicense', query);
+        const responseList = await this.vault.client.get(`/vault/static/${this.vault.id}/driverslicense`, query);
 
         responseList.forEach((response) => {
             response.driverslicense = this.vault.decrypt(response.iv, response.authTag, response.driverslicense);

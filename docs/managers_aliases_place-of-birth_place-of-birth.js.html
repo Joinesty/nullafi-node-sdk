@@ -106,7 +106,7 @@ class PlaceOfBirth {
             tags,
         };
 
-        const responseList = await this.vault.client.get('/vault/static/placeofbirth', query);
+        const responseList = await this.vault.client.get(`/vault/static/${this.vault.id}/placeofbirth`, query);
         responseList.forEach((response) => {
             response.placeofbirth = this.vault.decrypt(response.iv, response.authTag, response.placeofbirth);
         });

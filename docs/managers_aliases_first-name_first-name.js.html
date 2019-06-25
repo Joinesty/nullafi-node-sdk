@@ -103,7 +103,7 @@ class FirstName {
             tags,
         };
 
-        const responseList = await this.vault.client.get('/vault/static/firstname', query);
+        const responseList = await this.vault.client.get(`/vault/static/${this.vault.id}/firstname`, query);
         responseList.forEach((response) => {
             response.firstname = this.vault.decrypt(response.iv, response.authTag, response.firstname);
         });

@@ -94,7 +94,7 @@ class TaxPayerID {
             tags,
         };
 
-        const responseList = await this.vault.client.get('/vault/static/taxpayerid', query);
+        const responseList = await this.vault.client.get(`/vault/static/${this.vault.id}/taxpayerid`, query);
         responseList.forEach((response) => {
             response.taxpayerid = this.vault.decrypt(response.iv, response.authTag, response.taxpayerid);
         });

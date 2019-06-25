@@ -101,7 +101,7 @@ class SSN {
             tags,
         };
 
-        const responseList = await this.vault.client.get('/vault/static/ssn', query);
+        const responseList = await this.vault.client.get(`/vault/static/${this.vault.id}/ssn`, query);
         responseList.forEach((response) => {
             response.ssn = this.vault.decrypt(response.iv, response.authTag, response.ssn);
         });

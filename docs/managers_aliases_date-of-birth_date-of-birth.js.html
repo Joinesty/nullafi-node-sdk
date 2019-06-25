@@ -110,7 +110,7 @@ class DateOfBirth {
             tags,
         };
 
-        const responseList = await this.vault.client.get('/vault/static/dateofbirth', query);
+        const responseList = await this.vault.client.get(`/vault/static/${this.vault.id}/dateofbirth`, query);
         responseList.forEach((response) => {
             response.dateofbirth = this.vault.decrypt(response.iv, response.authTag, response.dateofbirth);
         });

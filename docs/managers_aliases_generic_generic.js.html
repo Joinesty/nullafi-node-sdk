@@ -102,7 +102,7 @@ class Generic {
             tags,
         };
 
-        const responseList = await this.vault.client.get('/vault/static/generic', query);
+        const responseList = await this.vault.client.get(`/vault/static/${this.vault.id}/generic`, query);
         responseList.forEach((response) => {
             response.data = this.vault.decrypt(response.iv, response.authTag, response.data);
         });
