@@ -100,6 +100,23 @@ const staticVaultMasterKey = 'MASTER_KEY';
 const staticVault = await client.retrieveStaticVault(staticVaultID, staticVaultMasterKey);
 ```
 
+You can also delete a vault using the vault ID. Deleting the vault will also remove all aliases stored within, so make sure data is properly saved before deleting a vault. Deleting a vault will return a response with a key of 'ok' and a boolean value. 
+
+```js
+//Authenticated client
+const client = await sdk.createClient();
+// ID should be stored and retrieved from database
+const staticVaultID = 'e490157b23534215b0369a2685aab47g';
+const staticVaultResponse = await client.deleteStaticVault(staticVaultID);
+console.log(staticVaultResponse);
+/*
+	output example:
+	{ 
+		ok: true
+	}
+*/
+}
+```
 Static Data Types
 ------------
 ### Address
@@ -111,7 +128,7 @@ street, city, state abbreviation zipcode, USA
 43520 Hills Flat, East Aricchester, AK 99761, USA
 
 //example call
-const addressAliasObj = await staticVault.address.createAddress('138 Congress St, Portland, ME 04101', 'ME' ['my-address-tag1', 'my-address-tag2']);
+const addressAliasObj = await staticVault.address.createAddress('138 Congress St, Portland, ME 04101', 'ME', ['my-address-tag1', 'my-address-tag2']);
 ```
 
 Providing an incorrect state abbreviation will return a random state. The list of acceptable inputs is below.
@@ -129,7 +146,7 @@ YYYY-MM-DD
 1980-12-20
 
 //providing the optional year and month arguments 
-const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth('1999-07-02', '1999', '07' ['my-dob-tag1', 'my-dob-tag2']);
+const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth('1999-07-02', '1999', '07', ['my-dob-tag1', 'my-dob-tag2']);
 ```
 ### Driver's license
 Generates a randomly generated combination of numbers and letters based on the format of each state's format. A state may be provided as an optional parameter to return a license for that state. A list of formats may be viewed [**here**](https://ntsi.com/drivers-license-format/).
@@ -144,7 +161,7 @@ Providing an incorrect state abbreviation will return a random state. The list o
 Example call: 
 ```js
 //example call with optional state
-const driverslicenseAliasObj = await staticVault.driversLicense.createDriversLicense('123456789', 'NY' ['my-driversLicense-tag1', 'my-driversLicense-tag2']);
+const driverslicenseAliasObj = await staticVault.driversLicense.createDriversLicense('123456789', 'NY', ['my-driversLicense-tag1', 'my-driversLicense-tag2']);
 ```
 ### First name
 Generates a random name with the optional input of gender. 
@@ -294,7 +311,7 @@ console.log(communicationVault)
 	output example:
 	{ 
 		id: 'e490157b23534215b0369a2685aab47g', 
-		name: 'my-communication-vault,
+		name: 'my-communication-vault',
 		masterKey: 'MASTER_KEY',
 		tags: ['my-tag-1', 'my-tag-2'], 
 		createdAt: '2018-07-13 T01:00:00Z' 
@@ -312,6 +329,24 @@ const communicationVaultID = 'e490157b23534215b0369a2685aab47g';
 const communicationVaultMasterKey = 'MASTER_KEY';
 // ID and Master key should be stored and retrieved from database
 const communicationVault = await client.retrieveCommunicationVault(communicationVaultID, communicationVaultMasterKey);
+```
+
+You can also delete a vault using the vault ID. Deleting the vault will also remove all aliases stored within, so make sure data is properly saved before deleting a vault. Deleting a vault will return a response with a key of 'ok' and a boolean value. 
+
+```js
+//Authenticated client
+const client = await sdk.createClient();
+// ID should be stored and retrieved from database
+const communicationVaultID = 'e490157b23534215b0369a2685aab47g';
+const communicationVaultResponse = await client.deleteCommunicationVault(communicationVaultID);
+console.log(communicationVaultResponse);
+/*
+	output example:
+	{ 
+		ok: true
+	}
+*/
+}
 ```
 
 Communication Data Types
