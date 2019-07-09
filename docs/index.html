@@ -77,6 +77,15 @@ const start = async () => {
 	// or rejects when an error occurs
 	// Adding tags is an important way to retrieve data
 	const staticVault = await client.createStaticVault('my-static-vault', ['my-tag-1', 'my-tag-2']);
+	/*
+		output example:
+		{ 
+			client: {client Object}, 
+			vaultId: '2451ded4-1d41-44d3-906b-7d3cafd0a98b',
+			vaultName: 'my-static-vault', 
+			masterKey: 'BvDkTuOhT2I3fjEoOxKjefu3vjxV6fQX/HOMozNohUg='
+		}
+	*/
 	const firstNameAliasObj = await staticVault.firstName.createFirstName('John', ['my-fName-tag1', 'my-fName-tag2']);
 	console.log(firstNameAliasObj); 
 	/*
@@ -91,6 +100,23 @@ const start = async () => {
 	*/
 }
 start();
+</code></pre>
+<p>Aliases may be retrieved and deleted using these methods:</p>
+<pre class="prettyprint source lang-js"><code>	// An alias can be retrieved by it's ID
+	const retrieveFirstNameByID = await staticVault.firstName.retrieveFirstName('e490157b23534215b0369a2685aab47g');
+
+	// An alias may also be retrieved using it's real value, as well as any tags that may help identify the data point. This will return an array of values matching the given parameters. 
+	const retrieveFirstNameByRealValue = await staticVault.firstName.retrieveFirstNameFromRealData('John', ['my-tag-1', 'my-tag-2'])
+
+	// Deleting an alias will also use ID
+	const deleteFirstNameAlias = await staticVault.firstName.deleteFirstName('e490157b23534215b0369a2685aab47g');
+</code></pre>
+<p>Vaults may be retrieved and deleted using these methods:</p>
+<pre class="prettyprint source lang-js"><code>	// A vault can be retrieved by it's ID and master key
+	const staticVault = await client.retrieveStaticVault('2451ded4-1d41-44d3-906b-7d3cafd0a98b', 'BvDkTuOhT2I3fjEoOxKjefu3vjxV6fQX/HOMozNohUg=');
+
+	// A vault is deleted using it's ID
+	const deleteStaticVault = await client.staticVault('2451ded4-1d41-44d3-906b-7d3cafd0a98b');
 </code></pre>
 <h2>Authentication</h2>
 <p>When a client is created, the client instance will be authenticated for a 60 minute period. After this time, you may either create a new client or refresh the existing client.</p>
@@ -123,15 +149,31 @@ const staticVaultID = 'e490157b23534215b0369a2685aab47g';
 const staticVaultMasterKey = 'MASTER_KEY';
 const staticVault = await client.retrieveStaticVault(staticVaultID, staticVaultMasterKey);
 </code></pre>
+<p>You can also delete a vault using the vault ID. Deleting the vault will also remove all aliases stored within, so make sure data is properly saved before deleting a vault. Deleting a vault will return a response with a key of 'ok' and a boolean value.</p>
+<pre class="prettyprint source lang-js"><code>//Authenticated client
+const client = await sdk.createClient();
+// ID should be stored and retrieved from database
+const staticVaultID = 'e490157b23534215b0369a2685aab47g';
+const staticVaultResponse = await client.deleteStaticVault(staticVaultID);
+console.log(staticVaultResponse);
+/*
+	output example:
+	{ 
+		ok: true
+	}
+*/
+}
+</code></pre>
 <h2>Static Data Types</h2>
 <h3>Address</h3>
 <p>Generates a fake address that will not trace to a real location. An optional parameter of state may be provided to choose the state associated with the fake address.</p>
 <p>Address example:</p>
-<pre class="prettyprint source lang-js"><code>street, city, state abbreviation zipcode, USA
-43520 Hills Flat, East Aricchester, AK 99761, USA
+<pre class="prettyprint source lang-js"><code>// example format/output
+// street, city, state abbreviation zipcode, USA
+// 43520 Hills Flat, East Aricchester, AK 99761, USA
 
 //example call
-const addressAliasObj = await staticVault.address.createAddress('138 Congress St, Portland, ME 04101', 'ME' ['my-address-tag1', 'my-address-tag2']);
+const addressAliasObj = await staticVault.address.createAddress('138 Congress St, Portland, ME 04101', 'ME', ['my-address-tag1', 'my-address-tag2']);
 </code></pre>
 <p>Providing an incorrect state abbreviation will return a random state. The list of acceptable inputs is below.</p>
 <pre class="prettyprint source lang-text"><code>'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY',
@@ -141,11 +183,12 @@ const addressAliasObj = await staticVault.address.createAddress('138 Congress St
 <h3>Date of birth</h3>
 <p>Will generate a new date between the year span of 1949 and 2001. Year(YYYY) and month(MM) are both optional parameters that will set the date to the corresponding year and/or month.</p>
 <p>Date of birth example:</p>
-<pre class="prettyprint source lang-js"><code>YYYY-MM-DD
-1980-12-20
+<pre class="prettyprint source lang-js"><code>// example format/output
+// YYYY-MM-DD
+// 1980-12-20
 
 //providing the optional year and month arguments 
-const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth('1999-07-02', '1999', '07' ['my-dob-tag1', 'my-dob-tag2']);
+const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth('1999-07-02', '1999', '07', ['my-dob-tag1', 'my-dob-tag2']);
 </code></pre>
 <h3>Driver's license</h3>
 <p>Generates a randomly generated combination of numbers and letters based on the format of each state's format. A state may be provided as an optional parameter to return a license for that state. A list of formats may be viewed <a href="https://ntsi.com/drivers-license-format/"><strong>here</strong></a>.</p>
@@ -156,7 +199,7 @@ const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth('1999-07-02'
 </code></pre>
 <p>Example call:</p>
 <pre class="prettyprint source lang-js"><code>//example call with optional state
-const driverslicenseAliasObj = await staticVault.driversLicense.createDriversLicense('123456789', 'NY' ['my-driversLicense-tag1', 'my-driversLicense-tag2']);
+const driverslicenseAliasObj = await staticVault.driversLicense.createDriversLicense('123456789', 'NY', ['my-driversLicense-tag1', 'my-driversLicense-tag2']);
 </code></pre>
 <h3>First name</h3>
 <p>Generates a random name with the optional input of gender.</p>
@@ -181,17 +224,14 @@ Output options are:</p>
 <h3>Generic</h3>
 <p>Generic takes a regular expression as input and will generate a value matching that expression. Use this to create formats not currently supported. Some example usages are for prescriptions, nations, and non-supported passport numbers. The template used to generate values will not be saved.</p>
 <p>Example Generic Values:</p>
-<pre class="prettyprint source lang-js"><code>//input
-\d{4}
-//output
-1234
-//input
-[a-zA-Z]{5}
-//output
-AbCde
+<pre class="prettyprint source lang-js"><code>// IP Number: [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}
+// Mac Address: [0-9A-F]{2}\:[0-9A-F]{2}\:[0-9A-F]{2}\:[0-9A-F]{2}\:[0-9A-F]{2}\:[0-9A-F]{2}
+// IMEI: \d{15}
+// ICD9 CODE: \d{3}\.\d
+// URL: https://www\.[a-z]{12}\.(com|net|io)
 
 //example call
-const genericAliasObj = await staticVault.generic.createGeneric('Abcde', '[a-zA-Z]{5}', ['my-generic-tag1', 'my-generic-tag2']);
+const genericAliasObj = await staticVault.generic.createGeneric('192.0.2.1', '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}', ['my-ip-tag1', 'my-ip-tag2']);
 </code></pre>
 <h3>Last name</h3>
 <p>Generates a random last name with optional input of gender.</p>
@@ -208,8 +248,9 @@ const passportAliasObj = await staticVault.passport.createPassport('123456789', 
 <h3>Place of birth</h3>
 <p>Generates a random place of birth. An optional parameter of state may be provided to choose the state associated with the place of birth.</p>
 <p>Place of birth example:</p>
-<pre class="prettyprint source lang-js"><code>city, state
-Odachester, Washington
+<pre class="prettyprint source lang-js"><code>// example format/output
+// city, state 
+// Odachester, Washington
 
 //example call with optional state param
 const pobAliasObj = await staticVault.placeOfBirth.createPlaceOfBirth('Atlanta, Georgia', 'GA', ['my-pob-tag1', 'my-pob-tag2']);
@@ -241,7 +282,8 @@ const pobAliasObj = await staticVault.placeOfBirth.createPlaceOfBirth('Atlanta, 
 <h3>Social security number</h3>
 <p>Generates a random social security number. An optional parameter of state may be provided to choose the state used to generate the ssn.</p>
 <p>Output format:</p>
-<pre class="prettyprint source lang-js"><code>###-##-####
+<pre class="prettyprint source lang-js"><code>// format
+// ###-##-####
 
 //example call
 const ssnAliasObj = await staticVault.ssn.createSSN('123-45-6789', ['my-ssn-tag1', 'my-ssn-tag2']);
@@ -249,7 +291,8 @@ const ssnAliasObj = await staticVault.ssn.createSSN('123-45-6789', ['my-ssn-tag1
 <h3>Tax payer ID</h3>
 <p>Generates a random tay payer ID. Currently only produces ITIN(Individual Taxpayer Identification Number) values.</p>
 <p>Output format:</p>
-<pre class="prettyprint source lang-js"><code>9#-##-####
+<pre class="prettyprint source lang-js"><code>// format
+// 9#-##-####
 
 //example call
 const taxPayerIDAliasObj = await staticVault.taxPayerID.createTaxPayerID('92-45-6789', ['my-taxPayerID-tag1', 'my-taxPayerID-tag2']);
@@ -257,7 +300,8 @@ const taxPayerIDAliasObj = await staticVault.taxPayerID.createTaxPayerID('92-45-
 <h3>Vehicle registration</h3>
 <p>Generates a random vehicle registration. Vehicle registration is 3 Capitalized letters followed by 4 digits.</p>
 <p>Example Output:</p>
-<pre class="prettyprint source lang-js"><code>ABC·1234
+<pre class="prettyprint source lang-js"><code>// format
+// ABC·1234
 
 //example call
 const vehicleRegistrationAliasObj = await staticVault.vehicleRegistration.createVehicleRegistration('92-45-6789', ['my-vehicleRegistration-tag1', 'my-vehicleRegistration-tag2']);
@@ -272,7 +316,7 @@ console.log(communicationVault)
 	output example:
 	{ 
 		id: 'e490157b23534215b0369a2685aab47g', 
-		name: 'my-communication-vault,
+		name: 'my-communication-vault',
 		masterKey: 'MASTER_KEY',
 		tags: ['my-tag-1', 'my-tag-2'], 
 		createdAt: '2018-07-13 T01:00:00Z' 
@@ -289,14 +333,29 @@ const communicationVaultMasterKey = 'MASTER_KEY';
 // ID and Master key should be stored and retrieved from database
 const communicationVault = await client.retrieveCommunicationVault(communicationVaultID, communicationVaultMasterKey);
 </code></pre>
+<p>You can also delete a vault using the vault ID. Deleting the vault will also remove all aliases stored within, so make sure data is properly saved before deleting a vault. Deleting a vault will return a response with a key of 'ok' and a boolean value.</p>
+<pre class="prettyprint source lang-js"><code>//Authenticated client
+const client = await sdk.createClient();
+// ID should be stored and retrieved from database
+const communicationVaultID = 'e490157b23534215b0369a2685aab47g';
+const communicationVaultResponse = await client.deleteCommunicationVault(communicationVaultID);
+console.log(communicationVaultResponse);
+/*
+	output example:
+	{ 
+		ok: true
+	}
+*/
+}
+</code></pre>
 <h2>Communication Data Types</h2>
 <h3>Email</h3>
 <p>Generating email aliases will provide a new functional email to use in place of the real email. These alias addresses will work as relays to the real address, while also providing the ability to white list approved sender domains and addresses.</p>
 <p>Email example:</p>
-<pre class="prettyprint source lang-js"><code>//input
-realEmail@gmail.com
-//output
-cizljfhxrazvcy@fipale.com
+<pre class="prettyprint source lang-js"><code>// input
+// realEmail@gmail.com
+// output
+// cizljfhxrazvcy@fipale.com
 
 //example call
 const emailAlias = await communicationVault.email.createEmail('realEmail@gmail.com', ['my-tag-1', 'my-tag-2']);
@@ -313,13 +372,13 @@ const emailAlias = await communicationVault.email.createEmail('realEmail@gmail.c
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="Client.html">Client</a></li><li><a href="CommunicationVault.html">CommunicationVault</a></li><li><a href="DateOfBirth.html">DateOfBirth</a></li><li><a href="DriversLicense.html">DriversLicense</a></li><li><a href="Email.html">Email</a></li><li><a href="FirstName.html">FirstName</a></li><li><a href="Gender.html">Gender</a></li><li><a href="Generic.html">Generic</a></li><li><a href="LastName.html">LastName</a></li><li><a href="NullafiSDK.html">NullafiSDK</a></li><li><a href="Passport.html">Passport</a></li><li><a href="PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="Race.html">Race</a></li><li><a href="Random.html">Random</a></li><li><a href="SSN.html">SSN</a></li><li><a href="StaticVault.html">StaticVault</a></li><li><a href="TaxPayerID.html">TaxPayerID</a></li><li><a href="VehicleRegistration.html">VehicleRegistration</a></li></ul><h3><a href="global.html">Global</a></h3>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Address.html">Address</a></li><li><a href="Client.html">Client</a></li><li><a href="CommunicationVault.html">CommunicationVault</a></li><li><a href="DateOfBirth.html">DateOfBirth</a></li><li><a href="DriversLicense.html">DriversLicense</a></li><li><a href="Email.html">Email</a></li><li><a href="FirstName.html">FirstName</a></li><li><a href="Gender.html">Gender</a></li><li><a href="Generic.html">Generic</a></li><li><a href="LastName.html">LastName</a></li><li><a href="NullafiSDK.html">NullafiSDK</a></li><li><a href="Passport.html">Passport</a></li><li><a href="PlaceOfBirth.html">PlaceOfBirth</a></li><li><a href="Race.html">Race</a></li><li><a href="Random.html">Random</a></li><li><a href="SSN.html">SSN</a></li><li><a href="StaticVault.html">StaticVault</a></li><li><a href="TaxPayer.html">TaxPayer</a></li><li><a href="VehicleRegistration.html">VehicleRegistration</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue Jun 25 2019 11:32:17 GMT-0500 (Central Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.2</a> on Tue Jul 09 2019 09:36:21 GMT-0500 (Central Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
