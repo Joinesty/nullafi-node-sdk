@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: managers/aliases/first-name/first-name.js</title>
+    <title>JSDoc: Source: managers/aliases/tax-payer/tax-payer.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: managers/aliases/first-name/first-name.js</h1>
+    <h1 class="page-title">Source: managers/aliases/tax-payer/tax-payer.js</h1>
 
     
 
@@ -28,98 +28,91 @@
         <article>
             <pre class="prettyprint source linenums"><code>/**
  *
- * @exports FirstName
+ * @exports TaxPayer
  * @class
  *
  */
-class FirstName {
+class TaxPayer {
     /**
-     *Creates an instance of FirstName.
+     *Creates an instance of TaxPayer.
      * @param {StaticVault} vault
      */
     constructor(vault) {
         this.vault = vault;
     }
     /**
-      * Create a new FirstName string to be aliased for a specific static vault
-      * &lt;pre>&lt;code>
-        * Genders available are:
-        * "male",
-        * "female"
-        * Example call:
-        * const firstNameAliasObj = await staticVault.firstName.createFirstName
-        * ('John', ['my-fName-tag1', 'my-fName-tag2']);
-        * &lt;/pre>&lt;/code>
-      *
-      * @param {string} firstname First Name to alias
-      * @param {string} [gender] Gender name should be based on
-      * @param {string[]} [tags] Strings to categorize alias
-      * @return {Promise&lt;CreateFirstNameResponse>}
-      */
-    async createFirstName(firstname, gender, tags) {
-        if (arguments.length === 2 &amp;&amp; Array.isArray(gender)) {
-            tags = gender;
-            gender = null;
-        }
-        const result = this.vault.encrypt(firstname);
-        const response = await this.vault.client.post(`/vault/static/${this.vault.id}/firstname${gender ? `/${gender}` : ''}`, {
-            firstname: result.encryptedData,
-            firstnameHash: this.vault.hash(firstname),
+          * Create a new TaxPayer string to be aliased for a specific static vault
+          * &lt;pre>&lt;code>
+            * Output format:
+            * 9#-##-####
+            * //example call
+            * const taxPayerIDAliasObj = await staticVault.taxPayerID.createTaxPayer
+            * ('92-45-6789', ['my-taxPayerID-tag1', 'my-taxPayerID-tag2']);
+            * &lt;/pre>&lt;/code>
+          *
+          * @param {string} taxpayer Tax payer ID to alias
+          * @param {string[]} [tags] Strings to categorize alias
+          * @return {Promise&lt;CreateTaxPayerResponse>}
+          */
+    async createTaxPayer(taxpayer, tags) {
+        const result = this.vault.encrypt(taxpayer);
+        const response = await this.vault.client.post(`/vault/static/${this.vault.id}/taxpayer`, {
+            taxpayer: result.encryptedData,
+            taxpayerHash: this.vault.hash(taxpayer),
             iv: result.initializationVector,
             authTag: result.authenticationTag,
             tags,
         });
-        response.firstname = this.vault.decrypt(response.iv, response.authTag, response.firstname);
+        response.taxpayer = this.vault.decrypt(response.iv, response.authTag, response.taxpayer);
         return response;
     }
 
     /**
-         * Retrieve the First Name alias from a static vault.
-         * Returns an array of matching values. Array will be sorted by date created.
+         * Retrieve the TaxPayer string alias from a static vault. Returns an array of matching values. Array will be sorted by date created.
          *
-         * @param {string} aliasId ID of the alias to retrieve Id of alias to retrieve
-         * @return {Promise&lt;RetrieveFirstNameResponse>}
+         * @param {string} aliasId ID of the alias to retrieve
+         * @return {Promise&lt;RetrieveTaxPayerResponse>}
          */
-    async retrieveFirstName(aliasId) {
-        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/firstname/${aliasId}`);
-        response.firstname = this.vault.decrypt(response.iv, response.authTag, response.firstname);
+    async retrieveTaxPayer(aliasId) {
+        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/taxpayer/${aliasId}`);
+        response.taxpayer = this.vault.decrypt(response.iv, response.authTag, response.taxpayer);
         return response;
     }
 
     /**
-        * Retrieve the First Name alias from real firstname.
+        * Retrieve the TaxPayer string alias from real taxpayer.
         * Real value must be an exact match and will also be case sensitive.
         * Returns an array of matching values. Array will be sorted by date created.
         *
-        * @param {string} firstname Real first name
+        * @param {string} taxpayer Real taxpayer
         * @param {string[]} [tags] Strings used to filter return results
-        * @return {Promise&lt;RetrieveFirstNameResponse[]>}
+        * @return {Promise&lt;RetrieveTaxPayerResponse[]>}
         */
-    async retrieveFirstNameFromRealData(firstname, tags) {
+    async retrieveTaxPayerFromRealData(taxpayer, tags) {
         const query = {
-            hash: this.vault.hash(firstname),
+            hash: this.vault.hash(taxpayer),
             tags,
         };
 
-        const responseList = await this.vault.client.get(`/vault/static/${this.vault.id}/firstname`, query);
+        const responseList = await this.vault.client.get(`/vault/static/${this.vault.id}/taxpayer`, query);
         responseList.forEach((response) => {
-            response.firstname = this.vault.decrypt(response.iv, response.authTag, response.firstname);
+            response.taxpayer = this.vault.decrypt(response.iv, response.authTag, response.taxpayer);
         });
         return responseList;
     }
 
     /**
-         * Delete the FirstName alias from static vault
+         * Delete the TaxPayer alias from static vault
          *
          * @param {string} aliasId ID of the alias to retrieve
-         * @return {Promise&lt;DeleteFirstNameResponse>}
+         * @return {Promise&lt;DeleteTaxPayerResponse>}
          */
-    deleteFirstName(aliasId) {
-        return this.vault.client.delete(`/vault/static/${this.vault.id}/firstname/${aliasId}`);
+    deleteTaxPayer(aliasId) {
+        return this.vault.client.delete(`/vault/static/${this.vault.id}/taxpayer/${aliasId}`);
     }
 };
 
-module.exports = FirstName;
+module.exports = TaxPayer;
 
 </code></pre>
         </article>

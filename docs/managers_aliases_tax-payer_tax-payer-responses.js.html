@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: managers/aliases/address/address-responses.js</title>
+    <title>JSDoc: Source: managers/aliases/tax-payer/tax-payer-responses.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: managers/aliases/address/address-responses.js</h1>
+    <h1 class="page-title">Source: managers/aliases/tax-payer/tax-payer-responses.js</h1>
 
     
 
@@ -27,24 +27,24 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * @typedef {Object} CreateAddressResponse
- * @property {string} address - Real address
+ * @typedef {Object} CreateTaxPayerResponse
+ * @property {string} taxpayer - Real tax payer ID
  * @property {string} iv - initialization vector
  * @property {string} authTag - Authentication Tag
  * @property {string} tags - Additional Tags
  */
 /**
- * @typedef {Object} RetrieveAddressResponse
+ * @typedef {Object} RetrieveTaxPayerResponse
  * @property {string} id - alias id
- * @property {string} address - Real address
- * @property {string} addressAlias - Alias created for address
+ * @property {string} taxpayer - Real tax payer ID
+ * @property {string} taxpayerAlias - Alias created for tax payer ID
  * @property {string} iv - initialization vector
  * @property {string} authTag - Authentication Tag
  * @property {string} tags - Additional Tags
  * @property {date} createdAt - timestamp alias was created at
  */
 /**
- * @typedef {Object} DeleteAddressResponse
+ * @typedef {Object} DeleteTaxPayerResponse
  * @property {boolean} ok - If request was successful
  */
 </code></pre>

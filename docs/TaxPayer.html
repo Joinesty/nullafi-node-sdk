@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: CommunicationVault</title>
+    <title>JSDoc: Class: TaxPayer</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: CommunicationVault</h1>
+    <h1 class="page-title">Class: TaxPayer</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>CommunicationVault<span class="signature">(client, vaultId, name, masterKey)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>TaxPayer<span class="signature">(vault)</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="CommunicationVault"><span class="type-signature"></span>new CommunicationVault<span class="signature">(client, vaultId, name, masterKey)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="TaxPayer"><span class="type-signature"></span>new TaxPayer<span class="signature">(vault)</span><span class="type-signature"></span></h4>
     
 
     
@@ -49,7 +49,7 @@
 
 
 <div class="description">
-    Creates an instance of Vault.
+    Creates an instance of TaxPayer.
 </div>
 
 
@@ -85,82 +85,13 @@
 
         <tr>
             
-                <td class="name"><code>client</code></td>
+                <td class="name"><code>vault</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="Client.html">Client</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>vaultId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>masterKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
+<span class="param-type"><a href="StaticVault.html">StaticVault</a></span>
 
 
             
@@ -211,7 +142,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_communication-vault_communication-vault.js.html">managers/communication-vault/communication-vault.js</a>, <a href="managers_communication-vault_communication-vault.js.html#line18">line 18</a>
+        <a href="managers_aliases_tax-payer_tax-payer.js.html">managers/aliases/tax-payer/tax-payer.js</a>, <a href="managers_aliases_tax-payer_tax-payer.js.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -267,7 +198,7 @@
     
 
     
-    <h4 class="name" id=".createCommunicationVault"><span class="type-signature">(async, static) </span>createCommunicationVault<span class="signature">(client, name, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateCommunicationVaultResponse">CreateCommunicationVaultResponse</a>>}</span></h4>
+    <h4 class="name" id="createTaxPayer"><span class="type-signature">(async) </span>createTaxPayer<span class="signature">(taxpayer, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateTaxPayerResponse">CreateTaxPayerResponse</a>>}</span></h4>
     
 
     
@@ -275,7 +206,14 @@
 
 
 <div class="description">
-    Create the API to create a new communication vault
+    Create a new TaxPayer string to be aliased for a specific static vault
+<pre><code>
+Output format:
+9#-##-####
+//example call
+const taxPayerIDAliasObj = await staticVault.taxPayerID.createTaxPayer
+('92-45-6789', ['my-taxPayerID-tag1', 'my-taxPayerID-tag2']);
+</pre></code>
 </div>
 
 
@@ -313,38 +251,7 @@
 
         <tr>
             
-                <td class="name"><code>client</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Client.html">Client</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>taxpayer</code></td>
             
 
             <td class="type">
@@ -368,7 +275,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Tax payer ID to alias</td>
         </tr>
 
     
@@ -401,7 +308,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Strings to categorize alias</td>
         </tr>
 
     
@@ -442,7 +349,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_communication-vault_communication-vault.js.html">managers/communication-vault/communication-vault.js</a>, <a href="managers_communication-vault_communication-vault.js.html#line69">line 69</a>
+        <a href="managers_aliases_tax-payer_tax-payer.js.html">managers/aliases/tax-payer/tax-payer.js</a>, <a href="managers_aliases_tax-payer_tax-payer.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -478,7 +385,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;<a href="global.html#CreateCommunicationVaultResponse">CreateCommunicationVaultResponse</a>></span>
+<span class="param-type">Promise.&lt;<a href="global.html#CreateTaxPayerResponse">CreateTaxPayerResponse</a>></span>
 
 
     </dd>
@@ -496,7 +403,7 @@
     
 
     
-    <h4 class="name" id=".deleteCommunicationVault"><span class="type-signature">(async, static) </span>deleteCommunicationVault<span class="signature">(client, vaultId)</span><span class="type-signature"> &rarr; {Promise}</span></h4>
+    <h4 class="name" id="deleteTaxPayer"><span class="type-signature"></span>deleteTaxPayer<span class="signature">(aliasId)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#DeleteTaxPayerResponse">DeleteTaxPayerResponse</a>>}</span></h4>
     
 
     
@@ -504,7 +411,7 @@
 
 
 <div class="description">
-    Delete the communication vault from id
+    Delete the TaxPayer alias from static vault
 </div>
 
 
@@ -540,30 +447,7 @@
 
         <tr>
             
-                <td class="name"><code>client</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Client.html">Client</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>vaultId</code></td>
+                <td class="name"><code>aliasId</code></td>
             
 
             <td class="type">
@@ -579,7 +463,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -620,7 +504,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_communication-vault_communication-vault.js.html">managers/communication-vault/communication-vault.js</a>, <a href="managers_communication-vault_communication-vault.js.html#line106">line 106</a>
+        <a href="managers_aliases_tax-payer_tax-payer.js.html">managers/aliases/tax-payer/tax-payer.js</a>, <a href="managers_aliases_tax-payer_tax-payer.js.html#line82">line 82</a>
     </li></ul></dd>
     
 
@@ -656,7 +540,7 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise</span>
+<span class="param-type">Promise.&lt;<a href="global.html#DeleteTaxPayerResponse">DeleteTaxPayerResponse</a>></span>
 
 
     </dd>
@@ -674,7 +558,7 @@
     
 
     
-    <h4 class="name" id=".retrieveCommunicationVault"><span class="type-signature">(async, static) </span>retrieveCommunicationVault<span class="signature">(client, vaultId, masterKey)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#RetrieveCommunicationVaultResponse">RetrieveCommunicationVaultResponse</a>>}</span></h4>
+    <h4 class="name" id="retrieveTaxPayer"><span class="type-signature">(async) </span>retrieveTaxPayer<span class="signature">(aliasId)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#RetrieveTaxPayerResponse">RetrieveTaxPayerResponse</a>>}</span></h4>
     
 
     
@@ -682,7 +566,7 @@
 
 
 <div class="description">
-    Retrieve the communication vault from id
+    Retrieve the TaxPayer string alias from a static vault. Returns an array of matching values. Array will be sorted by date created.
 </div>
 
 
@@ -718,30 +602,7 @@
 
         <tr>
             
-                <td class="name"><code>client</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="Client.html">Client</a></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>vaultId</code></td>
+                <td class="name"><code>aliasId</code></td>
             
 
             <td class="type">
@@ -757,30 +618,7 @@
 
             
 
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>masterKey</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
+            <td class="description last">ID of the alias to retrieve</td>
         </tr>
 
     
@@ -821,7 +659,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_communication-vault_communication-vault.js.html">managers/communication-vault/communication-vault.js</a>, <a href="managers_communication-vault_communication-vault.js.html#line94">line 94</a>
+        <a href="managers_aliases_tax-payer_tax-payer.js.html">managers/aliases/tax-payer/tax-payer.js</a>, <a href="managers_aliases_tax-payer_tax-payer.js.html#line48">line 48</a>
     </li></ul></dd>
     
 
@@ -857,7 +695,207 @@
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;<a href="global.html#RetrieveCommunicationVaultResponse">RetrieveCommunicationVaultResponse</a>></span>
+<span class="param-type">Promise.&lt;<a href="global.html#RetrieveTaxPayerResponse">RetrieveTaxPayerResponse</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="retrieveTaxPayerFromRealData"><span class="type-signature">(async) </span>retrieveTaxPayerFromRealData<span class="signature">(taxpayer, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveTaxPayerResponse">RetrieveTaxPayerResponse</a>>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Retrieve the TaxPayer string alias from real taxpayer.
+Real value must be an exact match and will also be case sensitive.
+Returns an array of matching values. Array will be sorted by date created.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>taxpayer</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Real taxpayer</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tags</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Strings used to filter return results</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="managers_aliases_tax-payer_tax-payer.js.html">managers/aliases/tax-payer/tax-payer.js</a>, <a href="managers_aliases_tax-payer_tax-payer.js.html#line63">line 63</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Array.&lt;<a href="global.html#RetrieveTaxPayerResponse">RetrieveTaxPayerResponse</a>>></span>
 
 
     </dd>
