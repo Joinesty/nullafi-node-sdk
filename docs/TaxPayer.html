@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: DateOfBirth</title>
+    <title>JSDoc: Class: TaxPayer</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: DateOfBirth</h1>
+    <h1 class="page-title">Class: TaxPayer</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>DateOfBirth<span class="signature">(vault)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>TaxPayer<span class="signature">(vault)</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="DateOfBirth"><span class="type-signature"></span>new DateOfBirth<span class="signature">(vault)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="TaxPayer"><span class="type-signature"></span>new TaxPayer<span class="signature">(vault)</span><span class="type-signature"></span></h4>
     
 
     
@@ -49,7 +49,7 @@
 
 
 <div class="description">
-    Creates an instance of DateOfBirth.
+    Creates an instance of TaxPayer.
 </div>
 
 
@@ -101,7 +101,7 @@
 
             
 
-            <td class="description last">Vault to store aliases</td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -142,7 +142,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_date-of-birth_date-of-birth.js.html">managers/aliases/date-of-birth/date-of-birth.js</a>, <a href="managers_aliases_date-of-birth_date-of-birth.js.html#line12">line 12</a>
+        <a href="managers_aliases_tax-payer_tax-payer.js.html">managers/aliases/tax-payer/tax-payer.js</a>, <a href="managers_aliases_tax-payer_tax-payer.js.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -198,7 +198,7 @@
     
 
     
-    <h4 class="name" id="createDateOfBirth"><span class="type-signature">(async) </span>createDateOfBirth<span class="signature">(dateofbirth, year<span class="signature-attributes">opt</span>, month<span class="signature-attributes">opt</span>, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateDateOfBirthResponse">CreateDateOfBirthResponse</a>>}</span></h4>
+    <h4 class="name" id="createTaxPayer"><span class="type-signature">(async) </span>createTaxPayer<span class="signature">(taxpayer, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#CreateTaxPayerResponse">CreateTaxPayerResponse</a>>}</span></h4>
     
 
     
@@ -206,13 +206,13 @@
 
 
 <div class="description">
-    Create a new Date of birth string to be aliased for a specific static vault
+    Create a new TaxPayer string to be aliased for a specific static vault
 <pre><code>
-YYYY-MM-DD
-1980-12-20
-//providing the optional year and month arguments
-const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth
-('1999-07-02', '1999', '07' ['my-dob-tag1', 'my-dob-tag2']);
+Output format:
+9#-##-####
+//example call
+const taxPayerIDAliasObj = await staticVault.taxPayerID.createTaxPayer
+('92-45-6789', ['my-taxPayerID-tag1', 'my-taxPayerID-tag2']);
 </pre></code>
 </div>
 
@@ -251,7 +251,7 @@ const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth
 
         <tr>
             
-                <td class="name"><code>dateofbirth</code></td>
+                <td class="name"><code>taxpayer</code></td>
             
 
             <td class="type">
@@ -275,73 +275,7 @@ const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth
 
             
 
-            <td class="description last">Real date of birth</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>year</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">4 digit number</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>month</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">2 digit number</td>
+            <td class="description last">Tax payer ID to alias</td>
         </tr>
 
     
@@ -415,7 +349,7 @@ const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_date-of-birth_date-of-birth.js.html">managers/aliases/date-of-birth/date-of-birth.js</a>, <a href="managers_aliases_date-of-birth_date-of-birth.js.html#line31">line 31</a>
+        <a href="managers_aliases_tax-payer_tax-payer.js.html">managers/aliases/tax-payer/tax-payer.js</a>, <a href="managers_aliases_tax-payer_tax-payer.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -451,7 +385,7 @@ const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;<a href="global.html#CreateDateOfBirthResponse">CreateDateOfBirthResponse</a>></span>
+<span class="param-type">Promise.&lt;<a href="global.html#CreateTaxPayerResponse">CreateTaxPayerResponse</a>></span>
 
 
     </dd>
@@ -469,7 +403,7 @@ const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth
     
 
     
-    <h4 class="name" id="deleteDateOfBirth"><span class="type-signature"></span>deleteDateOfBirth<span class="signature">(aliasId)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#DeleteDateOfBirthResponse">DeleteDateOfBirthResponse</a>>}</span></h4>
+    <h4 class="name" id="deleteTaxPayer"><span class="type-signature"></span>deleteTaxPayer<span class="signature">(aliasId)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#DeleteTaxPayerResponse">DeleteTaxPayerResponse</a>>}</span></h4>
     
 
     
@@ -477,162 +411,7 @@ const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth
 
 
 <div class="description">
-    Delete the DateOfBirth alias from static vault
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>aliasId</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ID of the alias to delete</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_date-of-birth_date-of-birth.js.html">managers/aliases/date-of-birth/date-of-birth.js</a>, <a href="managers_aliases_date-of-birth_date-of-birth.js.html#line96">line 96</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise.&lt;<a href="global.html#DeleteDateOfBirthResponse">DeleteDateOfBirthResponse</a>></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="retrieveDateOfBirth"><span class="type-signature">(async) </span>retrieveDateOfBirth<span class="signature">(aliasId)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#RetrieveDateOfBirthResponse">RetrieveDateOfBirthResponse</a>>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Retrieve the DateOfBirth string alias from a static vault. Returns an array of matching values. Array will be sorted by date created.
+    Delete the TaxPayer alias from static vault
 </div>
 
 
@@ -725,7 +504,7 @@ const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_date-of-birth_date-of-birth.js.html">managers/aliases/date-of-birth/date-of-birth.js</a>, <a href="managers_aliases_date-of-birth_date-of-birth.js.html#line62">line 62</a>
+        <a href="managers_aliases_tax-payer_tax-payer.js.html">managers/aliases/tax-payer/tax-payer.js</a>, <a href="managers_aliases_tax-payer_tax-payer.js.html#line82">line 82</a>
     </li></ul></dd>
     
 
@@ -761,7 +540,7 @@ const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;<a href="global.html#RetrieveDateOfBirthResponse">RetrieveDateOfBirthResponse</a>></span>
+<span class="param-type">Promise.&lt;<a href="global.html#DeleteTaxPayerResponse">DeleteTaxPayerResponse</a>></span>
 
 
     </dd>
@@ -779,7 +558,7 @@ const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth
     
 
     
-    <h4 class="name" id="retrieveDateOfBirthFromRealData"><span class="type-signature">(async) </span>retrieveDateOfBirthFromRealData<span class="signature">(dateofbirth, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveAddressResponse">RetrieveAddressResponse</a>>>}</span></h4>
+    <h4 class="name" id="retrieveTaxPayer"><span class="type-signature">(async) </span>retrieveTaxPayer<span class="signature">(aliasId)</span><span class="type-signature"> &rarr; {Promise.&lt;<a href="global.html#RetrieveTaxPayerResponse">RetrieveTaxPayerResponse</a>>}</span></h4>
     
 
     
@@ -787,7 +566,162 @@ const dobAliasObj = await staticVault.dateofbirth.createDateOfBirth
 
 
 <div class="description">
-    Retrieve the Address string alias from real address.
+    Retrieve the TaxPayer string alias from a static vault. Returns an array of matching values. Array will be sorted by date created.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>aliasId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">ID of the alias to retrieve</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="managers_aliases_tax-payer_tax-payer.js.html">managers/aliases/tax-payer/tax-payer.js</a>, <a href="managers_aliases_tax-payer_tax-payer.js.html#line48">line 48</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;<a href="global.html#RetrieveTaxPayerResponse">RetrieveTaxPayerResponse</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="retrieveTaxPayerFromRealData"><span class="type-signature">(async) </span>retrieveTaxPayerFromRealData<span class="signature">(taxpayer, tags<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;Array.&lt;<a href="global.html#RetrieveTaxPayerResponse">RetrieveTaxPayerResponse</a>>>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Retrieve the TaxPayer string alias from real taxpayer.
 Real value must be an exact match and will also be case sensitive.
 Returns an array of matching values. Array will be sorted by date created.
 </div>
@@ -827,7 +761,7 @@ Returns an array of matching values. Array will be sorted by date created.
 
         <tr>
             
-                <td class="name"><code>dateofbirth</code></td>
+                <td class="name"><code>taxpayer</code></td>
             
 
             <td class="type">
@@ -851,7 +785,7 @@ Returns an array of matching values. Array will be sorted by date created.
 
             
 
-            <td class="description last">Real date of birth</td>
+            <td class="description last">Real taxpayer</td>
         </tr>
 
     
@@ -925,7 +859,7 @@ Returns an array of matching values. Array will be sorted by date created.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="managers_aliases_date-of-birth_date-of-birth.js.html">managers/aliases/date-of-birth/date-of-birth.js</a>, <a href="managers_aliases_date-of-birth_date-of-birth.js.html#line77">line 77</a>
+        <a href="managers_aliases_tax-payer_tax-payer.js.html">managers/aliases/tax-payer/tax-payer.js</a>, <a href="managers_aliases_tax-payer_tax-payer.js.html#line63">line 63</a>
     </li></ul></dd>
     
 
@@ -961,7 +895,7 @@ Returns an array of matching values. Array will be sorted by date created.
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;Array.&lt;<a href="global.html#RetrieveAddressResponse">RetrieveAddressResponse</a>>></span>
+<span class="param-type">Promise.&lt;Array.&lt;<a href="global.html#RetrieveTaxPayerResponse">RetrieveTaxPayerResponse</a>>></span>
 
 
     </dd>

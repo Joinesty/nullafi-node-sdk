@@ -59,6 +59,19 @@ const start = async () => {
 start();
 ```
 
+You can also retrieve and delete aliases using these methods: 
+
+```js
+	// An alias can be retrieved by it's ID
+	const retrieveFirstNameByID = await staticVault.firstName.retrieveFirstName('e490157b23534215b0369a2685aab47g');
+
+	// An alias may also be retrieved using it's real value, as well as any tags that may help identify the data point. This will return an array of values matching the given parameters. 
+	const retrieveFirstNameByRealValue = await staticVault.firstName.retrieveFirstNameFromRealData('John', ['my-tag-1', 'my-tag-2'])
+
+	// Deleting an alias will also use ID
+	const deleteFirstNameAlias = await staticVault.firstName.deleteFirstName('e490157b23534215b0369a2685aab47g');
+```
+
 Authentication
 ------------
 When a client is created, the client instance will be authenticated for a 60 minute period. After this time, you may either create a new client or refresh the existing client. 
@@ -196,17 +209,14 @@ Generic takes a regular expression as input and will generate a value matching t
 
 Example Generic Values:
 ```js
-// input
-// \d{4}
-// output
-// 1234
-// input
-// [a-zA-Z]{5}
-// output
-// AbCde
+// IP Number: [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}
+// Mac Address: [0-9A-F]{2}\:[0-9A-F]{2}\:[0-9A-F]{2}\:[0-9A-F]{2}\:[0-9A-F]{2}\:[0-9A-F]{2}
+// IMEI: \d{15}
+// ICD9 CODE: \d{3}\.\d
+// URL: https://www\.[a-z]{12}\.(com|net|io)
 
 //example call
-const genericAliasObj = await staticVault.generic.createGeneric('Abcde', '[a-zA-Z]{5}', ['my-generic-tag1', 'my-generic-tag2']);
+const genericAliasObj = await staticVault.generic.createGeneric('192.0.2.1', '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}', ['my-ip-tag1', 'my-ip-tag2']);
 ```
 
 ### Last name

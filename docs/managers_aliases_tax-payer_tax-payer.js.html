@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: managers/aliases/vehicle-registration/vehicle-registration.js</title>
+    <title>JSDoc: Source: managers/aliases/tax-payer/tax-payer.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: managers/aliases/vehicle-registration/vehicle-registration.js</h1>
+    <h1 class="page-title">Source: managers/aliases/tax-payer/tax-payer.js</h1>
 
     
 
@@ -28,93 +28,91 @@
         <article>
             <pre class="prettyprint source linenums"><code>/**
  *
- * @exports VehicleRegistration
+ * @exports TaxPayer
  * @class
  *
  */
-class VehicleRegistration {
+class TaxPayer {
     /**
-     *Creates an instance of VehicleRegistration.
+     *Creates an instance of TaxPayer.
      * @param {StaticVault} vault
-     *
      */
     constructor(vault) {
         this.vault = vault;
     }
     /**
-      * Create a new Vehicle Registration string to be aliased for a specific static vault
-      * &lt;pre>&lt;code>
-        * Example Output:
-        * ABC·1234
-        * //example call
-        * const vehicleRegistrationAliasObj = await staticVault.vehicleRegistration.createVehicleRegistration
-        * ('92-45-6789', ['my-vehicleRegistration-tag1', 'my-vehicleRegistration-tag2']);
-        * &lt;/pre>&lt;/code>
-      *
-      * @param {string} vehicleregistration Vehicle registration to alias
-      * @param {string[]} [tags] Strings to categorize alias
-      * @return {Promise&lt;CreateVehicleRegistrationResponse>}
-      */
-    async createVehicleRegistration(vehicleregistration, tags) {
-        const result = this.vault.encrypt(vehicleregistration);
-        const response = await this.vault.client.post(`/vault/static/${this.vault.id}/vehicleregistration`, {
-            vehicleregistration: result.encryptedData,
-            vehicleregistrationHash: this.vault.hash(vehicleregistration),
+          * Create a new TaxPayer string to be aliased for a specific static vault
+          * &lt;pre>&lt;code>
+            * Output format:
+            * 9#-##-####
+            * //example call
+            * const taxPayerIDAliasObj = await staticVault.taxPayerID.createTaxPayer
+            * ('92-45-6789', ['my-taxPayerID-tag1', 'my-taxPayerID-tag2']);
+            * &lt;/pre>&lt;/code>
+          *
+          * @param {string} taxpayer Tax payer ID to alias
+          * @param {string[]} [tags] Strings to categorize alias
+          * @return {Promise&lt;CreateTaxPayerResponse>}
+          */
+    async createTaxPayer(taxpayer, tags) {
+        const result = this.vault.encrypt(taxpayer);
+        const response = await this.vault.client.post(`/vault/static/${this.vault.id}/taxpayer`, {
+            taxpayer: result.encryptedData,
+            taxpayerHash: this.vault.hash(taxpayer),
             iv: result.initializationVector,
             authTag: result.authenticationTag,
             tags,
         });
-        response.vehicleregistration = this.vault.decrypt(response.iv, response.authTag, response.vehicleregistration);
+        response.taxpayer = this.vault.decrypt(response.iv, response.authTag, response.taxpayer);
         return response;
     }
 
     /**
-         * Retrieve the Vehicle Registration string alias from a static vault.
-         * Returns an array of matching values. Array will be sorted by date created.
+         * Retrieve the TaxPayer string alias from a static vault. Returns an array of matching values. Array will be sorted by date created.
          *
          * @param {string} aliasId ID of the alias to retrieve
-         * @return {Promise&lt;RetrieveVehicleRegistrationResponse>}
+         * @return {Promise&lt;RetrieveTaxPayerResponse>}
          */
-    async retrieveVehicleRegistration(aliasId) {
-        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/vehicleregistration/${aliasId}`);
-        response.vehicleregistration = this.vault.decrypt(response.iv, response.authTag, response.vehicleregistration);
+    async retrieveTaxPayer(aliasId) {
+        const response = await this.vault.client.get(`/vault/static/${this.vault.id}/taxpayer/${aliasId}`);
+        response.taxpayer = this.vault.decrypt(response.iv, response.authTag, response.taxpayer);
         return response;
     }
 
     /**
-        * Retrieve the VehicleRegistration string alias from real vehicleregistration.
+        * Retrieve the TaxPayer string alias from real taxpayer.
         * Real value must be an exact match and will also be case sensitive.
         * Returns an array of matching values. Array will be sorted by date created.
         *
-        * @param {string} vehicleregistration Real vehicleregistration
+        * @param {string} taxpayer Real taxpayer
         * @param {string[]} [tags] Strings used to filter return results
-        * @return {Promise&lt;RetrieveVehicleRegistrationResponse[]>}
+        * @return {Promise&lt;RetrieveTaxPayerResponse[]>}
         */
-    async retrieveVehicleRegistrationFromRealData(vehicleregistration, tags) {
+    async retrieveTaxPayerFromRealData(taxpayer, tags) {
         const query = {
-            hash: this.vault.hash(vehicleregistration),
+            hash: this.vault.hash(taxpayer),
             tags,
         };
 
-        const responseList = await this.vault.client.get(`/vault/static/${this.vault.id}/vehicleregistration`, query);
+        const responseList = await this.vault.client.get(`/vault/static/${this.vault.id}/taxpayer`, query);
         responseList.forEach((response) => {
-            response.vehicleregistration = this.vault.decrypt(response.iv, response.authTag, response.vehicleregistration);
+            response.taxpayer = this.vault.decrypt(response.iv, response.authTag, response.taxpayer);
         });
         return responseList;
     }
 
     /**
-         * Delete the Vehicle Registration alias from static vault
+         * Delete the TaxPayer alias from static vault
          *
          * @param {string} aliasId ID of the alias to retrieve
-         * @return {Promise&lt;DeleteVehicleRegistrationResponse>}
+         * @return {Promise&lt;DeleteTaxPayerResponse>}
          */
-    deleteVehicleRegistration(aliasId) {
-        return this.vault.client.delete(`/vault/static/${this.vault.id}/vehicleregistration/${aliasId}`);
+    deleteTaxPayer(aliasId) {
+        return this.vault.client.delete(`/vault/static/${this.vault.id}/taxpayer/${aliasId}`);
     }
 };
 
-module.exports = VehicleRegistration;
+module.exports = TaxPayer;
 
 </code></pre>
         </article>
