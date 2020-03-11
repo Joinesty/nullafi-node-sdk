@@ -11,6 +11,7 @@
   "scripts": {
     "docs": "jsdoc -r lib/. -d docs ./README.md",
     "test": "mocha './lib/**/*.spec.js'",
+    "integration:test": "cross-env API_URL=\"https://dev-enterprise-api.broknus.com\" cross-env API_KEY=\"your api key\" mocha './tests/integration/**/*.spec.js' --timeout 10000",
     "coverage": "nyc --exclude '**/*.spec.js' npm test ",
     "lint": "eslint ./lib"
   },
@@ -41,6 +42,7 @@
   "homepage": "https://github.com/Joinesty/nullafi-node-sdk#readme",
   "devDependencies": {
     "chai": "^4.2.0",
+    "cross-env": "^7.0.0",
     "eslint": "^5.16.0",
     "eslint-config-google": "^0.12.0",
     "husky": "^1.3.1",
