@@ -18,8 +18,7 @@ Nullafi SDK is supported on node versions above v10.14.0.
 
 Getting Started
 ---------------
-To get started with the SDK as a new developer, one must create a developer account. Go to the 
-<a href="https://dashboard.nullafi.com/signup" target="_blank">Nullafi Signup Page</a>, and create a new developer account. As an account owner, you can retrieve the API key by going to the settings page, and selecting the 'API Key' tab. You may manage API key generation for the SDK from here. Create a new key and store the key value somewhere secure, as Nullafi will not store this key.
+To get started with the SDK as a new developer, one must create a developer account. Please talk to a member of our team to get access to our signup page (<a href="https://calendly.com/chicago-management-team?__hstc=38388668.72758c7115c158dc83fe59c7e8a250d7.1572635006384.1583341260553.1583770309230.9&__hssc=38388668.1.1583928653788&__hsfp=853366638&hsCtaTracking=0f86f8a4-1077-4bcd-8810-716fb9522d51%7C4e4f872c-8023-433d-90e0-8c42d12f14fb" target="_blank">HERE</a>). As an account owner, you can retrieve the API key by going to the settings page, and selecting the 'API Key' tab. You may manage API key generation for the SDK from here. Create a new key and store the key value somewhere secure, as Nullafi will not store this key.
 
 **Note:** Make sure to implement the nullafi-sdk in back end products only. Implementing the nullafi key on a front end product will expose the key to the public, and risk exposing private data. 
 
